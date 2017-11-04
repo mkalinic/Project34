@@ -10,6 +10,9 @@ namespace IGG.TenderPortal.Data
 
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Person> Person { get; set; }
+        public DbSet<Tender> Tender { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<UserTender> UserTender { get; set; }        
 
         public virtual void Commit()
         {

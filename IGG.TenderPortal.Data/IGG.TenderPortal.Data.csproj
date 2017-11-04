@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Configuration\EmployeeConfiguration.cs" />
     <Compile Include="Configuration\PersonConfiguration.cs" />
+    <Compile Include="Configuration\UserFileConfiguration.cs" />
+    <Compile Include="Configuration\UserTenderConfiguration.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
