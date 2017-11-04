@@ -3,7 +3,43 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.Model", "IGG.TenderPortal.Model\IGG.TenderPortal.Model.csproj", "{53D31CA0-CB83-41B4-8676-1266E9067652}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.Data", "IGG.TenderPortal.Data\IGG.TenderPortal.Data.csproj", "{44038EC6-6E2B-459A-97C8-CEEC8176BE28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.WebService", "IGG.TenderPortal.WebService\IGG.TenderPortal.WebService.csproj", "{70A32C67-4A16-487A-A1CE-794EF117576C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.Service", "IGG.TenderPortal.Service\IGG.TenderPortal.Service.csproj", "{3F331A33-A9D5-4A35-BA76-ABA9448F452D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.DtoModel", "IGG.TenderPortal.DtoModel\IGG.TenderPortal.DtoModel.csproj", "{A2ADAF36-8802-4C32-9761-89F835648DA4}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53D31CA0-CB83-41B4-8676-1266E9067652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D31CA0-CB83-41B4-8676-1266E9067652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D31CA0-CB83-41B4-8676-1266E9067652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D31CA0-CB83-41B4-8676-1266E9067652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44038EC6-6E2B-459A-97C8-CEEC8176BE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44038EC6-6E2B-459A-97C8-CEEC8176BE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44038EC6-6E2B-459A-97C8-CEEC8176BE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44038EC6-6E2B-459A-97C8-CEEC8176BE28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70A32C67-4A16-487A-A1CE-794EF117576C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70A32C67-4A16-487A-A1CE-794EF117576C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70A32C67-4A16-487A-A1CE-794EF117576C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70A32C67-4A16-487A-A1CE-794EF117576C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F331A33-A9D5-4A35-BA76-ABA9448F452D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F331A33-A9D5-4A35-BA76-ABA9448F452D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F331A33-A9D5-4A35-BA76-ABA9448F452D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F331A33-A9D5-4A35-BA76-ABA9448F452D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2ADAF36-8802-4C32-9761-89F835648DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2ADAF36-8802-4C32-9761-89F835648DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2ADAF36-8802-4C32-9761-89F835648DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2ADAF36-8802-4C32-9761-89F835648DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
