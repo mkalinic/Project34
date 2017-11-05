@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using AutoMapper;
-using IGG.TenderPortal.DtoModel.Models;
+using IGG.TenderPortal.DtoModel;
 using IGG.TenderPortal.Model;
 using IGG.TenderPortal.Service;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace IGG.TenderPortal.DtoModel.Models
+namespace IGG.TenderPortal.DtoModel
 {
     public class EmployeeModel
     {

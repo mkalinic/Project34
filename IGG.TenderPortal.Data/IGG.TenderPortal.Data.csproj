@@ -65,6 +65,8 @@
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="PortalEntities.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\TenderRepository.cs" />
     <Compile Include="Repositories\UserTenderRepository.cs" />
   </ItemGroup>
   <ItemGroup>
