@@ -18,6 +18,10 @@ namespace IGG.TenderPortal.WebService.Mapping
                 .ForMember(g => g.BirhDate, map => map.MapFrom(vm => vm.Person.BirhDate))
                 .ForMember(g => g.EmployeeDate, map => map.MapFrom(vm => vm.EmployeeDate))
                 .ForMember(g => g.Terminated, map => map.MapFrom(vm => vm.Terminated));
+
+            CreateMap<Message, MessageModel>()
+                .ForMember(m => m.UserId, map => map.MapFrom(vm => vm.UserTender.User.UserId))
+                .ForMember(m => m.TenderId, map => map.MapFrom(vm => vm.UserTender.Tender.TenderId));
         }
     }
 }

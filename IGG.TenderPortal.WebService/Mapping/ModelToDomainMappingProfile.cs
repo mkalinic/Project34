@@ -21,6 +21,9 @@ namespace IGG.TenderPortal.WebService.Mapping
                 .ForMember(g => g.EmployeeNumber, map => map.MapFrom(vm => vm.EmployeeNumber))
                 .ForMember(g => g.EmployeeDate, map => map.MapFrom(vm => vm.EmployeeDate))
                 .ForMember(g => g.Terminated, map => map.MapFrom(vm => vm.Terminated));
+
+            CreateMap<MessageModel, Message>()
+                .ForMember(m => m.UserTender, opt => opt.Ignore());
         }
     }
 }

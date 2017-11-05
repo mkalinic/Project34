@@ -2,7 +2,7 @@
 {
     public class Message
     {
-        public int Messageid { get; set; }
+        public int MessageId { get; set; }
         public string Text { get; set; }
         public UserTender UserTender { get; set; }
     }
