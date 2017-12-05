@@ -48,6 +48,12 @@
     <Compile Include="Models\UserTenderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IGG.TenderPortal.Common\IGG.TenderPortal.Common.csproj">
+      <Project>{0B9C10D2-026A-423F-A0B4-E63105BF1806}</Project>
+      <Name>IGG.TenderPortal.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
