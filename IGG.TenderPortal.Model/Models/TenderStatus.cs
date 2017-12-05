@@ -2,7 +2,7 @@
 {
     public enum TenderStatus
     {
-        InProgress,
-        Close 
+        Active,
+        Completed
     }
 }
