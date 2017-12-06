@@ -3,7 +3,7 @@
     public class TenderFile
     {
         public int TenderFileId { get; set; }
-        public Tender Tender { get; set; }
+        public TenderFileBlock TenderFileBlock { get; set; }        
         public string LocationPath { get; set; }
     }
 }

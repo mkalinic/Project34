@@ -15,6 +15,7 @@ namespace IGG.TenderPortal.Data
         public DbSet<UserTender> UserTender { get; set; }
         public DbSet<Message> Message { get; set; }
         public DbSet<Milestone> Milestone { get; set; }
+        public DbSet<TenderFile> TenderFile { get; set; }
 
         public virtual void Commit()
         {
