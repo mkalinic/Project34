@@ -19,7 +19,7 @@ namespace IGG.TenderPortal.Model
         public bool IsCompleted { get; set; }
 
         public virtual IList<Milestone> Milestones { get; set; }
-        public virtual IList<TenderFile> TenderFiles { get; set; }
+        public virtual IList<TenderFileBlock> TenderFileBlocks { get; set; }
         public virtual IList<CheckList> CheckLists { get; set; }
     }
 }

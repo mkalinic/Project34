@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MilestoneService.cs" />
+    <Compile Include="TenderFileBlockService.cs" />
     <Compile Include="TenderFileService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="TenderService.cs" />
