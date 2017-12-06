@@ -44,6 +44,10 @@ namespace IGG.TenderPortal.WebService.Mapping
                 .ForMember(m => m.User, opt => opt.Ignore())
                 .ForMember(m => m.Tender, opt => opt.Ignore())
                 .ForMember(m => m.UserNotifications, opt => opt.Ignore());
+
+            CreateMap<MilestoneModel, Milestone>()
+                .ForMember(m => m.Tender, opt => opt.Ignore())                
+                .ForMember(m => m.TenderNotifications, opt => opt.Ignore());
         }
     }
 }

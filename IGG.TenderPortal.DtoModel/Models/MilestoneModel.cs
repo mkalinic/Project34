@@ -1,16 +1,14 @@
 ﻿using IGG.TenderPortal.Common;
 using System;
-using System.Collections.Generic;
 
-namespace IGG.TenderPortal.Model
+namespace IGG.TenderPortal.DtoModel
 {
-    public class Milestone
+    public class MilestoneModel
     {
         public int MilestoneId { get; set; }
-        public Tender Tender { get; set; }
+        public int TenderId { get; set; }
         public MilestoneType MilestoneType { get; set; }
         public DateTime WillBeAt { get; set; }
         public bool IsDone { get; set; }
-        public virtual IList<TenderNotification> TenderNotifications { get; set; }
     }
 }

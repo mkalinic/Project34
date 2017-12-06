@@ -32,6 +32,9 @@ namespace IGG.TenderPortal.WebService.Mapping
             CreateMap<UserTender, UserTenderModel>()
                 .ForMember(m => m.UserId, map => map.MapFrom(vm => vm.User.UserId))
                 .ForMember(m => m.TenderId, map => map.MapFrom(vm => vm.Tender.TenderId));
+
+            CreateMap<Milestone, MilestoneModel>()
+               .ForMember(m => m.TenderId, map => map.MapFrom(vm => vm.Tender.TenderId));
         }
     }
 }
