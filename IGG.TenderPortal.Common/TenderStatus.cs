@@ -1,4 +1,4 @@
-﻿namespace IGG.TenderPortal.Model
+﻿namespace IGG.TenderPortal.Common
 {
     public enum TenderStatus
     {

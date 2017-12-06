@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.Model", "IGG.TenderPortal.Model\IGG.TenderPortal.Model.csproj", "{53D31CA0-CB83-41B4-8676-1266E9067652}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.Service", "IGG.TenderPortal.Service\IGG.TenderPortal.Service.csproj", "{3F331A33-A9D5-4A35-BA76-ABA9448F452D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.DtoModel", "IGG.TenderPortal.DtoModel\IGG.TenderPortal.DtoModel.csproj", "{A2ADAF36-8802-4C32-9761-89F835648DA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGG.TenderPortal.Common", "IGG.TenderPortal.Common\IGG.TenderPortal.Common.csproj", "{0B9C10D2-026A-423F-A0B4-E63105BF1806}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{A2ADAF36-8802-4C32-9761-89F835648DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2ADAF36-8802-4C32-9761-89F835648DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2ADAF36-8802-4C32-9761-89F835648DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B9C10D2-026A-423F-A0B4-E63105BF1806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B9C10D2-026A-423F-A0B4-E63105BF1806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B9C10D2-026A-423F-A0B4-E63105BF1806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B9C10D2-026A-423F-A0B4-E63105BF1806}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
