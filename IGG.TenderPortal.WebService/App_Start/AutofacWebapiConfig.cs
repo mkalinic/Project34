@@ -5,6 +5,9 @@ using System.Web.Http;
 using IGG.TenderPortal.Data.Infrastructure;
 using IGG.TenderPortal.Data.Repositories;
 using IGG.TenderPortal.Service;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using IGG.TenderPortal.Data;
 
 namespace IGG.TenderPortal.WebService
 {
@@ -40,6 +43,15 @@ namespace IGG.TenderPortal.WebService
             builder.RegisterAssemblyTypes(typeof(EmployeeService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
+
+            var x = new ApplicationDbContext();
+            builder.Register(c => x);
+            builder.Register<UserStore<ApplicationUser>>(c => new UserStore<ApplicationUser>(x)).AsImplementedInterfaces();
+            builder.Register<IdentityFactoryOptions<ApplicationUserManager>>(c => new IdentityFactoryOptions<ApplicationUserManager>()
+            {
+                DataProtectionProvider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("ApplicationName")
+            });
+            builder.RegisterType<ApplicationUserManager>();
 
             //// Repositories
             //builder.RegisterAssemblyTypes(typeof(EmployeeRepository).Assembly)

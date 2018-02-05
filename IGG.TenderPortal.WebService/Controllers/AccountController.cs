@@ -5,22 +5,18 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using IGG.TenderPortal.Model.Identity;
 using Microsoft.AspNet.Identity;
-using IGG.TenderPortal.WebService.Models;
+using IGG.TenderPortal.Data;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-        private ApplicationUserManager _userManager;
-
-        public AccountController()
-        {
-        }
+        private ApplicationUserManager _userManager;        
 
         public AccountController(ApplicationUserManager userManager)
         {
-            UserManager = userManager;            
+            _userManager = userManager;            
         }
 
         public ApplicationUserManager UserManager

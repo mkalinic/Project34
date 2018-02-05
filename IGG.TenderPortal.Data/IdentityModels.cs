@@ -3,8 +3,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
+using IGG.TenderPortal.Model;
+using IGG.TenderPortal.Data.Configuration;
 
-namespace IGG.TenderPortal.WebService.Models
+namespace IGG.TenderPortal.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -24,10 +27,21 @@ namespace IGG.TenderPortal.WebService.Models
             : base("ApplicationIdentity", throwIfV1Schema: false)
         {
         }
-        
-        public static ApplicationDbContext Create()
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Person> Person { get; set; }
+        public DbSet<Tender> Tender { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<UserTender> UserTender { get; set; }
+        public DbSet<Message> Message { get; set; }
+        public DbSet<Milestone> Milestone { get; set; }
+        public DbSet<TenderFileBlock> TenderFileBlock { get; set; }
+        public DbSet<TenderFile> TenderFile { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            return new ApplicationDbContext();
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.Add(new EmployeeConfiguration());
+            modelBuilder.Configurations.Add(new PersonConfiguration());
         }
     }
 }
