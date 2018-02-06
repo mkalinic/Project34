@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using IGG.TenderPortal.Model.Identity;
 using Microsoft.AspNet.Identity;
 using IGG.TenderPortal.Data;
+using IGG.TenderPortal.WebService.Models;
+using Tenderingportal.Authorization;
+using System.Web.Mvc;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
@@ -32,7 +35,6 @@ namespace IGG.TenderPortal.WebService.Controllers
         }
 
         // POST api/Account/Register
-        [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(AppUser model)
         {
@@ -53,6 +55,37 @@ namespace IGG.TenderPortal.WebService.Controllers
             return Ok();
         }
 
+        public string Login(CredentialsModel data)
+        {
+
+            //-------------- here comes username and password check and writing token to database
+            // u tokenu moze da stoji i broj koji pokazuje na kom mestu pocinje username
+            string password = data.password;
+            string username = data.username;
+
+            ApplicationUser user = UserManager.Find(username, password);
+            if (user == null) return "invalid attempt";
+
+
+            //--- then token creation
+            var userAgent = Request.Headers.GetValues("User-Agent");
+            //var referer = Request.Headers.GetValues("Referer");
+            var referer = "Referer";
+            string token = userAgent + "|" + "IGG" + "|" + referer + "|" + user.UserName;// + username;
+                                                                                                 // here put smart combination for token
+
+            string tokenEncripted = Crypting.Encrypt(token);
+
+
+            return tokenEncripted;
+        }
+
+        [AuthorizationAFA1(AllowedUserTypes = "IGG,CONSULTANT,CANDIDATE,CLIENT,TENDER-TEAM")]
+        public JsonResult GetTranslations()
+        {
+            var ooo = "Test token";
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, ooo);
+        }
 
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {
