@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,8 +44,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.0.0\lib\net451\Autofac.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.WebApi, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -118,11 +127,38 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -130,6 +166,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -146,17 +186,238 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Document fonts\AdobeFnt16.lst" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Instructies.txt" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Links\005-Preview-Box-set-mockup-template-psd1.jpg" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Links\RaboExterior_pdf.jpg" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Links\vector-company-logo-set-9246796.jpg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\favicons\android-icon-144x144.png" />
+    <Content Include="Images\favicons\android-icon-192x192.png" />
+    <Content Include="Images\favicons\android-icon-36x36.png" />
+    <Content Include="Images\favicons\android-icon-48x48.png" />
+    <Content Include="Images\favicons\android-icon-72x72.png" />
+    <Content Include="Images\favicons\android-icon-96x96.png" />
+    <Content Include="Images\favicons\apple-icon-114x114.png" />
+    <Content Include="Images\favicons\apple-icon-120x120.png" />
+    <Content Include="Images\favicons\apple-icon-144x144.png" />
+    <Content Include="Images\favicons\apple-icon-152x152.png" />
+    <Content Include="Images\favicons\apple-icon-180x180.png" />
+    <Content Include="Images\favicons\apple-icon-57x57.png" />
+    <Content Include="Images\favicons\apple-icon-60x60.png" />
+    <Content Include="Images\favicons\apple-icon-72x72.png" />
+    <Content Include="Images\favicons\apple-icon-76x76.png" />
+    <Content Include="Images\favicons\apple-icon-precomposed.png" />
+    <Content Include="Images\favicons\apple-icon.png" />
+    <Content Include="Images\favicons\favicon-16x16.png" />
+    <Content Include="Images\favicons\favicon-32x32.png" />
+    <Content Include="Images\favicons\favicon-96x96.png" />
+    <Content Include="Images\favicons\favicon.ico" />
+    <Content Include="Images\favicons\ms-icon-144x144.png" />
+    <Content Include="Images\favicons\ms-icon-150x150.png" />
+    <Content Include="Images\favicons\ms-icon-310x310.png" />
+    <Content Include="Images\favicons\ms-icon-70x70.png" />
+    <Content Include="Images\wait.gif" />
+    <Content Include="Index.html" />
+    <Content Include="Scripts\SPA\Auth\Auth.js" />
+    <Content Include="Scripts\SPA\Auth\Authorisation.js" />
+    <Content Include="Scripts\SPA\Auth\ext_libs\angular-local-storage.js" />
+    <Content Include="Scripts\SPA\Auth\ext_libs\tmhDynamicLocale.js" />
+    <Content Include="Scripts\SPA\Auth\Interceptor.js" />
+    <Content Include="Scripts\SPA\Auth\Login.js" />
+    <Content Include="Scripts\SPA\css\bootstrap-theme.css" />
+    <Content Include="Scripts\SPA\css\bootstrap-theme.min.css" />
+    <Content Include="Scripts\SPA\css\bootstrap.css" />
+    <Content Include="Scripts\SPA\css\bootstrap.min.css" />
+    <Content Include="Scripts\SPA\css\style.css" />
+    <Content Include="Scripts\SPA\ext_libs\Angular\angular-resource.min.js" />
+    <Content Include="Scripts\SPA\ext_libs\Angular\angular-route.min.js" />
+    <Content Include="Scripts\SPA\ext_libs\Angular\angular.min.js" />
+    <Content Include="Scripts\SPA\ext_libs\Angular\ui-bootstrap-tpls-2.1.3.js" />
+    <Content Include="Scripts\SPA\ext_libs\ExcelentDateTimePicker\angularjs-datetime-picker.css" />
+    <Content Include="Scripts\SPA\ext_libs\ExcelentDateTimePicker\angularjs-datetime-picker.js" />
+    <Content Include="Scripts\SPA\ext_libs\ExcelentDateTimePicker\angularjs-datetime-picker.min.js" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\area-as-line.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\area.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\bar-colors.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\bar-no-axes.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\bar.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\days.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\decimal-custom-hover.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\diagonal-xlabels-bar.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\diagonal-xlabels.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\donut-colors.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\donut-formatter.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\donut.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\dst.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\events.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\goals.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\lib\example.css" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\lib\example.js" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\months-no-smooth.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\negative.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\no-grid.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\non-continuous.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\non-date.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\quarters.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\resize.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\stacked_bars.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\timestamps.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\updating.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\weeks.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\years.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\examples\_template.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\Gruntfile.js" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\morris.css" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\morris.js" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\morris.min.js" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\specs.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\viz\examples.js" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\viz\exemplary\area0.png" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\viz\exemplary\bar0.png" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\viz\exemplary\line0.png" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\viz\exemplary\stacked_bar0.png" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\viz\test.html" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\viz\visual_specs.js" />
+    <Content Include="Scripts\SPA\factories\Ajax.js" />
+    <Content Include="Scripts\SPA\factories\ErrorHandler.js" />
+    <Content Include="Scripts\SPA\factories\MorrisGraph.js" />
+    <Content Include="Scripts\SPA\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\SPA\img\IGG RGB.png" />
+    <Content Include="Scripts\SPA\img\LOGO1.jpg" />
+    <Content Include="Scripts\SPA\img\logo2.jpg" />
+    <Content Include="Scripts\SPA\img\logo3.jpg" />
+    <Content Include="Scripts\SPA\img\logo4.jpg" />
+    <Content Include="Scripts\SPA\img\logo5.jpg" />
+    <Content Include="Scripts\SPA\img\logo6.jpg" />
+    <Content Include="Scripts\SPA\img\originalni\LOGO1.jpg" />
+    <Content Include="Scripts\SPA\img\originalni\logo2.jpg" />
+    <Content Include="Scripts\SPA\img\originalni\logo3.jpg" />
+    <Content Include="Scripts\SPA\img\originalni\logo4.jpg" />
+    <Content Include="Scripts\SPA\img\originalni\logo5.jpg" />
+    <Content Include="Scripts\SPA\img\originalni\logo6.jpg" />
+    <Content Include="Scripts\SPA\img\RaboExterior_pdf.jpg" />
+    <Content Include="Scripts\SPA\js\bootstrap.js" />
+    <Content Include="Scripts\SPA\js\bootstrap.min.js" />
+    <Content Include="Scripts\SPA\js\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\SPA\js\mylibs\datepicker\datepicker-kompletno.css" />
+    <Content Include="Scripts\SPA\js\mylibs\datepicker\datepicker_novi.css" />
+    <Content Include="Scripts\SPA\js\mylibs\datepicker\datepicker_novi.js" />
+    <Content Include="Scripts\SPA\js\mylibs\datepicker\What is what.txt" />
+    <Content Include="Scripts\SPA\js\npm.js" />
+    <Content Include="Scripts\SPA\js\requests.js" />
+    <Content Include="Scripts\SPA\js\StartApp.js" />
+    <Content Include="Scripts\SPA\Models\Checklist.js" />
+    <Content Include="Scripts\SPA\Models\ChecklistChecked.js" />
+    <Content Include="Scripts\SPA\Models\Logbook.js" />
+    <Content Include="Scripts\SPA\Models\Milestone.js" />
+    <Content Include="Scripts\SPA\Models\Notification.js" />
+    <Content Include="Scripts\SPA\Models\Phase.js" />
+    <Content Include="Scripts\SPA\Models\Post.js" />
+    <Content Include="Scripts\SPA\Models\Project.js" />
+    <Content Include="Scripts\SPA\Models\ProjectFile.js" />
+    <Content Include="Scripts\SPA\Models\TextBlock.js" />
+    <Content Include="Scripts\SPA\Models\TextBlockFile.js" />
+    <Content Include="Scripts\SPA\Models\User.js" />
+    <Content Include="Scripts\SPA\Models\UsersProject.js" />
+    <Content Include="Scripts\SPA\router\router.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Admin_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Admin_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\EditShowProject_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\EditShowUser_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Header_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Index_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Index_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Logbook_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Logbook_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Login_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Login_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\MyAccount_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\MyAccount_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\NewProject_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\NewProject_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Project_controller.es5.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Project_controller.es5.min.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Project_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Project_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\SearchResult_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\SearchResult_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\ShowProject_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\ShowUser_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\UpdatePassword_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\UpdatePassword_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Upload_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Upload_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\User_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\User_template.html" />
+    <Content Include="Scripts\SPA\templates_and_controlers\ViewProject_controller.js" />
+    <Content Include="Scripts\SPA\templates_and_controlers\ViewProject_template.html" />
+    <Content Include="Scripts\SPA\Translations\ext-libs\angular-local-storage.js" />
+    <Content Include="Scripts\SPA\Translations\ext-libs\angular-translate-loader-partial.js" />
+    <Content Include="Scripts\SPA\Translations\ext-libs\angular-translate-loader-static-files.js" />
+    <Content Include="Scripts\SPA\Translations\ext-libs\angular-translate-loader-static-files.min.js" />
+    <Content Include="Scripts\SPA\Translations\ext-libs\angular-translate-loader-url.js" />
+    <Content Include="Scripts\SPA\Translations\ext-libs\angular-translate.js" />
+    <Content Include="Scripts\SPA\Translations\ext-libs\angular-translate.min.js" />
+    <Content Include="Scripts\SPA\Translations\TranslationsSetUp.js" />
+    <Content Include="Scripts\SPA\Upload\FileAPI.flash.swf" />
+    <Content Include="Scripts\SPA\Upload\FileAPI.js" />
+    <Content Include="Scripts\SPA\Upload\FileAPI.min.js" />
+    <Content Include="Scripts\SPA\Upload\ng-file-upload-all.js" />
+    <Content Include="Scripts\SPA\Upload\ng-file-upload-all.min.js" />
+    <Content Include="Scripts\SPA\Upload\ng-file-upload-shim.js" />
+    <Content Include="Scripts\SPA\Upload\ng-file-upload-shim.min.js" />
+    <Content Include="Scripts\SPA\Upload\ng-file-upload.js" />
+    <Content Include="Scripts\SPA\Upload\ng-file-upload.min.js" />
+    <Content Include="Scripts\SPA\Utils\Arrays.js" />
+    <Content Include="Scripts\SPA\Utils\DateAndTime.js" />
+    <Content Include="Scripts\SPA\Utils\RootScopeFunctions.js" />
+    <Content Include="Scripts\SPA\Utils\RootScopeGoodies.js" />
+    <Content Include="UPLOADED_IMAGES\frontImage\IGGtenderportal.jpg" />
+    <Content Include="UPLOADED_IMAGES\no_photo-2.png" />
+    <Content Include="UPLOADED_IMAGES\no_photo.png" />
+    <Content Include="UPLOADED_IMAGES\projects\leather-textures_1367529.jpg" />
+    <Content Include="UPLOADED_IMAGES\projects\LepaKoza.png" />
+    <Content Include="UPLOADED_IMAGES\projects\test %281%29.jpg" />
+    <Content Include="UPLOADED_IMAGES\projects\test %286%29.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\arno_arno_closeup-vierkant-original.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\arno_closeup-vierkant 111.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\arno_closeup-vierkant.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\building2%281%29.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\building2%282%29.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\building2.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\crazy-buildings1.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\fildza%281%29.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\fildza%282%29.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\fildza.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\fildza_KOZA8.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\fildza_LepaKoza.png" />
+    <Content Include="UPLOADED_IMAGES\users\fildza_the PUT.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\Foto Steven.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\IGG_108.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\ja.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\KOZA8.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\marc_closeup-vierkant-250x250.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\New2_SOFTWARECRAFTER Leather Logo m.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\newUser_SOFTWARECRAFTER3D Wall.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\SOFTWARECRAFTERLepaKozaCistaLogo.jpg" />
+    <Content Include="UPLOADED_IMAGES\users\_SOFTWARECRAFTER Lepa Koza Logo 1920x1080.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacWebapiConfig.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Authorization\AuthorizationAFA1.cs" />
     <Compile Include="Authorization\AuthorizationAFA.cs" />
+    <Compile Include="AutofacBootstrap.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\MilestoneController.cs" />
@@ -178,6 +439,108 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Scripts\SPA\css.zip" />
+    <Content Include="Scripts\SPA\css\bootstrap-theme.css.map" />
+    <Content Include="Scripts\SPA\css\bootstrap-theme.min.css.map" />
+    <Content Include="Scripts\SPA\css\bootstrap.css.map" />
+    <Content Include="Scripts\SPA\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\.gitignore" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\.travis.yml" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\bower.json" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\bower.travis.json" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\less\morris.core.less" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\lib\morris.area.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\lib\morris.bar.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\lib\morris.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\lib\morris.donut.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\lib\morris.grid.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\lib\morris.hover.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\lib\morris.line.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\package.json" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\README.md" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\area\area_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\bar\colours.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\commas_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\hover_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\label_series_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\line\line_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\pad_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\lib\parse_time_spec.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\support\placeholder.coffee" />
+    <Content Include="Scripts\SPA\ext_libs\MorrisGraphs\spec\viz\run.sh" />
+    <Content Include="Scripts\SPA\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\SPA\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\SPA\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\SPA\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\SPA\templates_and_controlers\Project_template.html.orig" />
+    <Content Include="Scripts\SPA\Translations\en.json" />
+    <Content Include="Scripts\SPA\Translations\nl.json" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="02 Design\01 Wireframes\aangepaste detailpagina-bestellen.psd" />
+    <Content Include="02 Design\01 Wireframes\aangepaste detailpagina-voorbeeldpaginas-Hersteld.psd" />
+    <Content Include="02 Design\01 Wireframes\aangepaste detailpagina-voorbeeldpaginas.psd" />
+    <Content Include="02 Design\01 Wireframes\aangepaste detailpagina.psd" />
+    <Content Include="02 Design\01 Wireframes\aanmelden.psd" />
+    <Content Include="02 Design\01 Wireframes\admin-home-alternatief.psd" />
+    <Content Include="02 Design\01 Wireframes\admin-home-banner.psd" />
+    <Content Include="02 Design\01 Wireframes\admin-home-klanten.psd" />
+    <Content Include="02 Design\01 Wireframes\admin-home.psd" />
+    <Content Include="02 Design\01 Wireframes\admin-product-alternatief.psd" />
+    <Content Include="02 Design\01 Wireframes\admin-product-item.psd" />
+    <Content Include="02 Design\01 Wireframes\admin-product.psd" />
+    <Content Include="02 Design\01 Wireframes\admin-productgroep.psd" />
+    <Content Include="02 Design\01 Wireframes\adminpagina.psd" />
+    <Content Include="02 Design\01 Wireframes\bestelling afgerond.psd" />
+    <Content Include="02 Design\01 Wireframes\betaal-online.psd" />
+    <Content Include="02 Design\01 Wireframes\bevestig account.psd" />
+    <Content Include="02 Design\01 Wireframes\check-out.psd" />
+    <Content Include="02 Design\01 Wireframes\factuur-factuur.psd" />
+    <Content Include="02 Design\01 Wireframes\factuur-item.psd" />
+    <Content Include="02 Design\01 Wireframes\factuur.ai" />
+    <Content Include="02 Design\01 Wireframes\factuur.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker-activatiemail.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker-gebruiker verwijderen.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker-nieuw-order.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker-order.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker-pakbon.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker-verloopmail.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker-wachtwoord-reset.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker_factuur.psd" />
+    <Content Include="02 Design\01 Wireframes\gebruiker_reset-wachtwoord.psd" />
+    <Content Include="02 Design\01 Wireframes\IGG - Calcsoft V3.pdf" />
+    <Content Include="02 Design\01 Wireframes\Invoice_78385.pdf" />
+    <Content Include="02 Design\01 Wireframes\mijn acoount-bestelling.psd" />
+    <Content Include="02 Design\01 Wireframes\mijn acoount-factuur.psd" />
+    <Content Include="02 Design\01 Wireframes\mijn acoount.psd" />
+    <Content Include="02 Design\01 Wireframes\pakbon.ai" />
+    <Content Include="02 Design\01 Wireframes\teballen.xlsx" />
+    <Content Include="02 Design\01 Wireframes\winkelwagen.psd" />
+    <Content Include="02 Design\02 Menu\menustructuur.xlsx" />
+    <Content Include="02 Design\03 Ontwerpen\01 Goeiezaak\Calcsoft Design V3-menu.pdf" />
+    <Content Include="02 Design\03 Ontwerpen\01 Goeiezaak\Calcsoft Design V3.pdf" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Calcsoft Design V3.idml" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Calcsoft Design V3.indd" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Calcsoft Design V3.pdf" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Document fonts\MinionPro-Regular.otf" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Document fonts\OpenSans-Bold.ttf" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Document fonts\OpenSans-Regular.ttf" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Document fonts\OpenSans-Semibold.ttf" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Document fonts\SourceSansPro-Bold.ttf" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Links\Calcsoft menu.indd" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Links\IGG RGB.eps" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Links\logo-volledig.ai" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design V3 map\Links\VoorbeeldKKB2016.pdf" />
+    <Content Include="02 Design\03 Ontwerpen\02 Ontwerpen\Calcsoft Design.indd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -187,6 +550,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UPLOADED_IMAGES\companies\" />
+    <Folder Include="UPLOADED_IMAGES\posts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IGG.TenderPortal.Common\IGG.TenderPortal.Common.csproj">

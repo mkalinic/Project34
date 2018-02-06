@@ -1,0 +1,132 @@
+<!doctype html>
+<head>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+  <script src="../morris.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+  <script src="lib/example.js"></script>
+ 
+  <link rel="stylesheet" href="../morris.css">
+  <style>
+    circle
+	{
+	   cy:298;		
+    } 
+	
+	svg{ /* okvir svega */
+	
+	}
+  
+  /*
+ circle::after{
+  position:absolute;
+   width:20px;
+   height:20px;
+   background-color: blue;
+   content: "   ##### ";
+   z-index:35000;
+  } 
+  */
+  
+  .baloncic{
+		position:absolute;
+	/*	width:35px;
+		height:35px;
+		background-color:green;*/
+  
+  }
+    .linija{
+		position:absolute;
+		width:1px;
+		/*height:90px;*/
+		background-color:black;
+  
+  }
+  
+  </style>
+  <script>
+  
+  
+  var PointOnLine = function(date, color, text){
+	  this.Date =date;
+	  this.Color = color;
+	  this.Text = text;
+  }
+  
+  var allPointsOnline = [];
+  /*
+    allPointsOnline.push(new PointOnLine(new Date(01,01,2016).getTime(), 'red', 'neki text'));
+	allPointsOnline.push(new PointOnLine(new Date(02,01,2016).getTime(), 'red', 'neki text'));
+	allPointsOnline.push(new PointOnLine(new Date(03,01,2016).getTime(), 'red', 'neki text'));
+	allPointsOnline.push(new PointOnLine(new Date(03,01,2016).getTime(), 'red', 'neki text'));
+	allPointsOnline.push(new PointOnLine(new Date(05,01,2016).getTime(), 'red', 'neki text'));
+	allPointsOnline.push(new PointOnLine(new Date(06,01,2016).getTime(), 'red', 'neki text'));
+	*/
+	
+    allPointsOnline.push(new PointOnLine("2012-02-24", 'red', 'neki text'));
+	allPointsOnline.push(new PointOnLine("2012-02-25", 'green', 'neki text'));
+	//allPointsOnline.push(new PointOnLine("2012-02-26", 'red', 'neki text'));
+	//allPointsOnline.push(new PointOnLine("2012-02-27", 'blue', 'neki text'));
+	allPointsOnline.push(new PointOnLine("2012-02-28", 'yellow', 'neki text'));
+	allPointsOnline.push(new PointOnLine("2012-03-01", 'red', 'neki text'));		
+
+  $( document ).ready(function() {
+  // Handler for .ready() called.
+ 
+  var week_data = [];
+
+  
+		for(i=0;i<allPointsOnline.length; i++) week_data.push({"period": allPointsOnline[i].Date, "licensed": 0});
+ 
+		console.log('allPointsOnline = ', allPointsOnline);
+		console.log('week_data = ', week_data);
+	 
+		Morris.Line({
+		  element: 'graph',
+		  data: week_data,
+		  xkey: 'period',
+		  ykeys: ['licensed'],
+		  labels: ['Labela'],
+		  grid:false,
+		  yLabelFormat:function(){return "";},
+		  pointSize:7,
+		  lineColors: ['#000'],
+		  lineWidth:1,
+		  smooth: true,
+		  fillOpacity:1,
+		  hideHover:true
+		});
+		
+		 var dots = document.getElementsByTagName("circle");
+		
+		  for(i=0;i<allPointsOnline.length; i++){
+
+				dots[i].style.fill = allPointsOnline[i].Color; 
+				dots[i].style.stroke = allPointsOnline[i].Color  
+				dots[i].style.cy = 298;
+			  
+			 // console.log('cx = ',dots[i].cx.baseVal.value);
+				var lineHeight = Math.round(Math.random()*135)+30;
+			  
+			   if(i%2==0) { 
+					
+					document.body.innerHTML += '<div class="baloncic" style="left: '+(dots[i].cx.baseVal.value+5)+'px; top:'+(dots[i].cy.baseVal.value-lineHeight-16)+'px; margin-left:-15px;">sdsdsd</div>';
+					document.body.innerHTML += '<div class="linija" style="left: '+(dots[i].cx.baseVal.value+22)+'px; top:'+(dots[i].cy.baseVal.value-lineHeight)+'px; margin-left:-15px; height:'+lineHeight+'px;""></div>';
+			   }
+			   else{
+					document.body.innerHTML += '<div class="baloncic" style="left: '+(dots[i].cx.baseVal.value+5)+'px; top:'+(dots[i].cy.baseVal.value+lineHeight+5)+'px; margin-left:-15px;">fdgddgfg</div>';
+					document.body.innerHTML += '<div class="linija" style="left: '+(dots[i].cx.baseVal.value+22)+'px; top:'+(dots[i].cy.baseVal.value+7)+'px; margin-left:-15px; height:'+lineHeight+'px;"></div>';
+			   }
+		 }
+		  
+}); 
+
+  </script>
+</head>
+<body>
+ 
+<div id="graph"></div>
+<pre id="code" class="prettyprint linenums">
+
+</pre>
+</body>

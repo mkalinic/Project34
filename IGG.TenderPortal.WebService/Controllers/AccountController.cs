@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Microsoft.AspNet.Identity.Owin;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -8,7 +7,6 @@ using Microsoft.AspNet.Identity;
 using IGG.TenderPortal.Data;
 using IGG.TenderPortal.WebService.Models;
 using Tenderingportal.Authorization;
-using System.Web.Mvc;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
@@ -22,6 +20,11 @@ namespace IGG.TenderPortal.WebService.Controllers
             _userManager = userManager;            
         }
 
+        //public AccountController()
+        //{
+        //    var test1 = 1;
+        //}
+
         public ApplicationUserManager UserManager
         {
             get
@@ -34,8 +37,9 @@ namespace IGG.TenderPortal.WebService.Controllers
             }
         }
 
-        // POST api/Account/Register
+        //POST api/Account/Register
         [Route("Register")]
+        [HttpPost]
         public async Task<IHttpActionResult> Register(AppUser model)
         {
             if (!ModelState.IsValid)
@@ -55,6 +59,8 @@ namespace IGG.TenderPortal.WebService.Controllers
             return Ok();
         }
 
+        [Route("Login")]
+        [HttpPost]
         public string Login(CredentialsModel data)
         {
 
@@ -81,10 +87,11 @@ namespace IGG.TenderPortal.WebService.Controllers
         }
 
         [AuthorizationAFA1(AllowedUserTypes = "IGG,CONSULTANT,CANDIDATE,CLIENT,TENDER-TEAM")]
-        public JsonResult GetTranslations()
+        public string GetTranslations()
         {
             var ooo = "Test token";
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, ooo);
+            //return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, ooo);
+            return ooo;
         }
 
         private IHttpActionResult GetErrorResult(IdentityResult result)

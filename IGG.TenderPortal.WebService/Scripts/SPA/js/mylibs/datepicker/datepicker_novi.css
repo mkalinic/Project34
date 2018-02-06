@@ -1,0 +1,87 @@
+.datepicker_novi.text-muted {
+    color: #999
+}
+
+.datepicker_novi .btn {
+    background-color: #0082ff;
+    border-bottom: 2px #003c77 solid;
+    border-radius: 0px;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    max-height: 30px;
+    padding: 3px 6px;
+}
+.datepicker_novi .btn-sm, .datepicker_novi .btn-group-sm > .datepicker_novi .btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.datepicker_novi .btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.datepicker_novi .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.datepicker_novi .btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da
+}
+.datepicker_novi .btn-info:hover,
+.datepicker_novi .btn-info:focus,
+.datepicker_novi .btn-info:active,
+.datepicker_novi .btn-info.active,
+.open .dropdown-toggle.datepicker_novi .btn-info {
+    color: #fff;
+    background-color: #39b3d7;
+    border-color: #269abc
+}
+.datepicker_novi .btn-info:active,
+.datepicker_novi .btn-info.active,
+.open .dropdown-toggle.datepicker_novi .btn-info {
+    background-image: none
+}
+.datepicker_novi .btn-info.disabled,
+.datepicker_novi .btn-info[disabled],
+fieldset[disabled] .datepicker_novi .btn-info,
+.datepicker_novi .btn-info.disabled:hover,
+.datepicker_novi .btn-info[disabled]:hover,
+fieldset[disabled] .datepicker_novi .btn-info:hover,
+.datepicker_novi .btn-info.disabled:focus,
+.datepicker_novi .btn-info[disabled]:focus,
+fieldset[disabled] .datepicker_novi .btn-info:focus,
+.datepicker_novi .btn-info.disabled:active,
+.datepicker_novi .btn-info[disabled]:active,
+fieldset[disabled] .datepicker_novi .btn-info:active,
+.datepicker_novi .btn-info.disabled.active,
+.datepicker_novi .btn-info[disabled].active,
+fieldset[disabled] .datepicker_novi .btn-info.active {
+    background-color: #5bc0de;
+    border-color: #46b8da
+}
+.datepicker_novi .btn-info .badge {
+    color: #5bc0de;
+    background-color: #fff
+}

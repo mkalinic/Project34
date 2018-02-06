@@ -11,7 +11,7 @@ namespace IGG.TenderPortal.WebService
             //Configure AutoMapper
             AutoMapperConfiguration.Configure();
             //Configure AutoFac  
-            AutofacWebapiConfig.Initialize(GlobalConfiguration.Configuration);
+            //AutofacWebapiConfig.Initialize(GlobalConfiguration.Configuration);
         }
 
     }

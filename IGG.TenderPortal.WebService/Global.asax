@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="IGG.TenderPortal.WebService.WebApiApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="IGG.TenderPortal.WebService.MvcApplication" Language="C#" %>

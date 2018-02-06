@@ -1,0 +1,1181 @@
+﻿<!-- ------------------------------------ header ---------------------------------- -->
+<div id="header" ng-controller="Header_controller" data-ng-init="init()">
+    
+    <nav class="navbar navbar-default loggedin navbar-fixed-top" id="main-menu">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="logo" href="#">&nbsp;</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="defaultNavbar1">
+            <div id="above-menu">
+        <div id="first">
+            <ul id="trapezoid"></ul>
+        </div>
+        <div id="second">
+            <div id="trapezoid1">
+            </div>
+        </div>
+        
+    </div>
+            <ul class="nav navbar-nav navbar-right" id="main-navigation">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'expertises' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="#">{{'bouwkostenmanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'vastgoed- en grondexploitaties' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'aanbesteden en Contracteren' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'contractmanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'duurzaam bouwen' | translate}}</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="#">{{'BIM Management' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'risicomanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'taxaties en waardebepalingen' | translate}}</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'Werkgebieden' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="#">{{'woningbouw' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'kantoren' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'hotels' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Commercieel en bedrijfspanden' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Leisure, Cultuur en Sport' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Datacentra' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Zorg, onderwijs en Laboratoria' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Overheid' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Luchthavens en infrastructuur' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="#">{{'Grond- Weg en Waterbouw' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Energie en klimaat' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Gebiedsontwikkeling' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Vastgoedontwikkeling' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Transformaties' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Monumenten en erfgoed' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Afbouw en Interieur' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Beheer en onderhoud' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'TEMPORARY MENU' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="/#/User/0">{{'Create New user' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/Project/0">{{'Create New Project' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/MyAccount">{{'Change My Acount settings' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/ViewProject/4">{{'VIEW PROJECT 4' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/Project/4">{{'EDIT PROJECT 4' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+ 
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">{{'Team' | translate}}</a>
+                    </li>
+                </ul>
+            <div class="nav navbar-nav navbar-right" id="secondarymenucontent">
+            <div class="search">
+                <input type="text" ng-model="searchstring" ng-keyup="$event.keyCode == 13 ? search() : null" class="form-control input-sm" maxlength="64" placeholder="{{'Search' |translate}}'" />
+                <button type="submit" class="btn btn-search">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+            <ul class="nav navbar-nav" ng-show="rootScope_username!=null">
+                <li class="active">
+                    <a href="/#/ViewProject/4">{{'news' | translate}}</a>
+                </li>
+                <li>
+                    <a href="#" ng-click="rootScope_logout()">{{'LOGOUT' | translate}}</a>
+                </li>
+                <li>
+                    <a href="/#/MyAccount">{{'solutions' | translate}}</a>
+                </li>
+                <li>
+                    <a href="/#/Project/0">{{'new project' | translate}}</a>
+                </li>
+                <li>
+                    <a href="#">{{'Contact' | translate}}</a>
+                </li>
+                <li id="language">
+                    <a class="active" style="cursor:pointer;" ng-click="rootScope_changeLanguage('nl')">NL</a>/<a style="cursor:pointer;" ng-click="rootScope_changeLanguage('en')">EN</a>
+                </li>
+            </ul>
+        </div>
+            </div>
+            <div class="collapse navbar-collapse" id="defaultNavbar2">
+               <ul class="nav navbar-nav navbar-right" id="shrink-navigation">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'expertises' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="#">{{'bouwkostenmanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'vastgoed- en grondexploitaties' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'aanbesteden en Contracteren' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'contractmanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'duurzaam bouwen' | translate}}</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="#">{{'BIM Management' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'risicomanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'taxaties en waardebepalingen' | translate}}</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'Werkgebieden' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="#">{{'woningbouw' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'kantoren' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'hotels' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Commercieel en bedrijfspanden' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Leisure, Cultuur en Sport' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Datacentra' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Zorg, onderwijs en Laboratoria' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Overheid' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Luchthavens en infrastructuur' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="#">{{'Grond- Weg en Waterbouw' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Energie en klimaat' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Gebiedsontwikkeling' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Vastgoedontwikkeling' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Transformaties' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Monumenten en erfgoed' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Afbouw en Interieur' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'Beheer en onderhoud' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'TEMPORARY MENU' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="/#/User/0">{{'Create New user' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/Project/0">{{'Create New Project' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/MyAccount">{{'Change My Acount settings' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/ViewProject/4">{{'VIEW PROJECT 4' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="/#/Project/4">{{'EDIT PROJECT 4' | translate}}</a>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+ 
+                            </div>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">{{'Team' | translate}}</a>
+                    </li>
+                     <li class="active">
+                    <a href="/#/ViewProject/4">{{'news' | translate}}</a>
+                </li>
+                <li>
+                    <a href="#" ng-click="rootScope_logout()">{{'LOGOUT' | translate}}</a>
+                </li>
+                <li>
+                    <a href="/#/MyAccount">{{'solutions' | translate}}</a>
+                </li>
+                <li>
+                    <a href="/#/Project/0">{{'new project' | translate}}</a>
+                </li>
+                <li>
+                    <a href="#">{{'Contact' | translate}}</a>
+                </li>
+                <li id="language">
+                    <a class="active" style="cursor:pointer;" ng-click="rootScope_changeLanguage('nl')">NL</a>/<a style="cursor:pointer;" ng-click="rootScope_changeLanguage('en')">EN</a>
+                </li>
+                <li>
+                <div class="search">
+                <input type="text" ng-model="searchstring" ng-keyup="$event.keyCode == 13 ? search() : null" class="form-control input-sm" maxlength="64" placeholder="{{'Search' |translate}}'" />
+                <button type="submit" class="btn btn-search">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+                </li>
+                </ul>
+                    
+                </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+</div>
+<!-- ------------------------------------ / header ---------------------------------- -->
+<!-- -----------------------------------   lets rock -->
+<div id="content" ng-controller="NewProject_controller" data-ng-init="init()">
+    <div class="container-fluid" id="banner-main" style = "background-image:url({{TopImage}})"  >
+ 
+        <div class="row">
+            <div class="col-md-6 col-sm-8 col-xs-10 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                <div class="banner-well well">
+                    <div id="title">{{'Admin Page' | translate}}</div>
+                    <div id="projecttitle">   {{Project.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------- general  -->
+    <div class="container tenders">
+        <div class="row tender-forms">
+            <div class="row">
+                <h3>{{'general' | translate}}</h3>
+            </div>
+            <form class="form-horizontal">
+                <div class="col-md-5 col-md-offset-1 col-sm-offset-1 col-sm-5 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Projectnaam">{{'Project name' | translate}}</label>
+                            <input type="text" class="form-control" id="Projectnaam" ng-model="Project.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Opdrachtgever">{{'Client' | translate}}</label>
+                            <input type="text" class="form-control" id="Opdrachtgever" ng-model="Project.Client">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Fase">{{'Phase' | translate}}</label>
+                            <select class="form-control" id="Fase">
+                                <option>Fase</option>
+                                <option>Fase</option>
+                                <option>Fase</option>
+                                <option>Fase</option>
+                                <option>Fase</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Omschrijving">{{'Description' | translate}}</label>
+                            <textarea class="form-control" rows="3" id="Omschrijving"  ng-model="Project.description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <div class="img-upload">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-block" id="Wijzig afbeelding">{{'Change image' | translate}} </button>
+                             <!-- ADD IMAGE CHANGE HERE  -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="check-form"> {{'digital filing' | translate}}
+                                </label>
+                            </div>
+                            <div id="datepicker">
+                                <label>{{'timeCompleted' | translate}}</label>
+                                <!------- datepicker --->
+                                <div class="datepicker_novi">
+                                    <!------- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> --->
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{ datePickerGeneral.format}}" ng-model="Project.timeCompleted" is-open="datePickerGeneral.opened" min="datePickerGeneral.minDate" max="'2018-06-22'" datepicker-options="datePickerGeneral.dateOptions" date-disabled="datePickerGeneral.disabled(date, mode)" ng-required="true" close-text="Close" show-weeks="false" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar" ng-click="datePickerGeneral.open($event)"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!------- / datepicker --->
+                                <!-------    <div class="input-group date" id="datepicker1">
+                                        <input type="text" class="form-control" />
+                                        <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>-->
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="check-form" ng-model="Project.onFrontPage"  >{{'Show on homepage' | translate}}
+                                </label>
+                            </div>
+                            <label id="status"> Status: </label><span >{{Project.status}} </span>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-block" type="button" data-toggle="modal" data-target="#kluisopenen">{{'opening vault' | translate}}</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-sm-offset-6">
+                            <button class="btn btn-block">{{'Save' | translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container tenders">
+        <div class="row">
+            <h3>{{'Schedule' | translate}}</h3>
+        </div>
+        <div class="row tender-forms">
+            <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                <div class="table-responsive">
+                    <table class="table table-condensed table-striped new-project">
+                        <tbody>
+                            <tr ng-repeat="phase in Project.Phases">
+                                <td class="first-row">{{'Start procurement' | translate}}</td>
+                                <td>{{phase.date}}11-03-2016</td>
+                                <td>{{'candidates' | translate}}</td>
+                                <td class="last-row remove">
+                                    <button class="btn-remove">{{'Remove' | translate}}</button>
+                                </td>
+                            </tr>
+                            <!--<tr>
+                                <td class="first-row">Start aanbesteden</td>
+                                <td>11-03-2016</td>
+                                <td>Gegadigden</td>
+                                <td class="last-row remove">
+                                    <button class="btn-remove">verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="first-row">Start aanbesteden</td>
+                                <td>11-03-2016</td>
+                                <td>Gegadigden</td>
+                                <td class="last-row remove">
+                                    <button class="btn-remove">verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="first-row">Start aanbesteden</td>
+                                <td>11-03-2016</td>
+                                <td>Gegadigden</td>
+                                <td class="last-row remove">
+                                    <button class="btn-remove">verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="first-row">Start aanbesteden</td>
+                                <td>11-03-2016</td>
+                                <td>Gegadigden</td>
+                                <td class="last-row remove">
+                                    <button class="btn-remove">verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="first-row">Start aanbesteden</td>
+                                <td>11-03-2016</td>
+                                <td>Gegadigden</td>
+                                <td class="last-row remove">
+                                    <button class="btn-remove">verwijderen</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="first-row">Start aanbesteden</td>
+                                <td>11-03-2016</td>
+                                <td>Gegadigden</td>
+                                <td class="last-row remove">
+                                    <button class="btn-remove">verwijderen</button>
+                                </td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <form class="form-horizontal">
+                <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Bestandsnaam">{{'File name' | translate}}</label>
+                            <input type="text" class="form-control" id="Bestandsnaam">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div id="datepicker1">
+                                <label>{{'File' | translate}} </label>
+                                <!------- datepicker --->
+                                <div class="datepicker_novi">
+                                    <!------- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> --->
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{datePickerSchedule.format}}" ng-model="datePickerSchedule.dt" is-open="datePickerSchedule.opened" min="datePickerSchedule.minDate" max="'2018-06-22'" datepicker-options="datePickerSchedule.dateOptions" date-disabled="datePickerSchedule.disabled(date, mode)" ng-required="true" close-text="Close" show-weeks="false" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar" ng-click="open($event)"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label for="Zichtbaar voor">{{'visible to' | translate}}</label>
+                            <div class="inline">
+                            <select class="form-control" id="Zichtbaar voor">
+                                <option>Advieurs</option>
+                                <option>Advieurs</option>
+                                <option>Advieurs</option>
+                                <option>Advieurs</option>
+                            </select>
+                             <button class="btn btn-block Opslan">{{'save' | translate}}</button>
+                             </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--<div class="col-md-4 col-sm-6 col-xs-12">
+                    <button class="btn btn-block Opslan">{{'save' | translate}}</button>
+                </div>-->
+            </form>
+        </div>
+    </div>
+    <div class="container tenders">
+        <div class="row">
+            <h3>{{'downloads boxes' | translate}}</h3>
+        </div>
+        <div class="row tender-forms">
+            <form class="form-horizontal"  ng-repeat="textBlock in Project.TextBlocks">
+                <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Omschrijving1">{{'Description' | translate}}</label>
+                            <input type="text" class="form-control" id="Omschrijving1" ng-model="textBlock.text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div id="datepicker2">
+                                <label>{{'Date' | translate}}</label>
+                                <div class="datepicker_novi">
+                                    <!------- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> --->
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{datePickerDownloads.format}}" ng-model="datePickerDownloads.dt" is-open="datePickerDownloads.opened" min="datePickerDownloads.minDate" max="'2018-06-22'" datepicker-options="datePickerDownloads.dateOptions" date-disabled="datePickerDownloads.disabled(date, mode)" ng-required="true" close-text="Close" show-weeks="false" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar" ng-click="datePickerDownloads.open($event)"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-striped new-project files">
+                            <tbody>
+                                <tr ng-repeat="file in textBlock.Files">
+                                    <td class="first-row">{{'guideline' | translate}}</td>
+                                    <td>{{file.displayName}}</td>
+                                    <td>0,2MB</td>
+                                    <td class="last-row remove">
+                                        <button class="btn-remove">{{'remove' | translate}}</button>
+                                    </td>
+                                </tr>
+                                <!--
+                                    <tr>
+                                    <td class="first-row">{{'Attachments' | translate}}</td>
+                                    <td>zip</td>
+                                    <td>84MB</td>
+                                    <td class="last-row remove">
+                                        <button class="btn-remove">{{'remove' | translate}}</button>
+                                    </td>
+                                </tr>
+                                    -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+               
+                <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Bsetandsnaam">New file {{'filename' | translate}}</label>
+                            <input type="text" class="form-control" id="Bsetandsnaam">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Bestand1">New file {{'file' | translate}} </label>
+                            <input type="text" class="form-control" id="Bestand1">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
+                    <button class="btn btn-block Opslan">{{'Save' | translate}}</button>
+                </div>
+            </form>
+        </div>
+        <!--<div class="row tender-forms" id="secondary">
+            <form class="form-horizontal">
+                <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Omschrijving2">{{'Description' | translate}} </label>
+                            <input type="text" class="form-control" id="Omschrijving2">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div id="datepicker3">
+                                <label>Datum</label>
+                                <div class="datepicker_novi">
+                                    ----- <pre>Selected date is: <em>{{dt | date:'fullDate'
+                                    }}</em></pre> -
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min="minDate" max="'2018-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" show-weeks="false" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar" ng-click="open($event)"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-striped new-project files">
+                            <tbody>
+                                <tr>
+                                    <td class="first-row">{{'guideline' | translate}}</td>
+                                    <td>pdf</td>
+                                    <td>0,2MB</td>
+                                    <td class="last-row remove">
+                                        <button class="btn-remove">{{'remove' | translate
+                                        }}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="first-row">{{'Attachments' | translate}}</td>
+                                    <td>zip</td>
+                                    <td>84MB</td>
+                                    <td class="last-row remove">
+                                        <button class="btn-remove">{{'remove' | translate}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Bsetandsnaam1">{{'filename' | translate}}</label>
+                            <input type="text" class="form-control" id="Bsetandsnaam1">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-sm-8">
+                            <label for="Bestand2">{{'filen' | translate}} </label>
+                            <input type="text" class="form-control" id="Bestand2">
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-block Opslan">{{'search' | translate}}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12">
+                    <button class="btn btn-block Opslan">{{'save' | translate}}</button>
+                </div>
+            </form>
+        </div>-->
+    </div>
+    <div class="container tenders">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+                <button class="btn btn-block btn-end" type="sumbit">
+                    {{'Add a text box' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container tenders">
+        <div class="row tender-forms">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="table-responsive">
+                    <table class="table table-condensed table-striped new-project">
+                        <tbody>
+                            <tr ng-repeat="post in Project.Posts">
+                                <td class="first-row">
+                                    <div class="date">{{post.date}}</div>
+                                    <div class="name"> {{getUserForThisProjectById(post.from).name}} {{getUserForThisProjectById(post.from).surname}}</div>
+                                    <div class="answer">
+                                        <button class="btn-remove" type="button" data-toggle="modal" data-target=".beantwoorden">beantwoorden</button>
+                                    </div>
+                                </td>
+                                <td class="information">{{'Summary of Additional Information' | translate}}</td>
+                                <td class="file-row"><a href="" class="file-name">tekst tekst xls</a> <span class="comment">{{post.text}}</span> </td>
+                                <td class="last-row">
+                                    <a href="" class="file-name">NVI.xls 1,2 Mb</a>
+                                </td>
+                            </tr>
+                            <!--<tr>
+                                <td class="first-row">
+                                    <div class="date">6-4-2016</div>
+                                    <div class="name">Van: J. van Halsteren</div>
+                                    <div class="answer">
+                                        <button class="btn-remove" type="button" data-toggle="modal" data-target=".beantwoorden">beantwoorden</button>
+                                    </div>
+                                </td>
+                                <td class="information">Nota van Inlichtingen</td>
+                                <td class="file-row">
+                                    <a href="" class="file-name">tekst tekst xls</a> <span class="comment">Xerchit excerum dolupicillia dicaern atibere sequi qui doluptibusam nimus solor sunt.  Xerchit excerum dolupicillia dicaern atibere sequi qui doluptibusam nimus solor sunt.</span>
+                                </td>
+                                <td class="last-row">
+                                    <a href="" class="file-name">NVI.xls 1,2 Mb</a>
+                                </td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+                <button type="button" data-toggle="modal" data-target="#notification" class="btn btn-block Opslan">{{'Notification send new info' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="container tenders">
+        <div class="row">
+            <h3>IGG-ers</h3>
+        </div>
+        <div class="row row-centered">
+            <div class="col-md-3 col-centered col-sm-4 col-xs-6 "     ng-repeat="userProject in IGGUsersProjects"> 
+                <div class="project-member">
+                    <div class="img-project">
+                        <img ng-src="{{GetuserImageAddress(userProject.User.photo)}}" alt="project member name here" class="projectimage" width="150">
+                    </div>
+                    <div>
+                        <h3>{{userProject.User.name}} {{userProject.User.middleName}} {{userProject.User.surname}} <a href="">{{'remove' | translate}}</a>  </h3>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-md-3 fourths col-sm-4 col-xs-6 col-centered">
+                <div class="project-member">
+                    <div class="img-project">
+                        <img src="img/RaboExterior_pdf.jpg" alt="project member name here" class="projectimage">
+                    </div>
+                    <div>
+                        <h3>Vincent van Sabben <a href="">{{'remove' | translate}}</a>  </h3>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+                <button class="btn btn-block Opslan">{{'IGG-er add' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="container tenders tender-forms">
+        <div class="row">
+            <h3>{{'users' | translate}}</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-condensed table-striped table-bordered new-project table-header">
+                        <thead>
+                        <th>{{'Company' | translate}}</th>
+                        <th>{{'Name' | translate}}</th>
+                        <th>{{'Email' | translate}}</th>
+                        <th>{{'kind' | translate}}</th>
+                        <th class="date">{{'Made on' | translate}} op</th>
+                        <th class="date">{{'available until' | translate}}</th>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="userProject in UsersProjects">
+                                <td class="first-row">{{userProject.User.companyName}}</td>
+                                <td class="first-row"><button class="btn-remove" type="button" data-toggle="modal" data-target=".gebruikersgegevens">{{userProject.User.name
+}} {{userProject.User.middleName}} {{userProject.User.surname}}</button></td>
+                                <td class="first-row">{{userProject.User.email}}</td>
+                                <td class="first-row">{{userProject.User.userType}}</td>
+                                <td class="date">{{userProject.beganWithProject}}</td>
+                                <td class="date">{{userProject.endedWithProject}}</td>
+                            </tr>
+                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+                <button class="btn btn-block" type="button" data-toggle="modal" data-target="#Gebruiker" ng-click="addUser()">{{'Add User' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="container tenders">
+        <div class="row">
+            <h3>{{'Users' | translate}}</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-3">
+                <button class="btn btn-block" type="sumbit">{{'close project' | translate}}</button>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <button class="btn btn-block" type="sumbit">{{'remove project' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ------------------------------------   /lets rock -->
+<!-- ------------------------------------ footer ---------------------------------- -->
+<footer>
+    <div class="container" id="footer">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12" id="contact">
+                <h3>{{'Contact'|translate}}</h3>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p>IGG Hoofdkantoor</p>
+                    <p>Prinses Catharina Amaliastraat 32</p>
+                    <p>2496 XD Den Haag, Nederland</p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p><span>T</span> 070 - 514 54 20</p>
+                    <p><span>F</span> 070 - 514 32 31</p>
+                    <p><span>E</span> info@igg.nl</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12" id="partners">
+                <h3>{{'Onze Partners' | translate}}</h3>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="Scripts/SPA/img/LOGO1.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="Scripts/SPA/img/logo2.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="Scripts/SPA/img/LOGO3.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="Scripts/SPA/img/LOGO4.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="Scripts/SPA/img/LOGO5.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6">
+                    <img src="Scripts/SPA/img/LOGO6.jpg" alt="partner logo" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-low">
+        <div class="container">
+            <ul>
+                <li>
+                    <a>{{'Sitemap' | translate}}</a>
+                </li>
+                <li>
+                    <a>{{'Privacy' | translate}}</a>
+                </li>
+                <li>
+                    <a>{{'Disclaimer' | translate}}</a>
+                </li>
+                <li>
+                    <a>{{'Algemene voorwaarden' | translate}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- ------------------------------------ /footer ---------------------------------- -->
+<!-- ------------------------------------ modals: ---------------------------------- -->
+<!-- Kluis Openen Modal -->
+<div class="modal fade" id="kluisopenen" tabindex="-1" role="dialog" aria-labelledby="kluisopenen">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>Kluis Openen</h3>
+                <p>
+                   {{'The following files are added' | translate}}
+                    <ul>
+                        <li>
+                            J.P. van Eesteren
+                            <ul>
+                                <li>Indiening.pdf</li>
+                                <li>Open begroting.pdf</li>
+                            </ul>
+                        </li>
+                        <li>
+                            De Nijs
+                            <ul>
+                                <li>Indiening_MJDN.pdf</li>
+                                <li>Open begroting.pdf</li>
+                            </ul>
+                        </li>
+                        <li>
+                            BAM
+                            <ul>
+                                <li>Indiening_BAM.pdf</li>
+                                <li>Open begroting.pdf</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <button class="btn" type="submit">{{'Open Safe download' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- beantwoorden Modal -->
+<div class="modal fade beantwoorden" tabindex="-1" role="dialog" aria-labelledby="beantwoorden">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>{{'answer message' | translate}}</h3>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12 reaction">
+                        <div class="author">
+                            {{'Message of' | translate}} : <span>J. van Haasteren - JP van Eesteren</span>
+                        </div>
+                        <div class="desc">
+                            {{'Description' | translate}}  : <span>Nota van Inlichtingen 2</span>
+                        </div>
+                        <div class="message">{{'Message' | translate}}: </div>
+                        <span class="comment"><a href="" class="file-name">tekst tekst xls</a>Xerchit excerum dolupicillia dicaern atibere sequi qui doluptibusam nimus solor sunt.  Xerchit excerum dolupicillia dicaern atibere sequi qui doluptibusam nimus solor sunt.  doluptibusam nimus solor sunt.  Xerchit excerum dolupicillia dicaern atibere sequi qui doluptibusam nimus </span>
+                    </div>
+                </div>
+                <h3>Reactie</h3>
+                <div class="row tender-forms">
+                    <form class="form-horizontal">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="Omschrijving3">Omschrijving</label>
+                                    <input type="text" class="form-control" id="Omschrijving3">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                    <label for="Bestandtoevoegen">Bestand toevoegen</label>
+                                    <input type="text" class="form-control" id="Bestandtoevoegen">
+                                </div>
+                                <div class="col-sm-4">
+                                    <button class="btn btn-block Opslan">Zoeken</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label for="Bericht">Bericht</label>
+                                    <textarea class="form-control" rows="3" id="Bericht"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-6 col-xs-12">
+                            <button class="btn btn-block Opslan">Verzenden</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <button type="button" class="close btn-remove" data-dismiss="modal" aria-label="Close">Scherm afsluiten</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Notification Modal -->
+<div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="notification">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>{{'Send Notifications' | translate}}</h3>
+                <p>
+                    Weet u zeker dat er een bericht dient te worden verstuurt naar de gebruikers.
+                </p>
+                <button class="btn" type="submit">{{'Send notifications' | translate}}</button>
+                <div>
+                    <button type="button" class="close btn-remove" data-dismiss="modal" aria-label="Close">
+                        {{'close window' | translate}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Gebruikersgegevens wijzigen Modal -->
+<div class="modal fade gebruikersgegevens" tabindex="-1" role="dialog" aria-labelledby="Gebruikersgegevens">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>{{'Change User Data' | translate}}</h3>
+                <div class="name">
+                    Gebruiker: <span>J. van Haasteren</span>
+                </div>
+                <form class="tender-forms">
+                    <div class="form-group">
+                        <label>{{'kind' | translate}}</label>
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>{{'access' | translate}}</label>
+                        <div class="input-group date" id="datepickefirst">
+                            <input type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Toegang tot</label>
+                        <div class="input-group date" id="datepickesecond">
+                            <input type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-btn">
+                        <button class="btn" type="submit">{{'modify' | translate}}</button>
+                    </div>
+                </form>
+                <button class="btn" type="submit">{{'delete user' | translate}}</button>
+                <div>
+                    <button type="button" class="close btn-remove" data-dismiss="modal" aria-label="Close">{{'close window' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Gebruiker Modal -->
+<div class="modal fade" id="Gebruiker" tabindex="-1" role="dialog" aria-labelledby="Gebruiker">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>Gebruiker toevoegen</h3>
+                <form class="tender-forms">
+                    <div class="form-group">
+                        <label>{{'user'|translate}}	</label>
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <label>Toevoegen: <span>J. van Haasteren - JP van Eesteren</span></label>
+                    <div class="form-group">
+                        <label>{{'kind'|translate}}</label>
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>{{'access' | translate}}</label>
+                        <div class="input-group date" id="datepickefirst1">
+                            <input type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{'access' | translate}}</label>
+                        <div class="input-group date" id="datepickesecond2">
+                            <input type="text" class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-btn">
+                        <button class="btn" type="submit">{{'Send e mail' | translate}}</button>
+                    </div>
+                </form>
+                <div>
+                    <button type="button" class="close btn-remove" data-dismiss="modal" aria-label="Close">{{'close window' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------ / modals ---------------------------------- -->
+                            

@@ -1,0 +1,914 @@
+﻿@charset "UTF-8";
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Source+Sans+Pro:300,400,700';
+body {
+    color: #4e6470;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 32px;
+    font-weight: 400;
+	background-color:#ffffff;
+}
+#main-menu.shrink{
+  margin-top:0px;	
+}
+.shrink #above-menu, .shrink #main-navigation, .shrink #secondarymenucontent{
+display:none;
+}
+.shrink #defaultNavbar1{
+display:none!important	
+}
+.navbar.shrink {
+  max-height: 80px;
+}
+.shrink #logo{
+height:45px;	
+margin:15px 0px;
+width: 200px;
+}
+#main-menu #defaultNavbar2{
+display: none !important;
+}
+#main-menu.shrink #defaultNavbar2{
+display:initial!important;	
+}
+
+.shrink #shrink-navigation{
+margin:20px 0px;	
+}
+.shrink #shrink-navigation li a {
+font-size:12px;
+text-transform:uppercase;
+padding:10px 8px;
+background-color:transparent;
+font-weight:bold;
+}
+.shrink .search{
+	float: right;
+height: 30px;
+line-height: 28px;
+padding: 5px 0;
+position: absolute;
+left: 0px;
+width: 20px;
+}
+input,
+select {
+    border-radius: 0px!important;
+    padding: 3px 6px!important;
+    max-height: 30px;
+	width: 100%;
+}
+.checkbox input[type="checkbox"] {
+    width:auto;	
+}
+textarea {
+    border-radius: 0px!important;
+    padding: 3px 6px!important;
+}
+
+.form-control:focus {
+    border: 1px solid #ccc;
+    box-shadow: none!important;
+}
+#logo {
+    background-image: url(../img/IGG%20RGB.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    height: 70px;
+    margin: 40px 0px 25px 0px;
+    width: 300px;
+}
+#main-menu {
+  background-color: #fff;
+border-radius: 0px;
+border-top: 1px solid #ced8dd;
+box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+margin-bottom: 0px;
+margin-top: 8px;    
+}
+#main-menu ul#main-navigation li a {
+    color: #7c8d97;
+    font-size: 17px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+#main-menu ul#main-navigation li a:hover {
+    color: #003c77;
+}
+#main-menu ul#main-navigation > .open > a {
+    background-color: transparent;
+    border-bottom: 1px solid #ced8dd;
+    color: #003c77;
+}
+#main-navigation {
+    margin-top: 55px;
+}
+#main-navigation .dropdown-menu {
+border: none;
+border-radius: 0px 0px 10px 10px;
+margin-top: 30px;
+left: 45%; 
+position: fixed;
+top: 115px;
+z-index: 0;
+}
+#shrink-navigation .dropdown-menu.columns-2{
+width:600px;
+margin-top: 18px;
+left: 45%;
+position: fixed;
+top: 61px;
+}
+#main-navigation .dropdown-menu.columns-2  {
+    width: 580px;
+    margin-left: 144px;
+}
+.multi-column-dropdown {
+    list-style: none;
+    padding-left: 0px;
+}
+.multi-column-dropdown li a {
+    font-size: 12px!important;
+    font-weight: 300!important;
+    padding: 5px 15px;
+}
+.multi-column-dropdown li a:hover {
+    background-color: #f5f5f5;
+    color: #262626;
+    text-decoration: none;
+}
+ul.dropdown-menu.multi-column.columns-2 {
+    padding-left: 15px;
+}
+ul.dropdown-menu.multi-column.columns-2 .col-sm-6 {
+    padding: 0px;
+}
+ul.multi-column-dropdown {
+    list-style-position: inside;
+    list-style-type: disc;
+}
+ul.multi-column-dropdown li {
+    border-bottom: #eaeff2 1px solid;
+}
+ul.multi-column-dropdown li:last-child {
+    border-bottom: none;
+}
+#secondary-menu {
+    margin-top: 8px;
+}
+div#first {
+    margin-top: -1px;
+    position: absolute;
+    right: 7%;
+    top: 0px;
+    z-index: 20;
+}
+div#second {
+	margin-top: -2px;
+    position: absolute;
+    right: 7%;
+    top: 0px;
+    z-index: 21;
+}
+#trapezoid {
+    border-color: #ced8dd transparent transparent transparent;
+    border-radius: 0px 0px 36px 36px;
+    border-style: solid;
+    border-width: 42px 20px 0 20px;
+    width: 600px;
+}
+#trapezoid1 {
+    border-color: #fff transparent transparent transparent;
+    border-radius: 0px 0px 36px 36px;
+    border-style: solid;
+    border-width: 42px 20px 0 20px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    list-style: none;
+    width: 600px;
+}
+#secondarymenucontent li a {
+    font-size: 12px;
+    padding: 8px 10px;
+}
+#secondarymenucontent li.active a{
+	background-color: transparent;
+}
+#secondarymenucontent li a:hover {
+    background-color: transparent;
+    text-decoration: underline;
+}
+#secondarymenucontent {
+    position: absolute;
+    right: 9%;
+    z-index: 22;
+}
+li#language {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+.btn {
+    background-color: #0082ff;
+    border-bottom: 2px #003c77 solid;
+    border-radius: 0px;
+    color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    max-height: 30px;
+    padding: 3px 6px;
+}
+#search {
+    z-index: 50;
+}
+.search {
+    float: right;
+    height: 30px;
+    line-height: 32px;
+    padding: 5px 0;
+    position: absolute;
+    right: 0%;
+    width: 20px;
+}
+.search input {
+    border: none;
+    box-shadow: none;
+    height: 30px;
+    moz-transition: all 0.2s;
+    o-transition: all 0.2s;
+    position: absolute;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    webkit-transition: all 0.2s;
+    width: 0px;
+}
+.search:hover {
+    width: 20px;
+}
+.search:hover input,
+.search input:focus {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    line-height: 18px;
+    margin-left: -420px;
+    padding: 0 2px 0 2px;
+    width: 415px;
+    z-index: 50;
+}
+#secondarymenucontent .btn {
+    height: 30px;
+    padding: 2px 6px 6px 3px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+.btn.btn-search {
+    background-color: transparent;
+    border-bottom: none;
+    color: #337ab7;
+}
+.btn.btn-search:hover {
+    color: #337ab7;
+}
+#secondarymenucontent .nav.navbar-nav {
+    margin: 0px 24px 0px 0px;
+}
+footer {
+    background-color: #eaeff2;
+}
+#footer {
+    border-top: #abb8bf 1px solid;
+    text-align: left;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+#footer h3,
+#footer #contact p span {
+    font-weight: 700;
+    font-size: 16px;
+    color: #003c77;
+}
+#footer #contact,
+#footer #contact div,
+.footer-low div,
+.footer-low ul {
+    padding-left: 0px;
+    line-height: 10px;
+}
+#footer #contact p {
+    font-size: 14px!important;
+    margin-bottom: 0px;
+    line-height: 22px;
+}
+#footer #contact p span {
+    margin-right: 5px;
+    font-size: 14px!important;
+}
+#footer #partners {
+    padding-right: 0px;
+}
+footer .footer-low {
+    background-color: #4e6470;
+    color: #ffffff;
+    bottom: 0px;
+    left: 0;
+    padding: 10px 0px;
+    width: 100%;
+}
+footer ul {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    list-style: none;
+    margin-bottom: 0px;
+}
+footer ul li:after {
+    content: "-";
+    margin-right: 10px;
+}
+footer ul li:last-child:after {
+    content: "";
+}
+footer ul li a {
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #fff;
+}
+footer ul li a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+#header {
+    z-index: 30;
+}
+#content-index {
+    background-color: #eaeff2;
+    padding-bottom: 170px;
+	margin-top: 100px;
+}
+#content {
+background-color: #eaeff2;
+padding-bottom: 20px;
+margin-top: 100px;
+}
+#banner-main {
+    
+       background-image: url(../../../UPLOADED_IMAGES/frontImage/IGGtenderportal.jpg);
+    background-position: center;
+    background-size: cover;
+    border-bottom: 4px #003c77 solid;
+    height: 305px;
+}
+#banner-main .banner-well {
+    background-color: rgba(0, 0, 0, 0.50);
+    border: none;
+    color: #fff;
+    margin-top: 100px;
+    padding: 28px 0px 20px 0px;
+    text-align: center;
+}
+#banner-main .banner-well .title {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    position: relative;
+}
+#banner-main .banner-well .projecttitle {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+#banner-main .banner-well .title:before,
+#banner-main .banner-well .title:after {
+    border-bottom: 1px solid white;
+    content: "";
+    height: 16px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    width: 10vw;
+}
+#banner-main .banner-well .title:before {
+    margin-right: 15px;
+    right: 100%;
+}
+#banner-main .banner-well .title:after {
+    left: 100%;
+    margin-left: 15px;
+ 
+}
+#banner-main .banner-well .undertitle {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    webkit-text-shadow: 0 2px 2px rgba(0, 0, 0, .175);
+}
+#banner-main .banner-well .btn {
+    padding: 5px 60px;
+}
+#aboutus {
+    background-color: #ffffff;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+    webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, .175);
+    padding: 20px 0px;
+    margin-top: 45px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.tenders {
+    margin-top: 45px;
+}
+.create .tender-forms {
+    padding-bottom: 20px
+}
+h3 {
+	/*text-transform:capitalize;*/
+}
+#login-forgottenbtn h3,
+#aboutus h3,
+#projects h3,
+#login-btn h3,
+#kluisopenen h3,
+.tenders h3,
+.beantwoorden h3,
+#notification h3,
+.gebruikersgegevens h3,
+#Gebruiker h3,
+#Igger h3 {
+	/*text-transform:capitalize;*/
+    font-size: 22px;
+    font-weight: 700;
+    color: #003c77;
+    margin-bottom: 20px;
+}
+.subtitle{
+text-align:center;
+}
+.subtitle h4 {
+	font-size: 18px;
+    font-weight: 700;
+    color: #003c77;
+    }
+.gebruikersgegevens .modal-dialog,
+#Gebruiker .modal-dialog,
+#Igger .modal-dialog {
+    max-width: 400px;
+}
+.beantwoorden .tender-forms,
+.gebruikersgegevens .tender-forms,
+#Gebruiker .tender-forms,
+#Igger .tender-forms {
+    box-shadow: none;
+    background-color: transparent;
+    padding-top: 0px;
+}
+#aboutus p,
+#notification p {
+    line-height: 26px;
+}
+p.standard {
+line-height: 26px;
+text-align:center;	
+}
+.form-btn {
+    text-align: center;
+    margin-top: 10px;
+}
+#projects,
+.tenders {
+    text-align: center;
+}
+.project {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	margin-bottom:20px;
+	display: table;
+	background-color: #ffffff;
+}
+.project .img-project,
+.project-member .img-project {
+    height: 230px;
+    width: 362px;
+    overflow: hidden;
+	text-align:center;
+	background-color: #ffffff;
+}
+
+.project-member .img-project .projectimage,
+.project .img-project .projectimage {
+   height: auto;
+width: 100%;
+}
+.project-member h3,
+.project h3 {
+    font-size: 17px;
+    font-weight: 300!important;
+    color: #003c77;
+	padding:20px 0px;
+    background-color: #fff;
+    margin: 0px;
+	text-align:center;
+	height:60px;
+}
+.project-member h3 a {
+    display: block;
+    color: #003c77;
+}
+#login-forgottenbtn .modal-content,
+#login-btn .modal-content,
+#kluisopenen .modal-content,
+.beantwoorden .modal-content,
+#notification .modal-content,
+.gebruikersgegevens .modal-content,
+#Gebruiker .modal-content,
+#Igger .modal-content {
+    border-radius: 0px;
+    text-align: center;
+}
+#login-forgottenbtn .modal-body,
+#login-btn .modal-body {
+    padding: 15px 20px;
+}
+#login-forgottenbtn .modal-dialog,
+#login-btn .modal-dialog,
+.beantwoorden .modal-dialog,
+#notification .modal-dialog,
+.gebruikersgegevens .modal-dialog,
+ #Gebruiker .modal-dialog,
+ #Igger .modal-dialog {
+    margin: 150px auto;
+}
+#kluisopenen .modal-dialog {
+    margin: 150px auto;
+    max-width: 430px;
+}
+#login-forgottenbtn .form-group-email ,
+#login-btn .form-group-email {
+    margin-bottom: 5px;
+}
+.gebruikersgegevens form {
+    margin-bottom: 20px;
+}
+#login-forgottenbtn h3,
+#login-btn h3,
+#kluisopenen h3,
+.beantwoorden h3,
+.gebruikersgegevens h3,
+#Gebruiker h3,
+#Igger h3 {
+    margin-top: 5px;
+    text-align: center;
+}
+#kluisopenen p,
+.beantwoorden .reaction {
+    text-align: left;
+}
+.reaction {
+    line-height: 1.7;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+#kluisopenen ul {
+    text-align: left;
+    margin-bottom: 20px;
+    list-style: none;
+    padding-left: 0px;
+    font-weight: 100;
+    line-height: 1.75;
+}
+#kluisopenen ul li ul {
+    padding-left: 35px;
+    margin-bottom: 5px;
+}
+#kluisopenen ul li ul li:before {
+    content: "-";
+    padding: 2px;
+}
+#loginform, #loginform-forgotten {
+    margin-bottom: 30px;
+}
+#loginform-forgotten .btn, #loginform-forgotten input {
+	margin-bottom:15px;
+}
+#loginform .btn, #loginform-forgotten .btn {
+    height: 30px;
+    padding: 5px 40px;
+}
+#loginform label, #loginform-forgotten label {
+    color: #4e6470;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 0px;
+}
+a#lostpassword {
+    color: #003c77;
+    font-weight: 700;
+}
+.tender-forms {
+    background-color: #ffffff;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.tender-forms h3 {
+    text-align: center;
+}
+.tender-forms label {
+    font-size: 14px!important;
+    font-weight: 300!important;
+    margin-bottom: 0px;
+}
+.tender-forms #Wijzigen {
+    margin-top: 20px;
+}
+.tender-forms .form-group {
+    margin-bottom: 2px;
+}
+.tender-forms#secondary {
+    margin-top: 40px;
+}
+.btn.Opslan {
+    min-width: 200px;
+	margin-top:20px;
+}
+.img-upload {
+    height: 180px;
+    width: 280px;
+    overflow: hidden;
+}
+.img-upload img {
+	width:100%;
+	height:auto;
+}
+.inline {
+display:-webkit-inline-box;
+display:-ms-inline-flexbox;
+display:inline-flex;	
+width: 100%;
+}
+.inline input, .inline textarea{
+	width:75%;
+	margin-right:20px;
+}
+.inline .btn{
+min-width:100px;	
+overflow: hidden;
+white-space: normal;
+}
+input.check-form {
+    margin-top: 10px;
+}
+#datepicker .input-group-addon:last-child,
+#datepicker1 .input-group-addon:last-child,
+#datepicker2 .input-group-addon:last-child,
+#datepicker3 .input-group-addon:last-child,
+#datepickefirst .input-group-addon:last-child,
+#datepickesecond .input-group-addon:last-child,
+#datepickefirst1 .input-group-addon:last-child,
+#datepickesecond2 .input-group-addon:last-child {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #d6d6d6;
+}
+.name {
+    text-align: left;
+	margin-top:3px;
+}
+table.new-project {
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+    background-color: #cbd7e3;
+}
+table.new-project.admin-page {
+    margin-bottom: 0px;
+}
+table.new-project {
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+    background-color: #cbd7e3;
+}
+table.new-project.files {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+table.new-project td {
+    min-width: 50px;
+    max-width: 500px;
+}
+table.new-project td a {
+    color: #000000;
+}
+.btn.btn-end {
+    background-color: #ff8c00;
+}
+.first-row,
+.file-row {
+    text-align: left;
+}
+.last-row {
+    text-align: right;
+}
+.download{
+	text-align:center;
+	margin-bottom:15px;
+}
+.download-last{
+	text-align:center;
+	margin-top:15px;
+}
+.btn-remove {
+    border: none;
+    box-shadow: none;
+    background: none;
+    text-decoration: underline;
+}
+.close.btn-remove {
+    color: #000000;
+    float: none;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    text-shadow: none;
+    opacity: 1;
+}
+th.date {
+    text-align: center;
+}
+.new-project.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #e4ebf0;
+}
+.new-project thead {
+    background-color: #003c77;
+    color: #ffffff;
+}
+.new-project.table-header tr td {
+    color: #003c77;
+}
+.file-name {
+    margin-right: 4px;
+}
+ul.igg {
+    font-size: 14px;
+    margin: 0px;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+    border: 1px solid #003c77;
+}
+form.table-search {
+    float: right;
+    margin-bottom: 5px;
+}
+.table-search label {
+    margin-left: 15px;
+}
+.pagin {
+    text-align: right;
+    width: 100%;
+    background-color: #99b1c7;
+    border-bottom: 1px solid #839ab4;
+    margin-bottom: 20px;
+}
+.text-pagin {
+    display: block;
+    margin-right: 5px;
+}
+.pagin a {
+    border: none;
+    padding: 0px;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 100;
+    margin-left: 5px;
+}
+.img-group {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.buttons {
+    margin-top: 30px;
+}
+.uploads, .uploaded-file {
+	text-align:left;
+	float:left;
+}
+.uploaded-file h6 {
+	color:#4e6470;
+	font-weight:700;
+	font-size:14px;
+	line-height:32px;
+	
+}
+.uploaded-file .files {
+	display:-webkit-inline-box;
+	display:-ms-inline-flexbox;
+	display:inline-flex;
+}
+.uploaded-file .btn-remove {
+	float: right;
+margin-left: 20px;
+}
+@media screen and (max-width: 1024px) {
+#login-forgottenbtn h3, #aboutus h3, #projects h3, #login-btn h3, #kluisopenen h3, .tenders h3, .beantwoorden h3, #notification h3, .gebruikersgegevens h3, #Gebruiker h3, #Igger h3{
+font-size:17px;	
+}
+
+#content, #content-index{
+margin-top:50px;	
+}
+#main-navigation{
+margin-top:20px;	
+}
+#main-menu ul#main-navigation li a{
+	font-size:12px;
+}
+#main-menu.shrink #defaultNavbar2{
+display:none!important;	
+}
+#secondarymenucontent, #above-menu{
+	display:none;	
+}
+#banner-main .banner-well .title:before,
+#banner-main .banner-well .title:after{
+display:none;	
+}
+
+.project .img-project, .project-member .img-project{
+	height:160px;	
+	}
+	
+	#logo {
+       height: 40px;
+margin: 20px 0px 25px 0px;
+width: 200px;
+    }
+}
+@media screen and (max-width: 768px) {
+#login-forgottenbtn h3, #aboutus h3, #projects h3, #login-btn h3, #kluisopenen h3, .tenders h3, .beantwoorden h3, #notification h3, .gebruikersgegevens h3, #Gebruiker h3, #Igger h3{
+font-size:14px;	
+}
+#footer #contact, #footer #contact div, .footer-low div, .footer-low ul{
+padding-left: 10px;
+}
+footer ul li a{
+	font-size:10px;
+}
+footer ul li::after {
+    content: "";
+}
+.dropdown-menu.multi-column {
+        min-width: 240px !important;
+        overflow-x: hidden;
+    }
+#main-menu.shrink #defaultNavbar2{
+display:none!important;	
+}
+
+#main-menu {
+        min-height: 20px;
+    }
+    #logo {
+        margin: 0px 0px 0px 20px;
+        padding-top: 0px;
+        width: 175px;
+    }
+    #main-navigation {
+        margin: 7.5px -15px;
+    }
+}
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    
+}
+
+#projects h3 {
+    margin-bottom: 4px;
+}
+
+ 
+
+.project-member .img-project .projectimage, .project .img-project .projectimage {
+  height: 230px;
+  width: 362px;
+}

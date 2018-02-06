@@ -1,0 +1,62 @@
+﻿<div ng-controller="EditShowProject_controller" data-ng-init="init()" style="text-align:center">
+    <h3> Show Top N projects on frontpage </h3>
+    <button ng-click="goToEditAll()" class="plain_button"> Edit all </button>
+    <button ng-click="addNew()" class="plain_button"> Add new </button>
+    <br><br><br>
+    <input type="text" ng-model="keyword">
+    <button ng-click="search(keyword)" class="btn_delete"> SEARCH </button>
+    <br><br><br>
+    <table align="center" border="1">
+        <tr>
+            <td>
+                <h1>{{ 'HEADLINE' | translate }}</h1>
+                <!--<input ng-model="searchText.name" placeholder="search by Name">-->
+            </td>
+        </tr>
+        <!--<tr ng-repeat="item in Projects| filter:searchText">-->
+        <tr ng-repeat="item in Projects">
+            <td>
+                <button ng-click="edit(item)" class="btn_delete">edit ></button>
+                <button ng-click="close(item)" class="btn_delete">Close ></button>
+                <button ng-click="save(item)" class="btn_delete">SAVE ></button>
+                <button ng-click="delete(item)" class="btn_delete">DELETE ></button>
+            </td>
+            <td>
+                {{item.name}}
+                <input type="text" ng-model="item.name">
+            </td>
+            <td>
+                {{item.description}}
+            </td>
+            <td>
+                {{item.place}}
+            </td>
+            <td>
+                {{item.status}}
+            </td>
+            <td ng-repeat="textBlock in item.TextBlocks">
+                {{textBlock.text}}
+                <table align="center">
+                    <tr ng-repeat="file in textBlock.Files">
+                        <td><a href="{{file.path}}" target="_blank">{{file.displayName}}</a></td>
+                    </tr>
+                </table>
+            </td>
+
+        </tr>
+    </table>
+
+    <!-- this could be a directive -->
+    <div style="display: table; text-align:center; margin:auto;">
+        <div ng-repeat="n in [].constructor(NumberOfAllPages) track by $index" style="display: table-cell; padding: 10px;  text-align: center;">
+            <button ng-click="getAll($index)" class="btn_page"> Page {{$index+1}}</button>
+        </div>
+    </div>
+
+    <div class="wait" ng-show="show_wait">
+        <div class="middle_of_screen">
+            <img src="Images/wait.gif" /><br />
+            Please Wait...
+        </div>
+    </div>
+</div>

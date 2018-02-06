@@ -8,6 +8,8 @@ using IGG.TenderPortal.Service;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using IGG.TenderPortal.Data;
+using Autofac.Integration.Mvc;
+using System.Web.Mvc;
 
 namespace IGG.TenderPortal.WebService
 {
@@ -63,8 +65,15 @@ namespace IGG.TenderPortal.WebService
             //    .As<IEmployeeService>()
             //    .AsImplementedInterfaces().InstancePerRequest();
 
-            //Set the dependency resolver to be Autofac.  
+            //Set the dependency resolver to be Autofac.
+
+            builder.RegisterControllers(Assembly.GetExecutingAssembly()); //Register MVC Controllers
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()); //Register WebApi Controllers
+
             Container = builder.Build();
+
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(Container)); //Set the MVC DependencyResolver
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)Container); //Set the WebApi DependencyResolver
 
             return Container;
         }

@@ -1,0 +1,544 @@
+﻿<!-- ------------------------------------ header ---------------------------------- -->
+<div id="header" ng-controller="Header_controller" data-ng-init="init()">
+
+    <nav class="navbar navbar-default loggedin navbar-fixed-top" id="main-menu">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" id="logo" style="cursor:pointer;" ng-click="rootScope_GoToFrontPage()">&nbsp;</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="defaultNavbar1">
+                <div id="above-menu">
+                    <div id="first">
+                        <ul id="trapezoid"></ul>
+                    </div>
+                    <div id="second">
+                        <div id="trapezoid1">
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav navbar-nav navbar-right" id="main-navigation" ng-show="rootScope_username!=null">
+                    <li class="dropdown">
+                        <a href="#/MyAccount" role="button" ng-show="rootScope_username!=null">{{'My Account' | translate}}</a>
+
+                    </li>
+                    <li class="dropdown" ng-show="rootScope_curentUser.userType=='IGG'">
+                        <a href="#/Admin" role="button">{{'Admin' | translate}}</a>
+                    </li>
+                    <li>
+                        <a style="cursor:pointer;" ng-click="rootScope_logout()" ng-show="rootScope_username!=null">{{'Log Off' | translate}}</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="main-navigation" ng-show="rootScope_username==null">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'expertises' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="{{'bouwkostenmanagement link' | translate}}">{{'bouwkostenmanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'vastgoed- en grondexploitaties link' | translate}}">{{'vastgoed- en grondexploitaties' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'anbesteden en contracteren link' | translate}}">{{'aanbesteden en Contracteren' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'contractmanagement link' | translate}}">{{'contractmanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'duurzaam bouwen link' | translate}}">{{'duurzaam bouwen' | translate}}</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="{{'bim management link' | translate}}">{{'BIM Management' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'risicomanagement link' | translate}}">{{'risicomanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'taxaties en waardebepalingen link' | translate}}">{{'taxaties en waardebepalingen' | translate}}</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{'Werkgebieden' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="{{'woningbouw link' | translate}}">{{'woningbouw' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'kantoren link' | translate}}">{{'kantoren' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'hotels link' | translate}}">{{'hotels' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'commercieel en bedrijfspanden link' | translate}}">{{'Commercieel en bedrijfspanden' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'leisure cultuur en sport link' | translate}}">{{'Leisure, Cultuur en Sport' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'datacentra link' | translate}}">{{'Datacentra' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'zorg, onderwijs en laboratoria link' | translate}}">{{'Zorg, onderwijs en Laboratoria' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'overheid link' | translate}}">{{'Overheid' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'luchthavens en infrastructuur link' | translate}}">{{'Luchthavens en infrastructuur' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="{{'grond- weg en waterbouw link' | translate}}">{{'Grond- Weg en Waterbouw' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'energie en klimaat link' | translate}}">{{'Energie en klimaat' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'gebiedsontwikkeling link' | translate}}">{{'Gebiedsontwikkeling' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'vastgoedontwikkeling link' | translate}}">{{'Vastgoedontwikkeling' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'transformaties link' | translate}}">{{'Transformaties' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'monumenten en erfgoed link' | translate}}">{{'Monumenten en erfgoed' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'afbouw en interieur link' | translate}}">{{'Afbouw en Interieur' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'beheer en onderhoud link' | translate}}">{{'Beheer en onderhoud' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{'projects_link' | translate}}" role="button">{{'Projects' | translate}}</a>
+
+                    </li>
+                    <li>
+                        <a href="{{'team_link' | translate}}">{{'Team' | translate}}</a>
+                    </li>
+                </ul>
+                <div class="nav navbar-nav navbar-right" id="secondarymenucontent">
+                    <!-- ---------- SEARCH ------------->
+                    <!--<div class="search" ng-show="rootScope_username!=null">
+                        <input type="text" ng-model="searchstring" ng-keyup="$event.keyCode == 13 ? search() : null" class="form-control input-sm" maxlength="64" placeholder="{{'Search' |translate}}" />
+                        <button type="submit" class="btn btn-search">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>-->
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="{{'about link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'About igg' | translate}}</a>
+                        </li>
+                        <li>
+                            <a href="{{'news link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'News' | translate}}</a>
+                        </li>
+                        <li>
+                            <a href="{{'products link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'products' | translate}}</a>
+                        </li>
+                        <li>
+                            <a href="{{'solutions link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'Solutions' | translate}}</a>
+                        </li>
+                        <li>
+                            <a href="{{'vacancies link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'Vacancies' | translate}}</a>
+                        </li>
+                        <li>
+                            <a href="{{'contact link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'Contact' | translate}}</a>
+                        </li>
+                        <!--<li ng-show="rootScope_username!=null"  style="text-transform: lowercase;">
+                            <a href="#" ng-click="rootScope_logout()">{{'Logout' | translate}}</a>
+                        </li>-->
+
+                        <li id="language">
+                            <a style="cursor:pointer;" ng-click="rootScope_changeLanguage('en')">EN</a>/<a class="active" style="cursor:pointer;  font-weight:normal;" ng-click="rootScope_changeLanguage('nl')">NL</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!------------------------- small menu: --->
+            <div class="collapse navbar-collapse" id="defaultNavbar2" style="background-color:blue">
+                <ul class="nav navbar-nav navbar-right" id="shrink-navigation">
+                    <li class="dropdown">
+                        <a href="#/MyAccount" role="button" ng-show="rootScope_username!=null">{{'My Account' | translate}}</a>
+
+                    </li>
+                    <li class="dropdown" ng-show="rootScope_curentUser.userType=='IGG'">
+                        <a href="#/Admin" role="button">{{'Admin' | translate}}</a>
+                    </li>
+                    <li>
+                        <a style="cursor:pointer;" ng-click="rootScope_logout()" ng-show="rootScope_username!=null" style="text-transform:lowercase">{{'Log Off' | translate}}</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ng-show="rootScope_username==null">{{'expertises' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="{{'bouwkostenmanagement link' | translate}}">{{'bouwkostenmanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'vastgoed- en grondexploitaties link' | translate}}">{{'vastgoed- en grondexploitaties' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'anbesteden en contracteren link' | translate}}">{{'aanbesteden en Contracteren' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'contractmanagement link' | translate}}">{{'contractmanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'duurzaam bouwen link' | translate}}">{{'duurzaam bouwen' | translate}}</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="{{'bim management link' | translate}}">{{'BIM Management' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'risicomanagement link' | translate}}">{{'risicomanagement' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'taxaties en waardebepalingen link' | translate}}">{{'taxaties en waardebepalingen' | translate}}</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" ng-show="rootScope_username==null">{{'Werkgebieden' | translate}}</a>
+                        <ul class="dropdown-menu multi-column columns-2">
+                            <div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="{{'woningbouw link' | translate}}">{{'woningbouw' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'kantoren link' | translate}}">{{'kantoren' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'hotels link' | translate}}">{{'hotels' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'commercieel en bedrijfspanden link' | translate}}">{{'Commercieel en bedrijfspanden' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'leisure cultuur en sport link' | translate}}">{{'Leisure, Cultuur en Sport' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'datacentra link' | translate}}">{{'Datacentra' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'zorg, onderwijs en laboratoria link' | translate}}">{{'Zorg, onderwijs en Laboratoria' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'overheid link' | translate}}">{{'Overheid' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'luchthavens en infrastructuur link' | translate}}">{{'Luchthavens en infrastructuur' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul class="multi-column-dropdown">
+                                        <li>
+                                            <a href="{{'grond- weg en waterbouw link' | translate}}">{{'Grond- Weg en Waterbouw' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'energie en klimaat link' | translate}}">{{'Energie en klimaat' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'gebiedsontwikkeling link' | translate}}">{{'Gebiedsontwikkeling' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'vastgoedontwikkeling link' | translate}}">{{'Vastgoedontwikkeling' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'transformaties link' | translate}}">{{'Transformaties' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'monumenten en erfgoed link' | translate}}">{{'Monumenten en erfgoed' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'afbouw en interieur link' | translate}}">{{'Afbouw en Interieur' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{'beheer en onderhoud link' | translate}}">{{'Beheer en onderhoud' | translate}}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{'projects_link' | translate}}" role="button" ng-show="rootScope_username==null">{{'Projects' | translate}}</a>
+
+                    </li>
+                    <li>
+                        <a href="{{'team_link' | translate}}" ng-show="rootScope_username==null">{{'Team' | translate}}</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{'about link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'About igg' | translate}}</a>
+                    </li>
+                    <li>
+                        <a href="{{'news link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'News' | translate}}</a>
+                    </li>
+                    <li>
+                        <a href="{{'products link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'products' | translate}}</a>
+                    </li>
+                    <li>
+                        <a href="{{'solutions link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'Solutions' | translate}}</a>
+                    </li>
+                    <li>
+                        <a href="{{'vacancies link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'Vacancies' | translate}}</a>
+                    </li>
+                    <li>
+                        <a href="{{'contact link' | translate}}" style="text-transform: lowercase; font-weight:normal;">{{'Contact' | translate}}</a>
+                    </li>
+                    <li id="language">
+                        <a style="cursor:pointer; font-weight:normal;" ng-click="rootScope_changeLanguage('en')">EN</a>/<a class="active" style="cursor:pointer; font-weight:normal;" ng-click="rootScope_changeLanguage('nl')">NL</a>
+                    </li>
+                    <!-- ---------- SEARCH ------------->
+                    <!--<div class="search" ng-show="rootScope_username!=null">
+                        <input type="text" ng-model="searchstring" ng-keyup="$event.keyCode == 13 ? search() : null" class="form-control input-sm" maxlength="64" placeholder="{{'Search' |translate}}" />
+                        <button type="submit" class="btn btn-search">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>-->
+
+                </ul>
+
+
+                <ul class="nav navbar-nav navbar-right" id="main-navigation">
+                    <li class="dropdown">
+                        <a href="#/MyAccount" role="button" ng-show="rootScope_username!=null">{{'My Account' | translate}}</a>
+
+                    </li>
+                    <li class="dropdown" ng-show="rootScope_curentUser.userType=='IGG'">
+                        <a href="#/Admin" role="button">{{'Admin' | translate}}</a>
+                    </li>
+                    <li>
+                        <a style="cursor:pointer;" ng-click="rootScope_logout()" ng-show="rootScope_username!=null" style="text-transform:lowercase">{{'Log Off' | translate}}</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+</div>
+<!-- ------------------------------------ / header ---------------------------------- -->
+
+<img src="../../../UPLOADED_IMAGES/frontImage/IGGtenderportal.jpg" style="display:none" />
+<!-------------   lets rock -->
+<div id="content-index" ng-controller="Index_controller" data-ng-init="init()">
+    <div class="container-fluid" id="banner-main" style="height:700px;">
+        <div class="row">
+            <div class="col-md-6 col-sm-8 col-xs-10 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                <div class="banner-well well">
+                    <div class="title">{{'Aanbestedingsportal' | translate}}</div>
+                    <div class="undertitle">{{'Vidusdandus molorum aut' |translate}}</br>{{'lit vomniend elest,' | translate}}</div>
+                    <button class="btn" data-toggle="modal" data-target="#login-btn" ng-click="showLogin()" >{{'Login' | translate}}</button>
+ 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="aboutus">
+        
+            <div class="col-md-6 col-sm-8 col-xs-10 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                <h3 style="white-space: pre;">{{'Front_Page_Title' | translate}}</h3>
+                <p style="white-space: pre;">{{'Front_Page_Text' | translate}} </p>
+            </div>
+        
+    </div>
+    <div class="container" id="projects">
+        <div class="row">
+            <h3>{{'GerealiseerdeAanbestedingen' | translate}}</h3>
+        </div>
+        <div class="row row-centered">
+            <!-- PROJECTS-->
+            <div class="col-md-4 col-sm-4 col-centered col-xs-6" ng-repeat="project in OngoingAndCompletedProjects">
+                <div class="project">
+                    <div class="img-project">
+                        <!--<img src="img/RaboExterior_pdf.jpg" alt="{{project.name}}" class="projectimage">-->
+                        <img ng-src="{{GetImageAddress(project.photo)}}" alt="{{proj.name}}" class="projectimage" />
+                    </div>
+                    <div>
+                        <h3>{{project.name}}</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- / PROJECTS-->
+        </div>
+    </div>
+</div>
+<!-------------   / lets rock -->
+
+<!-- ------------------------------------ footer ---------------------------------- -->
+<footer>
+    <div class="container" id="footer">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12" id="contact">
+                <h3>{{'Contact'|translate}}</h3>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p>{{'contact_address_1' | translate}}</p>
+                    <p>{{'contact_address_2' | translate}}</p>
+                    <p>{{'contact_address_3' | translate}}</p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p><span>T</span> {{'contact_T' | translate}}</p>
+                    <!--<p><span>F</span>{{'contact_F' | translate}}</p>-->
+                    <p><span>E</span> {{'contact_E' | translate}}</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12" id="partners">
+                <h3>{{'Onze Partners' | translate}}</h3>
+                <div class="col-md-2 col-sm-3 col-xs-6" style="max-width:16vw;">
+                    <a href="{{'contact_link_partner_1' | translate}}" target="_blank"><img src="Scripts/SPA/img/LOGO1.jpg" alt="partner logo" class="img-responsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6" style="max-width:16vw;">
+                    <a href="{{'contact_link_partner_2' | translate}}" target="_blank"><img src="Scripts/SPA/img/logo2.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6" style="max-width:16vw;">
+                    <a href="{{'contact_link_partner_3' | translate}}" target="_blank"><img src="Scripts/SPA/img/LOGO3.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6" style="max-width:16vw;">
+                    <a href="{{'contact_link_partner_4' | translate}}" target="_blank"><img src="Scripts/SPA/img/LOGO4.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6" style="max-width:16vw;">
+                    <a href="{{'contact_link_partner_5' | translate}}" target="_blank"><img src="Scripts/SPA/img/LOGO5.jpg" alt="partner logo" class="img-responsive">
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-6" style="max-width:16vw;">
+                    <a href="{{'contact_link_partner_6' | translate}}" target="_blank"><img src="Scripts/SPA/img/LOGO6.jpg" alt="partner logo" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-low">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="{{'sitemap_link' | translate}}" target="_blank">{{'Sitemap' | translate}}</a>
+                </li>
+                <li>
+                    <a href="{{'privacy_link' | translate}}" target="_blank">{{'Privacy' | translate}}</a>
+                </li>
+                <li>
+                    <a href="{{'disclaimer_link' | translate}}" target="_blank">{{'Disclaimer' | translate}}</a>
+                </li>
+                <li>
+                    <a href="{{'terms_link' | translate}}" target="_blank">{{'Algemene voorwaarden' | translate}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- ------------------------------------ / footer ---------------------------------- -->
+
+<!-- ------------------------------------ login ---------------------------------- -->
+<div ng-controller="Login_controller" ng-show="rootScope_showlogin_ALL" data-ng-init="init()" class="modal fade in" id="login-btn" tabindex="-1" role="dialog" aria-labelledby="login-modal" style="display: block;">
+    <div class="modal-dialog modal-sm" role="document" >
+        <div class="modal-content">
+            <div class="modal-body" ng-show="rootScope_showlogin">
+                <h3>Login</h3>
+                <form id="loginform">
+                    <div class="form-group form-group-email">
+                        <label for="loginemail">{{'username' | translate}}</label>
+                        <input type="text" class="form-control" id="loginemail" placeholder="{{'username' | translate}}" data-ng-model="loginData.userName" required autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">{{'pass' | translate}}</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="{{'pass' | translate}}" data-ng-model="loginData.password" required>
+                    </div>
+                    <button type="submit" class="btn" data-ng-click="login()">{{'Login' | translate}}</button>
+                    <div data-ng-hide="message == ''" class="alert alert-danger">
+                        {{message}}
+                    </div>
+                </form>
+                <a style="cursor:pointer" id="lostpassword"  ng-click="showForgottenPasswordDialog()">{{'Password forgotten' | translate}}</a>
+            </div>
+            <div class="modal-body" ng-show="rootScope_showForgottenPassword" data-ng-init="init()" >
+                <h3>{{'Password forgotten' | translate}}</h3>
+                <form id="loginform-forgotten">
+                    <div class="form-group form-group-email">
+                        <label for="loginemail">{{'Enter your username or password' | translate}}</label>
+                        <input type="text" class="form-control" id="loginemail" placeholder="{{'Enter your username or password' | translate}}" data-ng-model="usernameOrEmail" required autofocus>
+                    </div>
+
+                    <button type="submit" class="btn" data-ng-click="sendLinkForForgottenPassword(usernameOrEmail)">{{'Send me the link' | translate}}</button>
+
+                    <div data-ng-hide="rootScope_showForgottenPasswordMessage == ''" class="alert alert-danger">
+                        {{rootScope_showForgottenPasswordMessage}}
+                    </div>
+                    <button type="button" class="close btn-remove" data-dismiss="modal" aria-label="Close" ng-click="hideForgottenPasswordDialog()">{{'close window' | translate}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------ / login ---------------------------------- -->
+
+<!-- ------------------------------------ forgotten password ---------------------------------- 
+<div ng-controller="Login_controller" ng-show="rootScope_showForgottenPassword" data-ng-init="init()" class="modal fade in" id="login-forgottenbtn" tabindex="-1" role="dialog" aria-labelledby="login-modal" style="display: block;">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>{{'Password forgotten' | translate}}</h3>
+                <form id="loginform-forgotten">
+                <div class="form-group form-group-email">
+                    <label for="loginemail">{{'Enter your username or password' | translate}}</label>
+                    <input type="text" class="form-control" id="loginemail" placeholder="{{'Enter your username or password' | translate}}" data-ng-model="usernameOrEmail" required autofocus>
+                </div>
+ 
+                <button type="submit" class="btn" data-ng-click="sendLinkForForgottenPassword(usernameOrEmail)">{{'Send me the link' | translate}}</button>
+ 
+                <div data-ng-hide="rootScope_showForgottenPasswordMessage == ''" class="alert alert-danger">
+                    {{rootScope_showForgottenPasswordMessage}}
+                </div>
+                    <button  type="button" class="close btn-remove" data-dismiss="modal" aria-label="Close" ng-click="hideForgottenPasswordDialog()">{{'close window' | translate}}</button>
+               </form>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!-- ------------------------------------ /forgotten password ---------------------------------- -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

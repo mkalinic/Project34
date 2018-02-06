@@ -1,0 +1,38 @@
+﻿<div ng-controller="EditShowUser_controller" data-ng-init="init()" style="text-align:center">
+
+    <button ng-click="SaveAll()">{{'SAVE ALL' | translate}}</button> 
+  
+
+    <div ng-repeat="user in Users">
+        {{'ID' | translate}} <input type="hidden" ng-model="user.ID" /> <br />
+        {{'username'  | translate}} <input type="text" ng-model="user.username" /> <br />
+        {{'pass'  | translate}} <input type="text" ng-model="user.pass" /> <br />
+        {{'sex'  | translate}} <input type="text" ng-model="user.sex" /> <br />
+        {{'surname'  | translate}} <input type="text" ng-model="user.surname" /> <br />
+        {{'title'  | translate}} <input type="text" ng-model="user.title" /> <br />
+        {{'companyName'  | translate}} <input type="text" ng-model="user.companyName" /> <br />
+        {{'section'  | translate}} <input type="text" ng-model="user.section" /> <br />
+        {{'address'  | translate}} <input type="text" ng-model="user.address" /> <br />
+        {{'city'  | translate}} <input type="text" ng-model="user.city" /> <br />
+        {{'country'  | translate}} <input type="text" ng-model="user.country" /> <br />
+        {{'phone'  | translate}} <input type="text" ng-model="user.phone" /> <br />
+        {{'mobile'  | translate}} <input type="text" ng-model="user.mobile" /> <br />
+        {{'email'  | translate}} <input type="text" ng-model="user.email" /> <br />
+        {{'userType'  | translate}} <select ng-model="user.userType" >
+            <option ng-repeat="x in UserTypes">{{x}}</option>
+        </select>
+        <br />
+        {{'photo'  | translate}} <!--<input type="text" ng-model="user.photo" />--> 
+        <img ng-src="{{GetImageAddress(user.photo)}}" width="100" />
+        <button ngf-select="upload(user.photoFile, user)" ng-model="user.photoFile" ngf-multiple="false">{{'CHANGE PHOTO' | translate}}</button>
+        <br />File:
+
+        ============================================================================
+    </div>
+
+    <br />Upload Log:
+    <pre>{{log}}</pre>
+
+    <button ng-click="AddNew()">{{'ADD NEW' | translate}}</button>
+
+</div>
