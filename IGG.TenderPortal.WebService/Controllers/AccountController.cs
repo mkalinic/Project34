@@ -1,126 +1,65 @@
-﻿using System.Web.Http;
-using Microsoft.AspNet.Identity.Owin;
-using System.Net.Http;
-using System.Threading.Tasks;
-using IGG.TenderPortal.Model.Identity;
-using Microsoft.AspNet.Identity;
-using IGG.TenderPortal.Data;
-using IGG.TenderPortal.WebService.Models;
+﻿using DatabaseCommunicator;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using Tenderingportal.Authorization;
+using Tenderingportal.Models;
 
-namespace IGG.TenderPortal.WebService.Controllers
+namespace Tenderingportal.Controllers
 {
-    [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : Controller
     {
-        private ApplicationUserManager _userManager;        
-
-        public AccountController(ApplicationUserManager userManager)
-        {
-            _userManager = userManager;            
-        }
-
-        //public AccountController()
-        //{
-        //    var test1 = 1;
-        //}
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
-        //POST api/Account/Register
-        [Route("Register")]
         [HttpPost]
-        public async Task<IHttpActionResult> Register(AppUser model)
+        public ActionResult Register(FormCollection data)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-
-            IdentityResult result = await UserManager.CreateAsync(user, "Admin123.");
-
-            if (!result.Succeeded)
-            {
-                return GetErrorResult(result);
-            }
-
-            return Ok();
+            return View();
         }
 
-        [Route("Login")]
         [HttpPost]
-        public string Login(CredentialsModel data)
+        public string Login(FormCollection data)
         {
 
             //-------------- here comes username and password check and writing token to database
             // u tokenu moze da stoji i broj koji pokazuje na kom mestu pocinje username
-            string password = data.password;
-            string username = data.username;
+            string password = data["password"];
+            string username = data["username"];
 
-            ApplicationUser user = UserManager.Find(username, password);
-            if (user == null) return "invalid attempt";
+            User user = Models.User.GetByUsernameAndPassword(username, password);
+            if ( user == null) return "invalid attempt";
 
-
-            //--- then token creation
-            var userAgent = Request.Headers.GetValues("User-Agent");
-            //var referer = Request.Headers.GetValues("Referer");
-            var referer = "Referer";
-            string token = userAgent + "|" + "IGG" + "|" + referer + "|" + user.UserName;// + username;
-                                                                                                 // here put smart combination for token
+ 
+        //--- then token creation
+            var userAgent = HttpContext.Request.Headers["User-Agent"];
+            var referer = HttpContext.Request.Headers["Referer"];
+            string token = userAgent + "|"+ user.userType + "|" + referer + "|"+ user.username;// + username;
+           // here put smart combination for token
 
             string tokenEncripted = Crypting.Encrypt(token);
 
 
+            Logbook book = new Logbook();
+            book.action = Logbook.ACTION_LOGGED_IN;
+            book.userID = user.ID;
+            book.time = DateTime.Now;
+            book.projectID = null;
+            book.filename = null;
+            book.textbox = null;
+
+            book.Save();
+
+
             return tokenEncripted;
         }
+        // Logut is done simply by removing the token from web-storage on the client side, nothing to be done here
 
-        [AuthorizationAFA1(AllowedUserTypes = "IGG,CONSULTANT,CANDIDATE,CLIENT,TENDER-TEAM")]
-        public string GetTranslations()
+        [AuthorizationAFA(AllowedUserTypes = "IGG,CONSULTANT,CANDIDATE,CLIENT,TENDER-TEAM")]
+        public ActionResult GetTranslations(string lang_code)
         {
-            var ooo = "Test token";
-            //return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, ooo);
-            return ooo;
+            var ooo = Database.Query("select text, translation from Translations where lang_code = '"+ lang_code+"'");
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, ooo);
         }
 
-        private IHttpActionResult GetErrorResult(IdentityResult result)
-        {
-            if (result == null)
-            {
-                return InternalServerError();
-            }
-
-            if (!result.Succeeded)
-            {
-                if (result.Errors != null)
-                {
-                    foreach (string error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error);
-                    }
-                }
-
-                if (ModelState.IsValid)
-                {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
-                    return BadRequest();
-                }
-
-                return BadRequest(ModelState);
-            }
-
-            return null;
-        }
     }
 }

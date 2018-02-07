@@ -4,6 +4,7 @@ using AutoMapper;
 using IGG.TenderPortal.DtoModel;
 using IGG.TenderPortal.Model;
 using IGG.TenderPortal.Service;
+using IGG.TenderPortal.WebService.Models;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
@@ -14,6 +15,24 @@ namespace IGG.TenderPortal.WebService.Controllers
         public TenderController(ITenderService tenderService)
         {            
             _tenderService = tenderService;
+        }
+
+        [HttpGet]
+        [Route("Project/GetTopNForFrontPage")]
+        public IEnumerable<Project> GetTopNForFrontPage(int n)
+        {
+            var projects = new List<Project>
+            {
+                new Project
+                {
+                    clientName = "TestProject1",
+                    canUpload = true,
+                    name = "TestProjectName",
+                    status = "Status"
+                }
+            };
+
+            return projects;
         }
 
         // GET: api/Tender

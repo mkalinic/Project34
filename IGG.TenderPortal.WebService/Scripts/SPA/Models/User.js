@@ -75,6 +75,7 @@
            function (response) {
                console.log('/User/GetMyAccount/ ');
                var user = createFromResponse(response);
+               console.log('User',user, response);
                OKf(user);
            },
            function (response) {

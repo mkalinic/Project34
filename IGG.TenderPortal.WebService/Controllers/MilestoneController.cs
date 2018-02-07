@@ -1,64 +1,35 @@
-﻿using AutoMapper;
-using IGG.TenderPortal.DtoModel;
-using IGG.TenderPortal.Model;
-using IGG.TenderPortal.Service;
+﻿using IGG.TenderPortal.Model;
+using IGG.TenderPortal.WebService.Models;
+using System;
 using System.Collections.Generic;
-using System.Web.Http;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Tenderingportal.Authorization;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
-    public class MilestoneController : ApiController
+    public class MilestoneController : Controller
     {
-        private readonly IMilestoneService _milestoneService;
-        private readonly ITenderService _tenderService;
-
-        public MilestoneController(IMilestoneService milestoneService, ITenderService tenderService)
+        // GET: Milestone
+        public ActionResult Index()
         {
-            _milestoneService = milestoneService;
-            _tenderService = tenderService;
-        }
-        // GET: api/Milestone
-        public IEnumerable<MilestoneModel> Get(int tenderId)
-        {
-            var milestones = _milestoneService.GetByTenderId(tenderId);
-            return Mapper.Map<IEnumerable<Milestone>, IEnumerable<MilestoneModel>>(milestones);
+            return View();
         }
 
-        // GET: api/Milestone/5
-        public MilestoneModel Get(int id, int tenderId)
+        [HttpPost]
+        public ActionResult Delete(IGG.TenderPortal.WebService.Models.Milestone milestone)
         {
-            var milestone = _milestoneService.GetById(id, tenderId);
-            return Mapper.Map<Milestone, MilestoneModel>(milestone);
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, milestone);
+
         }
 
-        // POST: api/Milestone
-        public void Post([FromBody]MilestoneModel value, int tenderId)
+        [HttpPost]
+        [AuthorizationAFA(AllowedUserTypes = "IGG")]
+        public ActionResult Save(IGG.TenderPortal.WebService.Models.Milestone milestone)
         {
-            var milestone = Mapper.Map<MilestoneModel, Milestone>(value);
-            var tender = _tenderService.GetTenderById(tenderId);
-            milestone.Tender = tender;
-            _milestoneService.Create(milestone);
-            _milestoneService.Save();
-        }
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, milestone);
 
-        // PUT: api/Milestone/5
-        public void Put(int id, [FromBody]MilestoneModel value, int tenderId)
-        {
-            var milestone = _milestoneService.GetById(id, tenderId);
-            var tender = _tenderService.GetTenderById(tenderId);
-
-            Mapper.Map(value, milestone);
-
-            _milestoneService.Update(milestone);
-            _milestoneService.Save();
-        }
-
-        // DELETE: api/Milestone/5
-        public void Delete(int id, int tenderId)
-        {
-            var milestone =_milestoneService.GetById(id, tenderId);
-            _milestoneService.Delete(milestone);
-            _milestoneService.Save();
         }
     }
 }

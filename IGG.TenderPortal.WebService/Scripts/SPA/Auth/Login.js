@@ -25,9 +25,9 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
 
         var deferred = $q.defer();
 
-        $http.post(serviceBase + 'Account/Login', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
+        $http.post(serviceBase + 'api/Account/Login', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-            console.log(serviceBase + 'Account/Login response = ', response);
+            console.log(serviceBase + 'api/Account/Login response = ', response);
 
             localStorageService.set('authorizationData', { token: response, userName: loginData.userName });
 
