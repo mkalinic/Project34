@@ -1,4 +1,7 @@
-﻿using IGG.TenderPortal.WebService.Models;
+﻿using AutoMapper;
+using IGG.TenderPortal.Model;
+using IGG.TenderPortal.Service;
+using IGG.TenderPortal.WebService.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,6 +15,13 @@ namespace Tenderingportal.Controllers
 {
     public class ProjectController : Controller
     {
+        private readonly ITenderService _tenderService;
+
+        public ProjectController(ITenderService tenderService)
+        {
+            _tenderService = tenderService;
+        }
+
         // GET: Project
         public ActionResult Index()
         {
@@ -30,7 +40,9 @@ namespace Tenderingportal.Controllers
         [HttpGet]
         public ActionResult GetAll()
         {
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, GetDummyProjects());
+            var tenders = _tenderService.GetTenders();
+            var projects = Mapper.Map<IEnumerable<Tender>, IEnumerable<Project>>(tenders);
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, projects);
         }
 
         [HttpGet]
@@ -50,8 +62,9 @@ namespace Tenderingportal.Controllers
 
         [HttpGet]
         public ActionResult GetByID(int ID)
-        {
-            Project project = GetDummyProject();
+        {            
+            var tender = _tenderService.GetTenderById(ID);
+            var project = Mapper.Map<Tender, Project>(tender);
 
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, project);
         }
@@ -59,7 +72,13 @@ namespace Tenderingportal.Controllers
         [HttpPost]
         public ActionResult Save(Project proj)
         {
-            
+            var tender = _tenderService.GetTenderById(proj.ID);
+
+            Mapper.Map(proj, tender);
+
+            _tenderService.UpdateTender(tender);
+            _tenderService.SaveTender();
+
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, proj);
         }
 

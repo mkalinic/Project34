@@ -17,24 +17,6 @@ namespace IGG.TenderPortal.WebService.Controllers
             _tenderService = tenderService;
         }
 
-        [HttpGet]
-        [Route("Project/GetTopNForFrontPage")]
-        public IEnumerable<Project> GetTopNForFrontPage(int n)
-        {
-            var projects = new List<Project>
-            {
-                new Project
-                {
-                    clientName = "TestProject1",
-                    canUpload = true,
-                    name = "TestProjectName",
-                    status = "Status"
-                }
-            };
-
-            return projects;
-        }
-
         // GET: api/Tender
         public IEnumerable<TenderModel> Get()
         {

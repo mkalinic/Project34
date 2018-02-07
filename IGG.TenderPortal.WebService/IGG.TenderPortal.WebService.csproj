@@ -442,6 +442,8 @@
     </Compile>
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Mapping\DomainToModelMappingProfile.cs" />
+    <Compile Include="Mapping\DomainToOldModelMappingProfile.cs" />
+    <Compile Include="Mapping\OldModelToDomainMappingProfile.cs" />
     <Compile Include="Mapping\ModelToDomainMappingProfile.cs" />
     <Compile Include="Models\Checklist.cs" />
     <Compile Include="Models\ChecklistChecked.cs" />

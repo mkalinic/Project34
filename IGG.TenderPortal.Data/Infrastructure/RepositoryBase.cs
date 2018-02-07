@@ -9,7 +9,7 @@ namespace IGG.TenderPortal.Data.Infrastructure
     public abstract class RepositoryBase<T> where T : class
     {
         #region Properties
-        private PortalEntities dataContext;
+        private ApplicationDbContext dataContext;
         private readonly IDbSet<T> dbSet;
 
         protected IDbFactory DbFactory
@@ -18,7 +18,7 @@ namespace IGG.TenderPortal.Data.Infrastructure
             private set;
         }
 
-        protected PortalEntities DbContext
+        protected ApplicationDbContext DbContext
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }

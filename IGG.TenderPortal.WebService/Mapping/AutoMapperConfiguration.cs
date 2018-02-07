@@ -10,6 +10,8 @@ namespace IGG.TenderPortal.WebService.Mapping
             {
                 x.AddProfile<DomainToModelMappingProfile>();
                 x.AddProfile<ModelToDomainMappingProfile>();
+                x.AddProfile<DomainToOldModelMappingProfile>();
+                x.AddProfile<OldModelToDomainMappingProfile>();
             });
         }
     }

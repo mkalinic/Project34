@@ -37,6 +37,11 @@ namespace IGG.TenderPortal.Data
         public DbSet<TenderFileBlock> TenderFileBlock { get; set; }
         public DbSet<TenderFile> TenderFile { get; set; }
 
+        public virtual void Commit()
+        {
+            SaveChanges();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

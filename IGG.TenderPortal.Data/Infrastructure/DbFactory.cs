@@ -2,11 +2,11 @@
 {
     public class DbFactory : Disposable, IDbFactory
     {
-        PortalEntities dbContext;
+        ApplicationDbContext dbContext;
 
-        public PortalEntities Init()
+        public ApplicationDbContext Init()
         {
-            return dbContext ?? (dbContext = new PortalEntities());
+            return dbContext ?? (dbContext = new ApplicationDbContext());
         }
 
         protected override void DisposeCore()
