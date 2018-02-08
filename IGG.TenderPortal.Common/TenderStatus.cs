@@ -3,7 +3,6 @@
     public enum TenderStatus
     {
         OPEN,
-        Active,
-        Completed
+        CLOSE        
     }
 }

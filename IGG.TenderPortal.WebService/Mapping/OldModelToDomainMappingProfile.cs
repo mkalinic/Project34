@@ -27,7 +27,7 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.TimeCompleted, map => map.MapFrom(vm => vm.timeCompleted))
                .ForMember(m => m.PhotoThumbnail, map => map.MapFrom(vm => vm.photoThumbnail))
                .ForMember(m => m.TimeOpenVault, map => map.MapFrom(vm => vm.timeOpenVault))
-               .ForMember(m => m.Milestones, opt => opt.Ignore())
+               .ForMember(m => m.UserTenders, map => map.MapFrom(vm => vm.UsersProjects))
                .ForMember(m => m.CheckLists, opt => opt.Ignore())
                .ForMember(m => m.TenderFileBlocks, opt => opt.Ignore());
 
@@ -39,6 +39,21 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.VisibleFor, map => map.MapFrom(vm => vm.visibleFor))
                .ForMember(m => m.NotificationTo, map => map.MapFrom(vm => vm.notificationTo))
                .ForMember(m => m.NotificationDate, map => map.MapFrom(vm => vm.notificationDate));
+
+            CreateMap<OldModels.User, User>()
+                .ForMember(m => m.UserId, map => map.MapFrom(vm => vm.ID));
+
+            CreateMap<OldModels.UsersProject, UserTender>()
+                .ForMember(m => m.UserTenderId, map => map.MapFrom(vm => vm.ID))
+                .ForMember(m => m.BeganWithProject, map => map.MapFrom(vm => vm.beganWithProject))
+                .ForMember(m => m.EndedWithProject, map => map.MapFrom(vm => vm.endedWithProject))
+                .ForMember(m => m.UserType, map => map.MapFrom(vm => vm.userType))
+                .ForMember(m => m.StatusOnProject, map => map.MapFrom(vm => vm.statusOnProject))
+                .ForMember(m => m.Tender, opt => opt.Ignore())
+                .ForMember(m => m.User, opt => opt.Ignore())
+                .ForMember(m => m.Messages, opt => opt.Ignore())
+                .ForMember(m => m.UserFiles, opt => opt.Ignore())
+                .ForMember(m => m.UserNotifications, opt => opt.Ignore());
         }
     }
 }

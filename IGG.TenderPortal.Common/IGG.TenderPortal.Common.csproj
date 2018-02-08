@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserType.cs" />
+    <Compile Include="ClientType.cs" />
     <Compile Include="Phase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TenderStatus.cs" />

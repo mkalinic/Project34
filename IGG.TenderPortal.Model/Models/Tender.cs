@@ -21,6 +21,7 @@ namespace IGG.TenderPortal.Model
         public virtual IList<Milestone> Milestones { get; set; }
         public virtual IList<TenderFileBlock> TenderFileBlocks { get; set; }
         public virtual IList<CheckList> CheckLists { get; set; }
+        public virtual IList<UserTender> UserTenders { get; set; }
 
         public string Place { get; set; }
         public int ClientCreated { get; set; }

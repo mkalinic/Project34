@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using IGG.TenderPortal.Common;
 using IGG.TenderPortal.Model;
 using IGG.TenderPortal.Service;
 using IGG.TenderPortal.WebService.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,14 +15,17 @@ namespace Tenderingportal.Controllers
 {
     public class ProjectController : Controller
     {
+        private readonly IUserTenderService _userTenderService;
+        private readonly IUserService _userService;
         private readonly ITenderService _tenderService;
 
-        public ProjectController(ITenderService tenderService)
+        public ProjectController(ITenderService tenderService, IUserTenderService userTenderService, IUserService userService)
         {
+            _userTenderService = userTenderService;
+            _userService = userService;
             _tenderService = tenderService;
         }
 
-        // GET: Project
         public ActionResult Index()
         {
             return View();
@@ -31,33 +34,42 @@ namespace Tenderingportal.Controllers
         [HttpGet]
         public ActionResult GetTopN(int n)
         {
+            var tenders = _tenderService.GetTenders()
+                .Where(t => t.ViewOnHomepage)
+                .OrderByDescending(t => t.TenderId)
+                .Take(n);
 
-
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, GetDummyProjects());
-
+            return ReturnProjects(tenders);
         }
 
         [HttpGet]
         public ActionResult GetAll()
         {
             var tenders = _tenderService.GetTenders();
-            var projects = Mapper.Map<IEnumerable<Tender>, IEnumerable<Project>>(tenders);
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, projects);
+            return ReturnProjects(tenders);
         }
 
         [HttpGet]
         public ActionResult GetTopNForUser(int n, int userID)
         {
+            var tenders = _userTenderService.GetUserTenders()
+                .Where(ut => ut.User.UserId == userID)
+                .Select(ut => ut.Tender)
+                .OrderByDescending(t => t.TenderId)
+                .Take(n);
 
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, GetDummyProjects());
-
+            return ReturnProjects(tenders);
         }
 
         [HttpGet]
         public ActionResult GetTopNForFrontPage(int n)
-        {           
-            return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, GetDummyProjects());
+        {
+            var tenders = _tenderService.GetTenders()
+                .Where(t => t.ViewOnHomepage)
+                .OrderByDescending(t => t.TenderId)
+                .Take(n);
 
+            return ReturnProjects(tenders);
         }
 
         [HttpGet]
@@ -101,21 +113,35 @@ namespace Tenderingportal.Controllers
         [HttpPost]
         public async Task<ActionResult> Close(Project proj)
         {
+            var tender = _tenderService.GetTenderById(proj.ID);
+            tender.Status = TenderStatus.CLOSE; 
+            _tenderService.UpdateTender(tender);
+            _tenderService.SaveTender();
+
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, proj);
         }
 
         [HttpPost]
         public ActionResult Delete(Project proj)
         {
+            var tender = _tenderService.GetTenderById(proj.ID);
+            _tenderService.RemoveTender(tender);
+
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, proj);
         }
 
 
         [HttpGet]
-        public ActionResult Search(String keywords)
+        public ActionResult Search(string keywords)
         {
-            List<Project> projects = GetDummyProjects();
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, projects);
+            var tenders = _tenderService.GetTenders()
+                .Where(t => t.ProjectName.Contains(keywords)
+                    || t.Client.Contains(keywords)
+                    || t.Description.Contains(keywords)
+                    || t.Place.Contains(keywords))
+                .OrderByDescending(t => t.TenderId);
+
+            return ReturnProjects(tenders);
         }
 
 
@@ -172,9 +198,20 @@ namespace Tenderingportal.Controllers
 
 
         [HttpPost]
-        public async Task<JsonResult> SendNewUserInProjectMail(UsersProject usersProject, int projectID, string language = "nl")
+        public async Task<JsonResult> SendNewUserInProjectMail(UsersProject value, int projectID, string language = "nl")
         {
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, usersProject);
+            var user = _userService.GetUserById(value.IDuser);
+            var tender = _tenderService.GetTenderById(projectID);
+
+            var userTender = Mapper.Map<UsersProject, UserTender>(value);
+
+            userTender.User = user;
+            userTender.Tender = tender;
+
+            _userTenderService.CreateUserTender(userTender);
+            _userTenderService.SaveUserTender();
+
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, value);
         }
 
 
@@ -235,21 +272,10 @@ namespace Tenderingportal.Controllers
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, projf);
         }
 
-        private List<Project> GetDummyProjects()
+        private static ActionResult ReturnProjects(IEnumerable<Tender> tenders)
         {
-            return new List<Project>
-            {
-                GetDummyProject(),
-            };
-        }
-
-        private Project GetDummyProject()
-        {
-            return new Project
-            {
-                name = "Dummy",
-                status = "Status"
-            };
+            var projects = Mapper.Map<IEnumerable<Tender>, IEnumerable<Project>>(tenders);
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, projects);
         }
     }
 }

@@ -37,6 +37,20 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.notificationTo, opt => opt.Ignore())
                .ForMember(m => m.notificationDate, opt => opt.Ignore())
                .ForMember(m => m.visibleFor, opt => opt.Ignore());
+
+            CreateMap<User, OldModels.User>()
+                .ForMember(m => m.ID, map => map.MapFrom(vm => vm.UserId));
+
+            CreateMap<UserTender, OldModels.UsersProject>()
+                .ForMember(m => m.ID, map => map.MapFrom(vm => vm.UserTenderId))
+                .ForMember(m => m.beganWithProject, map => map.MapFrom(vm => vm.BeganWithProject))
+                .ForMember(m => m.endedWithProject, map => map.MapFrom(vm => vm.EndedWithProject))
+                .ForMember(m => m.userType, map => map.MapFrom(vm => vm.UserType))
+                .ForMember(m => m.statusOnProject, map => map.MapFrom(vm => vm.StatusOnProject))
+                .ForMember(m => m.Project, opt => opt.Ignore())
+                .ForMember(m => m.User, opt => opt.Ignore())
+                .ForMember(m => m.IDproject, map => map.MapFrom(vm => vm.Tender.TenderId))
+                .ForMember(m => m.IDuser, map => map.MapFrom(vm => vm.User.UserId));
         }
     }
 }

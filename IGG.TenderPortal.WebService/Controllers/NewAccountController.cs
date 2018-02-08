@@ -72,7 +72,6 @@ namespace IGG.TenderPortal.WebService.Controllers
             ApplicationUser user = UserManager.Find(username, password);
             if (user == null) return "invalid attempt";
 
-
             //--- then token creation
             var userAgent = Request.Headers.GetValues("User-Agent");
             //var referer = Request.Headers.GetValues("Referer");
