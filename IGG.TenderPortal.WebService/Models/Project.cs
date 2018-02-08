@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace IGG.TenderPortal.WebService.Models
 {
@@ -36,7 +37,7 @@ namespace IGG.TenderPortal.WebService.Models
         public string photoThumbnail { get; set; }
         public DateTime? timeOpenVault { get; set; }
 
-        /*
+        
         //--- optional, Fetch if needed
         public List<TextBlock> TextBlocks { get; set; } = null;
         //--- optional, Fetch if needed
@@ -51,7 +52,7 @@ namespace IGG.TenderPortal.WebService.Models
         public List<Notification> Notifications { get; set; } = null;
         //--- optional, Fetch if needed
         public List<ProjectFile> ProjectFiles { get; set; } = null;
-        */
+        
         /// <summary>
         /// Client that created this
         /// </summary>

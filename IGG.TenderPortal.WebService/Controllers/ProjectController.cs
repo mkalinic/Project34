@@ -72,14 +72,30 @@ namespace Tenderingportal.Controllers
         [HttpPost]
         public ActionResult Save(Project proj)
         {
+            if(proj.ID <= 0)
+                CreateTender(proj);
+            else
+                UpdateTender(proj);
+
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, proj);
+        }
+
+        private void CreateTender(Project proj)
+        {
+            var tender = Mapper.Map<Project, Tender>(proj);
+
+            _tenderService.CreateTender(tender);
+            _tenderService.SaveTender();
+        }
+
+        private void UpdateTender(Project proj)
+        {
             var tender = _tenderService.GetTenderById(proj.ID);
 
             Mapper.Map(proj, tender);
 
             _tenderService.UpdateTender(tender);
             _tenderService.SaveTender();
-
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, proj);
         }
 
         [HttpPost]

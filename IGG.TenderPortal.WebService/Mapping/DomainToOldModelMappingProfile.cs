@@ -32,7 +32,7 @@ namespace IGG.TenderPortal.WebService.Mapping
             CreateMap<Milestone, OldModels.Milestone>()
                .ForMember(m => m.ID, map => map.MapFrom(vm => vm.MilestoneId))
                .ForMember(m => m.IDproject, map => map.MapFrom(vm => vm.Tender.TenderId))
-               .ForMember(m => m.name, map => map.MapFrom(vm => vm.MilestoneType))
+               .ForMember(m => m.name, map => map.MapFrom(vm => vm.Name))
                .ForMember(m => m.time, map => map.MapFrom(vm => vm.WillBeAt))
                .ForMember(m => m.notificationTo, opt => opt.Ignore())
                .ForMember(m => m.notificationDate, opt => opt.Ignore())

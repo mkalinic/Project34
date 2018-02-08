@@ -30,6 +30,15 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.Milestones, opt => opt.Ignore())
                .ForMember(m => m.CheckLists, opt => opt.Ignore())
                .ForMember(m => m.TenderFileBlocks, opt => opt.Ignore());
+
+            CreateMap<OldModels.Milestone, Milestone>()
+               .ForMember(m => m.MilestoneId, map => map.MapFrom(vm => vm.ID))
+               .ForMember(m => m.Tender, opt => opt.Ignore())
+               .ForMember(m => m.Name, map => map.MapFrom(vm => vm.name))
+               .ForMember(m => m.WillBeAt, map => map.MapFrom(vm => vm.time))
+               .ForMember(m => m.VisibleFor, map => map.MapFrom(vm => vm.visibleFor))
+               .ForMember(m => m.NotificationTo, map => map.MapFrom(vm => vm.notificationTo))
+               .ForMember(m => m.NotificationDate, map => map.MapFrom(vm => vm.notificationDate));
         }
     }
 }
