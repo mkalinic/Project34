@@ -7,26 +7,31 @@ using System;
 using AutoMapper;
 using IGG.TenderPortal.Model;
 using Microsoft.AspNet.Identity;
+using System.Linq;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUserService _userService;
         private ApplicationUserManager _userManager;
 
-        public UserController(IUserService userService, ApplicationUserManager userManager)
+        private readonly IUserTenderService _userTenderService;
+        private readonly IUserService _userService;
+        private readonly ITenderService _tenderService;
+
+        public UserController(ITenderService tenderService, IUserTenderService userTenderService, IUserService userService)
         {
+            _userTenderService = userTenderService;
             _userService = userService;
-            _userManager = userManager;
+            _tenderService = tenderService;
         }
 
         [HttpGet]        
         public ActionResult GetById(int id)
-        {
-            Models.User user = GetDummyUser();
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, user);
-
+        {            
+            var user = _userService.GetUserById(id);            
+            var userModel = Mapper.Map<Model.User, Models.User>(user);
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, userModel);
         }
 
         [HttpPost]
@@ -38,36 +43,48 @@ namespace IGG.TenderPortal.WebService.Controllers
         [HttpGet]
         public ActionResult Get(int page, int pagesize)
         {
-            List<Models.User> users = GetDummyUsers();
-
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, users);
+            var users = _userService.GetUsers()
+                .Skip((page - 1) * pagesize)
+                .Take(pagesize);
+            var modelUsers = Mapper.Map<IEnumerable<Model.User>, IEnumerable<Models.User>>(users);
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, modelUsers);
         }
 
         [HttpGet]        
         public ActionResult GetSorted(int page, int pagesize, string column, bool desc)
         {
-            List<Models.User> users = GetDummyUsers();
+            //TODO: implement order by column and desc
+            var users = _userService.GetUsers().OrderByDescending( x => x.Name)
+                .Skip((page - 1) * pagesize)
+                .Take(pagesize);
 
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, users);
-
+            var modelUsers = Mapper.Map<IEnumerable<Model.User>, IEnumerable<Models.User>>(users);
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, modelUsers);
         }
 
         [HttpGet]
-        public ActionResult Delete(int UserID)
-        {            
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, UserID);
+        public ActionResult Delete(int userId)
+        {
+            var user = _userService.GetUserById(userId);
+
+            _userService.RemoveUser(user);
+            _userService.SaveUser();
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, userId);
         }
 
         [HttpGet]
         public ActionResult GetByIdWithPass(int id)
         {
-            var user = GetDummyUser();
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, user);
+            //TODO
+            var user = _userService.GetUserById(id);
+            var userModel = Mapper.Map<Model.User, Models.User>(user);
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, userModel);
         }
 
         [HttpGet]
         public ActionResult GetMyAccount()
         {
+            //TODO
             //var userId = User.Identity.GetUserId();
             //var applicationUser = _userManager.FindByIdAsync(userId).GetAwaiter().GetResult();
 
@@ -80,6 +97,7 @@ namespace IGG.TenderPortal.WebService.Controllers
         [HttpPost]
         public ActionResult SaveMyAccount(Models.User value)
         {
+            //TODO
             if (value.ID <= 0)
                 CreateUser(value);
             else
@@ -128,6 +146,11 @@ namespace IGG.TenderPortal.WebService.Controllers
         [HttpPost]        
         public ActionResult SaveAll(List<Models.User> list)
         {
+            foreach(var userModel in list)
+            {
+                UpdateUser(userModel);
+            };
+
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, list);
         }
 
@@ -155,20 +178,45 @@ namespace IGG.TenderPortal.WebService.Controllers
 
         public ActionResult DeleteUserProject(Models.UsersProject userProject)
         {
+            var userTender = _userTenderService.GetUserTenderById(userProject.ID);
+
+            _userTenderService.RemoveUserTender(userTender);
+            _userTenderService.SaveUserTender();
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, userProject);
         }
         
-        public ActionResult SaveUserProject(Models.UsersProject userProject)
+        public ActionResult SaveUserProject(Models.UsersProject value)
         {
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, userProject);
+            var user = _userService.GetUserById(value.IDuser);
+            var tender = _tenderService.GetTenderById(value.IDproject);
+
+            var userTender = Mapper.Map<UsersProject, UserTender>(value);
+
+            userTender.User = user;
+            userTender.Tender = tender;
+
+            _userTenderService.CreateUserTender(userTender);
+            _userTenderService.SaveUserTender();
+
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, value);
         }
 
         public ActionResult AddIggerToProject(int IggerID, int ProjectID)
         {
-            UsersProject userProject = new UsersProject();
-            userProject.IDproject = ProjectID;
-            userProject.IDuser = IggerID;
-            userProject.userType = "IGG";
+            var user = _userService.GetUserById(IggerID);
+            var tender = _tenderService.GetTenderById(ProjectID);
+
+            var userTender = new UserTender {
+                UserType = Common.ClientType.IGG
+            };
+
+            userTender.User = user;
+            userTender.Tender = tender;
+
+            _userTenderService.CreateUserTender(userTender);
+            _userTenderService.SaveUserTender();
+
+            UsersProject userProject = Mapper.Map<UserTender, UsersProject>(userTender);
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, userProject);
         }
         
@@ -179,24 +227,21 @@ namespace IGG.TenderPortal.WebService.Controllers
 
         public ActionResult GetCount()
         {
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, 10);
+            var count = _userService.GetUsers().Count();
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, count);
         }
 
         public ActionResult Search(string keyword)
         {
+            var users = _userService.GetUsers()
+                .Where(t => t.Name.Contains(keyword)
+                    || t.Surname.Contains(keyword)
+                    || t.CompanyName.Contains(keyword))
+                .OrderByDescending(t => t.UserId);
+
+            var projects = Mapper.Map<IEnumerable<Model.User>, IEnumerable<Models.User>>(users);
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, GetDummyUser());
-        }        
-
-        private static List<Models.User> GetDummyUsers()
-        {
-            return new List<Models.User>
-            {
-                GetDummyUser(),
-                GetDummyUser(),
-                GetDummyUser()
-
-            };
-        }
+        }                
 
         private static Models.User GetDummyUser()
         {
