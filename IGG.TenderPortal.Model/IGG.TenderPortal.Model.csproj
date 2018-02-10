@@ -58,11 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Identity\AppUser.cs" />
+    <Compile Include="Models\CheckedItem.cs" />
     <Compile Include="Models\CheckListItem.cs" />
-    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Logging.cs" />
     <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Tender.cs" />
     <Compile Include="Models\Milestone.cs" />
     <Compile Include="Models\CheckList.cs" />

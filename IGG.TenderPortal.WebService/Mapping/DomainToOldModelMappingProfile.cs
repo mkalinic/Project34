@@ -51,6 +51,11 @@ namespace IGG.TenderPortal.WebService.Mapping
                 .ForMember(m => m.User, opt => opt.Ignore())
                 .ForMember(m => m.IDproject, map => map.MapFrom(vm => vm.Tender.TenderId))
                 .ForMember(m => m.IDuser, map => map.MapFrom(vm => vm.User.UserId));
+
+            CreateMap<CheckListItem, OldModels.Checklist>()
+                .ForMember(m => m.ID, map => map.MapFrom(vm => vm.CheckListItemId))
+                .ForMember(m => m.projectID, map => map.MapFrom(vm => vm.Tender.TenderId))
+                .ForMember(m => m.item, map => map.MapFrom(vm => vm.Value));
         }
     }
 }

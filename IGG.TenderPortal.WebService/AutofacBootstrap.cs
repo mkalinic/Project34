@@ -17,11 +17,11 @@ namespace IGG.TenderPortal.WebService
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
 
             // Repositories
-            builder.RegisterAssemblyTypes(typeof(EmployeeRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(TenderRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
             // Services
-            builder.RegisterAssemblyTypes(typeof(EmployeeService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(TenderService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
 

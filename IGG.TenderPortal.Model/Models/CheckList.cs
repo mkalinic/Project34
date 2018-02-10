@@ -6,6 +6,6 @@ namespace IGG.TenderPortal.Model
     {
         public int ChecklistId { get; set; }
         public Tender Tender { get; set; }
-        public virtual IList<CheckListItem> Items { get; set; }
+        //public virtual IList<CheckListItem> Items { get; set; }
     }
 }

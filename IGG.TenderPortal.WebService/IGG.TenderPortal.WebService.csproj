@@ -426,7 +426,6 @@
     <Compile Include="Controllers\LogbookController.cs" />
     <Compile Include="Controllers\MilestoneController.cs" />
     <Compile Include="Controllers\NewAccountController.cs" />
-    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\NewMilestoneController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\PostController.cs" />

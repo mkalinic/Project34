@@ -27,8 +27,6 @@ namespace IGG.TenderPortal.Data
             : base("ApplicationIdentity", throwIfV1Schema: false)
         {
         }
-        public DbSet<Employee> Employee { get; set; }
-        public DbSet<Person> Person { get; set; }
         public DbSet<Tender> Tender { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserTender> UserTender { get; set; }
@@ -36,6 +34,8 @@ namespace IGG.TenderPortal.Data
         public DbSet<Milestone> Milestone { get; set; }
         public DbSet<TenderFileBlock> TenderFileBlock { get; set; }
         public DbSet<TenderFile> TenderFile { get; set; }
+        public DbSet<CheckListItem> CheckListItem { get; set; }
+        public DbSet<CheckedItem> CheckedItem { get; set; }
 
         public virtual void Commit()
         {
@@ -45,8 +45,6 @@ namespace IGG.TenderPortal.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.Add(new EmployeeConfiguration());
-            modelBuilder.Configurations.Add(new PersonConfiguration());
         }
     }
 }

@@ -40,14 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckListItemServiceChecked.cs" />
     <Compile Include="MilestoneService.cs" />
     <Compile Include="TenderFileBlockService.cs" />
     <Compile Include="TenderFileService.cs" />
+    <Compile Include="CheckListItemService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="TenderService.cs" />
     <Compile Include="UserTenderService.cs" />
     <Compile Include="MessageService.cs" />
-    <Compile Include="EmployeeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

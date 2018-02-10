@@ -9,8 +9,7 @@ namespace IGG.TenderPortal.Data
     public class PortalEntities : DbContext
     {
         public PortalEntities() : base("PortalEntities") { }
-        public DbSet<Employee> Employee { get; set; }
-        public DbSet<Person> Person { get; set; }
+
         public DbSet<Tender> Tender { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserTender> UserTender { get; set; }
@@ -27,8 +26,6 @@ namespace IGG.TenderPortal.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Configurations.Add(new EmployeeConfiguration());
-            modelBuilder.Configurations.Add(new PersonConfiguration());
         }
     }
 }
