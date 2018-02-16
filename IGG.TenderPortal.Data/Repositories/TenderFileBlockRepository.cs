@@ -17,6 +17,7 @@ namespace IGG.TenderPortal.Data.Repositories
             return DbContext
                 .TenderFileBlock
                 .Include("Tender")
+                .Where(tf => tf.TenderFileBlockId == id)
                 .SingleOrDefault(e => e.Tender.TenderId == tenderId);            
         }
 

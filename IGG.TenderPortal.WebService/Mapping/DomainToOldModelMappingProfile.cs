@@ -27,7 +27,8 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.timeCreated, map => map.MapFrom(vm => vm.TimeCreated))
                .ForMember(m => m.timeCompleted, map => map.MapFrom(vm => vm.TimeCompleted))
                .ForMember(m => m.photoThumbnail, map => map.MapFrom(vm => vm.PhotoThumbnail))
-               .ForMember(m => m.timeOpenVault, map => map.MapFrom(vm => vm.TimeOpenVault));
+               .ForMember(m => m.timeOpenVault, map => map.MapFrom(vm => vm.TimeOpenVault))
+               .ForMember(m => m.TextBlocks, map => map.MapFrom(vm => vm.TenderFileBlocks));
 
             CreateMap<Milestone, OldModels.Milestone>()
                .ForMember(m => m.ID, map => map.MapFrom(vm => vm.MilestoneId))
@@ -56,6 +57,22 @@ namespace IGG.TenderPortal.WebService.Mapping
                 .ForMember(m => m.ID, map => map.MapFrom(vm => vm.CheckListItemId))
                 .ForMember(m => m.projectID, map => map.MapFrom(vm => vm.Tender.TenderId))
                 .ForMember(m => m.item, map => map.MapFrom(vm => vm.Value));
+
+            CreateMap<TenderFileBlock, OldModels.TextBlock>()
+                 .ForMember(m => m.ID, map => map.MapFrom(vm => vm.TenderFileBlockId))
+                 .ForMember(m => m.IDproject, map => map.MapFrom(vm => vm.Tender.TenderId))
+                 .ForMember(m => m.text, map => map.MapFrom(vm => vm.Text))
+                 .ForMember(m => m.time, map => map.MapFrom(vm => vm.Time))
+                 .ForMember(m => m.Files, map => map.MapFrom(vm => vm.TenderFiles));
+
+            CreateMap<TenderFile, OldModels.TextBlockFile>()
+                 .ForMember(m => m.ID, map => map.MapFrom(vm => vm.TenderFileId))
+                 .ForMember(m => m.IDTextBlock, map => map.MapFrom(vm => vm.TenderFileBlock.TenderFileBlockId))
+                 .ForMember(m => m.size, map => map.MapFrom(vm => vm.Size))
+                 .ForMember(m => m.file, map => map.MapFrom(vm => vm.LocationPath))
+                 .ForMember(m => m.displayName, map => map.MapFrom(vm => vm.DisplayName))
+                 .ForMember(m => m.dateModified, map => map.MapFrom(vm => vm.DateModified))
+                 .ForMember(m => m.dateUploaded, map => map.MapFrom(vm => vm.DateUploaded));
         }
     }
 }

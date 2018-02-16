@@ -58,7 +58,24 @@ namespace IGG.TenderPortal.WebService.Mapping
             CreateMap<OldModels.Checklist, CheckListItem>()
                  .ForMember(m => m.CheckListItemId, map => map.MapFrom(vm => vm.ID))
                  .ForMember(m => m.Tender, opt => opt.Ignore())
-                 .ForMember(m => m.Value, map => map.MapFrom(vm => vm.item));                 ;
+                 .ForMember(m => m.Value, map => map.MapFrom(vm => vm.item));
+
+            CreateMap<OldModels.TextBlock, TenderFileBlock>()
+                 .ForMember(m => m.TenderFileBlockId, map => map.MapFrom(vm => vm.ID))
+                 .ForMember(m => m.Tender, opt => opt.Ignore())
+                 .ForMember(m => m.Text, map => map.MapFrom(vm => vm.text))
+                 .ForMember(m => m.Time, map => map.MapFrom(vm => vm.time))
+                 .ForMember(m => m.TenderFiles, map => map.MapFrom(vm => vm.Files));
+
+            CreateMap<OldModels.TextBlockFile, TenderFile>()
+                 .ForMember(m => m.TenderFileBlock, map => map.MapFrom(vm => vm.ID))
+                 .ForMember(m => m.TenderFileBlock, opt => opt.Ignore())
+                 .ForMember(m => m.Size, map => map.MapFrom(vm => vm.size))
+                 .ForMember(m => m.LocationPath, map => map.MapFrom(vm => vm.file))
+                 .ForMember(m => m.DisplayName, map => map.MapFrom(vm => vm.displayName))
+                 .ForMember(m => m.DateModified, map => map.MapFrom(vm => vm.dateModified))
+                 .ForMember(m => m.DateUploaded, map => map.MapFrom(vm => vm.dateUploaded));
+
         }
     }
 }
