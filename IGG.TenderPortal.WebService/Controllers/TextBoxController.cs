@@ -10,39 +10,33 @@ namespace IGG.TenderPortal.WebService.Controllers
 {
     public class TextBoxController : Controller
     {
-        private readonly IUserTenderService _userTenderService;
-        private readonly IUserService _userService;
         private readonly ITenderService _tenderService;
         private readonly ITenderFileBlockService _tenderFileBlockService;
+        private readonly ITenderFileService _tenderFileService;
 
-        public TextBoxController(ITenderService tenderService, IUserTenderService userTenderService, IUserService userService, ITenderFileBlockService tenderFileBlockService)
-        {
-            _userTenderService = userTenderService;
-            _userService = userService;
+        public TextBoxController(ITenderService tenderService, ITenderFileBlockService tenderFileBlockService, ITenderFileService tenderFileService)
+        {            
             _tenderService = tenderService;
             _tenderFileBlockService = tenderFileBlockService;
+            _tenderFileService = tenderFileService;
         }
-
-        // GET: TextBox
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-
 
         [HttpPost]
         public ActionResult Save(TextBlock tb)
         {
-            if (tb.ID <= 0)
-                CreateTenderFileBlock(tb);
-            else
-                UpdateTenderFileBlock(tb);
+            TenderFileBlock tenderFileBlock;
 
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, tb);
+            if (tb.ID <= 0)
+                tenderFileBlock = CreateTenderFileBlock(tb);
+            else
+                tenderFileBlock = UpdateTenderFileBlock(tb);
+
+            var model = Mapper.Map<TenderFileBlock, TextBlock>(tenderFileBlock);
+
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, model);
         }
 
-        private void UpdateTenderFileBlock(TextBlock tb)
+        private TenderFileBlock UpdateTenderFileBlock(TextBlock tb)
         {
             var tenderFileBlock = _tenderFileBlockService.GetById(tb.ID, tb.IDproject);
 
@@ -50,9 +44,11 @@ namespace IGG.TenderPortal.WebService.Controllers
 
             _tenderFileBlockService.Update(tenderFileBlock);
             _tenderFileBlockService.Save();
+
+            return tenderFileBlock;
         }
 
-        private void CreateTenderFileBlock(TextBlock tb)
+        private TenderFileBlock CreateTenderFileBlock(TextBlock tb)
         {
             var tenderFileBlock = Mapper.Map<TextBlock, TenderFileBlock>(tb);
 
@@ -61,17 +57,31 @@ namespace IGG.TenderPortal.WebService.Controllers
 
             _tenderFileBlockService.Create(tenderFileBlock);
             _tenderFileBlockService.Save();
+
+            return tenderFileBlock;
         }
 
         [HttpPost]
         public ActionResult DeleteTextBoxFile(TextBlockFile tbf)
         {
+            var tenderFile = _tenderFileService.GetById(tbf.ID, tbf.IDTextBlock);
+            if (tenderFile == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, tbf);
+
+            _tenderFileService.Delete(tenderFile);
+            _tenderFileService.Save();
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, tbf);
         }
 
         [HttpPost]
         public ActionResult Delete(TextBlock tb)
         {
+            var tenderFileBlock = _tenderFileBlockService.GetById(tb.ID, tb.IDproject);
+            if(tenderFileBlock == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, tb);
+
+            _tenderFileBlockService.Delete(tenderFileBlock);
+            _tenderFileBlockService.Save();
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, tb);
         }
 
@@ -79,7 +89,7 @@ namespace IGG.TenderPortal.WebService.Controllers
         [HttpGet]
         public async Task<string> SendFileUploadedEmail(/*string fileName, */string time, string language = "nl")
         {
-            return "EMAILS_SENT_SUCESFULLY";
+            throw new NotImplementedException();
         }
     }
 }

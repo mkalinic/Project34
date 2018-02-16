@@ -29,7 +29,7 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.TimeOpenVault, map => map.MapFrom(vm => vm.timeOpenVault))
                .ForMember(m => m.UserTenders, map => map.MapFrom(vm => vm.UsersProjects))
                .ForMember(m => m.CheckLists, opt => opt.Ignore())
-               .ForMember(m => m.TenderFileBlocks, opt => opt.Ignore());
+               .ForMember(m => m.TenderFileBlocks, map => map.MapFrom(vm => vm.TextBlocks));
 
             CreateMap<OldModels.Milestone, Milestone>()
                .ForMember(m => m.MilestoneId, map => map.MapFrom(vm => vm.ID))
