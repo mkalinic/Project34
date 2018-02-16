@@ -35,9 +35,9 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.IDproject, map => map.MapFrom(vm => vm.Tender.TenderId))
                .ForMember(m => m.name, map => map.MapFrom(vm => vm.Name))
                .ForMember(m => m.time, map => map.MapFrom(vm => vm.WillBeAt))
-               .ForMember(m => m.notificationTo, opt => opt.Ignore())
-               .ForMember(m => m.notificationDate, opt => opt.Ignore())
-               .ForMember(m => m.visibleFor, opt => opt.Ignore());
+               .ForMember(m => m.visibleFor, map => map.MapFrom(vm => vm.VisibleFor))
+               .ForMember(m => m.notificationTo, map => map.MapFrom(vm => vm.NotificationTo))
+               .ForMember(m => m.notificationDate, map => map.MapFrom(vm => vm.NotificationDate));
 
             CreateMap<User, OldModels.User>()
                 .ForMember(m => m.ID, map => map.MapFrom(vm => vm.UserId));

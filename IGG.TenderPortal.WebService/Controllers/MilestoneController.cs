@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
-using IGG.TenderPortal.Model;
 using IGG.TenderPortal.Service;
 using IGG.TenderPortal.WebService.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Tenderingportal.Authorization;
 
@@ -22,41 +17,47 @@ namespace IGG.TenderPortal.WebService.Controllers
             _tenderService = tenderService;
         }
 
-        // GET: Milestone
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult Delete(Models.Milestone milestone)
+        public ActionResult Delete(Models.Milestone value)
         {
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, milestone);
+            var model = _milestoneService.GetById(value.ID, value.IDproject);
+            if (model == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, model);
 
+            _milestoneService.Delete(model);
+            _milestoneService.Save();
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, model);
         }
 
         [HttpPost]
         [AuthorizationAFA(AllowedUserTypes = "IGG")]
         public ActionResult Save(Models.Milestone value)
         {
+            Model.Milestone milestone;
+
             if (value.ID <= 0)
-                CreateMilestone(value);
+                milestone = CreateMilestone(value);
             else
-                UpdateMilestone(value);
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, value);
+                milestone = UpdateMilestone(value);
+
+            var model = Mapper.Map<Model.Milestone, Models.Milestone>(milestone);
+
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, model);
 
         }
 
-        private void CreateMilestone(Models.Milestone value)
+        private Model.Milestone CreateMilestone(Models.Milestone value)
         {
             var milestone = Mapper.Map<Models.Milestone, Model.Milestone>(value);
             var tender = _tenderService.GetTenderById(value.IDproject);
             milestone.Tender = tender;
             _milestoneService.Create(milestone);
             _milestoneService.Save();
+
+            return milestone;
         }
 
-        private void UpdateMilestone(Models.Milestone value)
+        private Model.Milestone UpdateMilestone(Models.Milestone value)
         {
             var milestone = _milestoneService.GetById(value.ID, value.IDproject);
             var tender = _tenderService.GetTenderById(value.IDproject);
@@ -65,6 +66,8 @@ namespace IGG.TenderPortal.WebService.Controllers
 
             _milestoneService.Update(milestone);
             _milestoneService.Save();
+
+            return milestone;
         }
     }
 }
