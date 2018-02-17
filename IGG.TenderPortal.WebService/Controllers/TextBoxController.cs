@@ -80,7 +80,7 @@ namespace IGG.TenderPortal.WebService.Controllers
             if(tenderFileBlock == null)
                 return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, tb);
 
-            _tenderFileBlockService.Delete(tenderFileBlock);
+            _tenderFileBlockService.Delete(tenderFileBlock);            
             _tenderFileBlockService.Save();
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, tb);
         }

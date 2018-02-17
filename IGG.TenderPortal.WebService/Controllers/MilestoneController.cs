@@ -20,13 +20,13 @@ namespace IGG.TenderPortal.WebService.Controllers
         [HttpPost]
         public ActionResult Delete(Models.Milestone value)
         {
-            var model = _milestoneService.GetById(value.ID, value.IDproject);
-            if (model == null)
-                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, model);
+            var milestone = _milestoneService.GetById(value.ID, value.IDproject);
+            if (milestone == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, milestone);
 
-            _milestoneService.Delete(model);
+            _milestoneService.Delete(milestone);
             _milestoneService.Save();
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, model);
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, value);
         }
 
         [HttpPost]

@@ -206,12 +206,17 @@ namespace Tenderingportal.Controllers
 
 
         [HttpPost]
-        public async Task<JsonResult> SendNewUserInProjectMail(UsersProject value, int projectID, string language = "nl")
+        public async Task<JsonResult> SendNewUserInProjectMail(UsersProject usersProject, int projectID, string language = "nl")
         {
-            var user = _userService.GetUserById(value.IDuser);
-            var tender = _tenderService.GetTenderById(projectID);
+            var user = _userService.GetUserById(usersProject.IDuser);
+            if (user == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, user);
 
-            var userTender = Mapper.Map<UsersProject, UserTender>(value);
+            var tender = _tenderService.GetTenderById(projectID);
+            if (tender == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, tender);
+
+            var userTender = Mapper.Map<UsersProject, UserTender>(usersProject);
 
             userTender.User = user;
             userTender.Tender = tender;
@@ -219,7 +224,9 @@ namespace Tenderingportal.Controllers
             _userTenderService.CreateUserTender(userTender);
             _userTenderService.SaveUserTender();
 
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, value);
+            var model = Mapper.Map<UserTender, UsersProject>(userTender);
+
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, model);
         }
 
 

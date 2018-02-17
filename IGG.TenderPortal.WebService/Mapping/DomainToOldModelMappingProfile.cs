@@ -28,7 +28,8 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.timeCompleted, map => map.MapFrom(vm => vm.TimeCompleted))
                .ForMember(m => m.photoThumbnail, map => map.MapFrom(vm => vm.PhotoThumbnail))
                .ForMember(m => m.timeOpenVault, map => map.MapFrom(vm => vm.TimeOpenVault))
-               .ForMember(m => m.TextBlocks, map => map.MapFrom(vm => vm.TenderFileBlocks));
+               .ForMember(m => m.TextBlocks, map => map.MapFrom(vm => vm.TenderFileBlocks))
+               .ForMember(m => m.UsersProjects, map => map.MapFrom(vm => vm.UserTenders));
 
             CreateMap<Milestone, OldModels.Milestone>()
                .ForMember(m => m.ID, map => map.MapFrom(vm => vm.MilestoneId))
@@ -49,7 +50,7 @@ namespace IGG.TenderPortal.WebService.Mapping
                 .ForMember(m => m.userType, map => map.MapFrom(vm => vm.UserType))
                 .ForMember(m => m.statusOnProject, map => map.MapFrom(vm => vm.StatusOnProject))
                 .ForMember(m => m.Project, opt => opt.Ignore())
-                .ForMember(m => m.User, opt => opt.Ignore())
+                .ForMember(m => m.User, map => map.MapFrom(vm => vm.User))
                 .ForMember(m => m.IDproject, map => map.MapFrom(vm => vm.Tender.TenderId))
                 .ForMember(m => m.IDuser, map => map.MapFrom(vm => vm.User.UserId));
 

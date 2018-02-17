@@ -21,6 +21,8 @@ namespace IGG.TenderPortal.Data.Repositories
         {
             return DbContext
                 .Tender
+                .Include("UserTenders")
+                .Include("UserTenders.User")
                 .SingleOrDefault(e => e.TenderId == tenderId);
         }
     }

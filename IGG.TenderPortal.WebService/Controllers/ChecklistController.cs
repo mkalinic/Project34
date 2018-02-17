@@ -22,11 +22,6 @@ namespace IGG.TenderPortal.WebService.Controllers
             _userService = userService;
             _tenderService = tenderService;
         }
-        // GET: Checklist
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         [HttpGet]
         public ActionResult GetForProject(int id)
@@ -40,6 +35,9 @@ namespace IGG.TenderPortal.WebService.Controllers
         public ActionResult Remove(int id)
         {
             var item = _itemService.GetCheckListItemById(id);
+            if (item == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, item);
+
             _itemService.RemoveCheckListItem(item);
             _itemService.SaveCheckListItem();
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, "OK");
@@ -49,6 +47,9 @@ namespace IGG.TenderPortal.WebService.Controllers
         public ActionResult ChangeOrder(int id, int order)
         {
             var item = _itemService.GetCheckListItemById(id);
+            if (item == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, item);
+
             item.ItemOrder = order;
             _itemService.RemoveCheckListItem(item);
             _itemService.SaveCheckListItem();
@@ -59,23 +60,29 @@ namespace IGG.TenderPortal.WebService.Controllers
         [HttpPost]
         public ActionResult Save(Checklist chlist)
         {
+            CheckListItem checklist;
             if (chlist.ID <= 0)
-                CreateUser(chlist);
+                checklist = CreateUser(chlist);
             else
-                UpdateUser(chlist);
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, "OK");
+                checklist = UpdateUser(chlist);
+
+            var model = Mapper.Map<CheckListItem, Checklist>(checklist);
+
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, model);
         }
 
-        private void CreateUser(Checklist value)
+        private CheckListItem CreateUser(Checklist value)
         {
             var item = Mapper.Map<Checklist, CheckListItem>(value);
             var tender = _tenderService.GetTenderById(value.projectID);
             item.Tender = tender;
             _itemService.CreateCheckListItem(item);
             _itemService.SaveCheckListItem();
+
+            return item;
         }
 
-        private void UpdateUser(Checklist value)
+        private CheckListItem UpdateUser(Checklist value)
         {
             var item = _itemService.GetCheckListItemById(value.ID);
 
@@ -86,6 +93,8 @@ namespace IGG.TenderPortal.WebService.Controllers
 
             _itemService.UpdateCheckListItem(item);
             _itemService.SaveCheckListItem();
+
+            return item;
         }
 
 
@@ -96,7 +105,13 @@ namespace IGG.TenderPortal.WebService.Controllers
             var checkedItem = new CheckedItem();
 
             var item = _itemService.GetCheckListItemById(chlist.ID);
+            if (item == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, item);
+
             var user = _userService.GetUserById(chlist.IDUser);
+            if (user == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, user);
+
             checkedItem.CheckListItem = item;
             checkedItem.User = user;
 
@@ -111,6 +126,9 @@ namespace IGG.TenderPortal.WebService.Controllers
         public ActionResult RemoveChecked(ChecklistChecked chlist)
         {
             var item = _checkedItemService.GetCheckedItemById(chlist.ID);
+            if (item == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, item);
+
             _checkedItemService.RemoveCheckedItem(item);
             _checkedItemService.SaveCheckedItem();
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, "OK");
