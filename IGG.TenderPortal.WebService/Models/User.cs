@@ -8,7 +8,11 @@ namespace IGG.TenderPortal.WebService.Models
         public string username { get; set; }
         public string pass { get; set; }
         public bool sex { get; set; }
+        public string initials { get; set; }
+        public string insertion { get; set; }
         public string surname { get; set; }
+        public string titleFront { get; set; }
+        public string titleRear { get; set; }
         public string title { get; set; }
         public string companyName { get; set; }
         public string section { get; set; }
@@ -22,7 +26,6 @@ namespace IGG.TenderPortal.WebService.Models
         public string photo { get; set; }
         public string status { get; set; }
         public string name { get; set; }
-        public string initials { get; set; }
         public string middleName { get; set; }
         public string postCode { get; set; }
         public DateTime? joined { get; set; }

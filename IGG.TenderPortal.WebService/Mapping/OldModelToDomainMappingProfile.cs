@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using IGG.TenderPortal.Model;
+using System.Linq;
 using OldModels = IGG.TenderPortal.WebService.Models;
 
 namespace IGG.TenderPortal.WebService.Mapping
@@ -21,7 +22,8 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.CanUpload, map => map.MapFrom(vm => vm.canUpload))
                .ForMember(m => m.Status, map => map.MapFrom(vm => vm.status))
                .ForMember(m => m.SubmissionDate, map => map.MapFrom(vm => vm.submisionDate))
-               .ForMember(m => m.Photo, opt => opt.Ignore())
+               .ForMember(m => m.Photo, map => map.MapFrom(vm => vm.photo))
+               .ForMember(m => m.PhotoThumbnail, map => map.MapFrom(vm => vm.photoThumbnail))
                .ForMember(m => m.TimeCompleted, map => map.MapFrom(vm => vm.timeCompleted))
                .ForMember(m => m.TimeCreated, map => map.MapFrom(vm => vm.timeCreated))
                .ForMember(m => m.TimeCompleted, map => map.MapFrom(vm => vm.timeCompleted))
@@ -29,7 +31,8 @@ namespace IGG.TenderPortal.WebService.Mapping
                .ForMember(m => m.TimeOpenVault, map => map.MapFrom(vm => vm.timeOpenVault))
                .ForMember(m => m.UserTenders, map => map.MapFrom(vm => vm.UsersProjects))
                .ForMember(m => m.CheckLists, opt => opt.Ignore())
-               .ForMember(m => m.TenderFileBlocks, map => map.MapFrom(vm => vm.TextBlocks));
+               .ForMember(m => m.TenderFileBlocks, map => map.MapFrom(vm => vm.TextBlocks))
+               .ForMember(m => m.Phase, map => map.MapFrom(vm => vm.curentPhase - 1));
 
             CreateMap<OldModels.Milestone, Milestone>()
                .ForMember(m => m.MilestoneId, map => map.MapFrom(vm => vm.ID))

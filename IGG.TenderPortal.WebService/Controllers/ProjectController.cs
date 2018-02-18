@@ -5,6 +5,7 @@ using IGG.TenderPortal.Service;
 using IGG.TenderPortal.WebService.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -98,7 +99,13 @@ namespace Tenderingportal.Controllers
 
         private Tender CreateTender(Project proj)
         {
-            var tender = Mapper.Map<Project, Tender>(proj);
+            var whoCreated = _userService.GetUserById(1);
+            proj.clientCreated = whoCreated.UserId;
+            proj.IGGperson = whoCreated.UserId;
+            proj.submisionDate = DateTime.Now;
+            proj.timeCreated = DateTime.Now;
+
+            var tender = Mapper.Map<Project, Tender>(proj);            
 
             _tenderService.CreateTender(tender);
             _tenderService.SaveTender();
@@ -156,7 +163,36 @@ namespace Tenderingportal.Controllers
         [HttpPost]
         public ActionResult UploadImage(HttpPostedFileBase file, int projID)
         {
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, new { name = "tempFileName", size = file.ContentLength });
+            //---- deleting previous images
+            int count = 1;
+            string tempFileName = "";
+            string path = "~/UPLOADED_IMAGES/projects/";
+            string fullFile = Server.MapPath(path + file.FileName);
+            string FullFilePath = "";
+            if (!System.IO.File.Exists(fullFile))
+            {
+                FullFilePath = fullFile;
+                tempFileName = file.FileName;
+            }
+            else
+            {
+                string fileNameOnly = Path.GetFileNameWithoutExtension(file.FileName);
+                string extension = Path.GetExtension(file.FileName);
+                FullFilePath = Server.MapPath(path + fileNameOnly + "(" + count + ")" + extension);
+                while (System.IO.File.Exists(FullFilePath))
+                {
+                    tempFileName = fileNameOnly + "(" + count + ")" + extension;
+                    FullFilePath = Server.MapPath(Path.Combine(path, tempFileName));
+                    count++;
+                }
+            }
+
+            string fileName = file.FileName;
+            fileName = fileName.Replace(" ", "_");
+            string targetPath = FullFilePath;//  folder + "/" + fileName;
+            file.SaveAs(targetPath);
+            // return "FILE_UPLOADED_SUCESFULLY";
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, new { name = tempFileName, size = file.ContentLength });
         }
 
         [HttpPost]

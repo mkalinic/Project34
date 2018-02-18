@@ -8,6 +8,7 @@ using AutoMapper;
 using IGG.TenderPortal.Model;
 using Microsoft.AspNet.Identity;
 using System.Linq;
+using System.IO;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
@@ -36,8 +37,36 @@ namespace IGG.TenderPortal.WebService.Controllers
 
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file, string username)
-        {           
-            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, new { name = "tempFileName", size = file.ContentLength });
+        {
+            int count = 1;
+            string tempFileName = "";
+            string path = "~/UPLOADED_IMAGES/users/";
+            string fullFile = Server.MapPath(path + file.FileName);
+            string FullFilePath = "";
+            if (!System.IO.File.Exists(fullFile))
+            {
+                FullFilePath = fullFile;
+                tempFileName = file.FileName;
+            }
+            else
+            {
+                string fileNameOnly = Path.GetFileNameWithoutExtension(file.FileName);
+                string extension = Path.GetExtension(file.FileName);
+                FullFilePath = Server.MapPath(path + fileNameOnly + "(" + count + ")" + extension);
+                while (System.IO.File.Exists(FullFilePath))
+                {
+                    tempFileName = fileNameOnly + "(" + count + ")" + extension;
+                    FullFilePath = Server.MapPath(Path.Combine(path, tempFileName));
+                    count++;
+                }
+            }
+
+            string fileName = file.FileName;
+            fileName = fileName.Replace(" ", "_");
+            string targetPath = FullFilePath;//  folder + "/" + fileName;
+            file.SaveAs(targetPath);
+            // return "FILE_UPLOADED_SUCESFULLY";
+            return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, new { name = tempFileName, size = file.ContentLength });
         }
 
         [HttpGet]

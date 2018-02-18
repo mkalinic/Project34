@@ -10,7 +10,7 @@ namespace IGG.TenderPortal.Model
         public string ProjectName { get; set; }
         public string Client { get; set; }
         public string Description { get; set; }
-        public byte[] Photo { get; set; }
+        public string Photo { get; set; }
         public DateTime? SubmissionDate { get; set; }
         public TenderStatus Status { get; set; }
         public Phase Phase { get; set; }

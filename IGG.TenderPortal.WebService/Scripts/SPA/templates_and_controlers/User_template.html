@@ -400,20 +400,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label for="Name">{{'name'  | translate}}</label>
-                            <input type="text" class="form-control" id="Name" ng-model="user.name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <label for="Achternaam">{{'middle_name'  | translate}} </label>
-                            <input type="text" class="form-control" id="Achternaam" ng-model="user.middleName">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <label for="Achternaam">{{'surname'  | translate}} </label>
-                            <input type="text" class="form-control" id="Achternaam" ng-model="user.surname">
+                            <label for="Sexe">{{'sex'  | translate}}</label>
+                            <select class="form-control" id="Sexe" ng-model="user.sex" ng-options="x.value as x.name for x in rootScope_sexes"></select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -424,22 +412,28 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label for="Sexe">{{'sex'  | translate}}</label>
-                            <select class="form-control" id="Sexe" ng-model="user.sex" ng-options="x.value as x.name for x in rootScope_sexes"></select>
+                            <label for="Tussenvoegsel">{{'insertion'  | translate}}</label>
+                            <input type="text" class="form-control" id="Name" ng-model="user.insertion">
                         </div>
                     </div>
-                    <div class="form-group img-group">
-                        <div class="col-sm-6">
-                            <div class="img-upload">
-                                <img ng-src="{{GetImageAddress(user.photo)}}" alt="user-img" />
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-block" ngf-select="upload(user.photoFile, user)" ng-model="user.photoFile" ngf-multiple="false">{{'CHANGE PHOTO' | translate}}</button>
-                            <br />File:
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="Achternaam">{{'surname'  | translate}} </label>
+                            <input type="text" class="form-control" id="Achternaam" ng-model="user.surname">
                         </div>
                     </div>
-      
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="TitelVoor">{{'titleFront'  | translate}} </label>
+                            <input type="text" class="form-control" id="Achternaam" ng-model="user.titleFront">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label for="TitelAchter">{{'titleRear'  | translate}} </label>
+                            <input type="text" class="form-control" id="Achternaam" ng-model="user.titleRear">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -447,7 +441,7 @@
     <div class="container tenders create">
         <div class="row tender-forms">
             <div class="row">
-                <h3>{{'Contact information' | translate}}</h3>
+                <h3>{{'contactInformation' | translate}}</h3>
             </div>
             <form class="form-horizontal">
                 <div class="col-md-6 col-md-offset-3 col-sm-offset-1 col-sm-10 col-xs-12">
@@ -459,13 +453,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <label for="Land">{{'title'  | translate}}</label>
-                            <input type="text" class="form-control" id="Land" ng-model="user.title">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <label for="Vestiging/afdeling">{{'section'  | translate}} [ Vestiging/afdeling ]</label>
+                            <label for="Vestiging/afdeling">{{'section'  | translate}}</label>
                             <input type="text" class="form-control" id="Vestiging/afdeling" ng-model="user.section" >
                         </div>
                     </div>
@@ -517,93 +505,6 @@
         </div>
     </div>
 
-<!-- ---  Loogbook  --- -->
-    <div class="container tenders create">
-        <div class="row tender-forms">
-            <div class="row">
-                <h3>{{'Loogbook' | translate}}</h3>
-            </div>
-            <div class="table-responsive col-lg-12">
-       <!--<form class="table-search">
-            <div class="form-group">
-                <label>{{'search' | translate}}</label>
-                <input type="text" class="form-control" id="table-search" ng-model="searchuserKeyword" ng-keyup="$event.keyCode == 13 ? searchUser() : null">
-            </div>
-        </form>-->
-                <div class="col-md-6">
-                    <label>{{'Project' | translate}}</label>
-                </div>
-                <div class="col-md-6">
-                    <select ng-model="selectedProjectID" ng-change="getForUsertype()">
-                        <option ng-repeat="x in Projects" value="{{x.ID}}">{{x.name}}</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <div id="datepickefirst1">
-                        <label>{{'Toegang van'|translate}}</label>
-                        <!------- datepicker --->
-                        <div class="datepicker_novi">
-                            <!------- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> --->
-                            <div class="input-group" class="form-control" datepicker-popup="{{ datePickerStart.format}}" ng-model="StartDate" is-open="datePickerStart.opened" min="datePickerStart.minDate" max="datePickerStart.maxDate" datepicker-options="datePickerStart.dateOptions" date-disabled="datePickerStart.disabled(date, mode)" ng-required="true" close-text="Close" show-weeks="false" ng-change="StartChanged()">
-                                <input type="text" value="{{rootScope_ShowDate(StartDate)}}" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar" ng-click="datePickerStart.open($event)"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <div id="datepickefirst1">
-                        <label>{{'Toegang van'|translate}}</label>
-                        <!------- datepicker --->
-                        <div class="datepicker_novi">
-                            <!------- <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre> --->
-                            <div class="input-group" class="form-control" datepicker-popup="{{datePickerEnd.format}}" ng-model="EndDate" is-open="datePickerEnd.opened" min="datePickerEnd.minDate" max="datePickerEnd.maxDate" datepicker-options="datePickerEnd.dateOptions" date-disabled="datePickerEnd.disabled(date, mode)" ng-required="true" close-text="Close" show-weeks="false" ng-change="EndChanged()">
-                                <input type="text" value="{{rootScope_ShowDate(EndDate)}}" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar" ng-click="datePickerEnd.open($event)"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-content">
-                    <table class="table table-condensed table-striped table-bordered new-project admin-page table-header">
-                        <thead>
-                            <th>{{'user' | translate}}</th>
-                            <th>{{'time' | translate}}</th>
-                            <th>{{'action' | translate}}</th>
-                            <th>{{'project' | translate}}</th>
-                            <th>{{'textbox' | translate}}</th>
-                            <th>{{'filename' | translate}}</th>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="us in logs">
-                                <td class="first-row" style="cursor:pointer" ng-click="gotoURL('/#/User/'+us.userID)">{{us.surname}} {{us.middleName}} {{us.name}}</td>
-                                <td class="date"> {{rootScope_ShowDateTime(us.time)}}</td>
-                                <td>{{us.action}}</td>
-                                <td style="cursor:pointer" ng-click="gotoURL('/#/Project/'+us.projectID)">{{us.projectName}}</td>
-                                <td>{{us.textbox}}</td>
-                                <td>{{us.filename}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="pagin">
-                    <div class="text-pagin">
-                        {{'page' | translate}} <span>{{curPage}}</span> {{'from' | translate}} <span>{{pagesCount}}</span>
-                        <a class="btn-remove" ng-click="prevPage();"> <i class="glyphicon glyphicon-chevron-left" style="cursor:pointer"></i> </a>
-                        <a class="btn-remove" ng-click="nextPage();"> <i class="glyphicon glyphicon-chevron-right" style="cursor:pointer"></i> </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-<!-- ---  / Loogbook  --- -->
-
     <div class="container tenders">
         <div class="row tender-forms">
             <div class="row">
@@ -619,7 +520,17 @@
                             </select>
                         </div>
                     </div>
-       
+                    <div class="form-group img-group">
+                        <div class="col-sm-6">
+                            <div class="img-upload">
+                                <img ng-src="{{GetImageAddress(user.photo)}}" alt="user-img" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-block" ngf-select="upload(user.photoFile, user)" ng-model="user.photoFile" ngf-multiple="false">{{'CHANGE PHOTO' | translate}}</button>
+                            <br />
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

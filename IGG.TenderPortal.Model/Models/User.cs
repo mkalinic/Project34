@@ -10,6 +10,9 @@ namespace IGG.TenderPortal.Model
         public ClientType Type { get; set; }
         public bool Sex { get; set; }
         public string Surname { get; set; }
+        public string Insertion { get; set; }        
+        public string TitleFront { get; set; }
+        public string TitleRear { get; set; }
         public string Title { get; set; }
         public string CompanyName { get; set; }
         public string Section { get; set; }
