@@ -52,11 +52,24 @@ app.run(['$rootScope', '$route', '$translate', '$filter', '$location', 'authServ
     };
 
     $rootScope.rootScope_sexes = [
-        { value: false, name: $filter('translate')('female') },
-        { value: true, name: $filter('translate')('male') }
+        { value: false, name: $filter('translate')('Female') },
+        { value: true, name: $filter('translate')('Male') }
     ];
 
-    $rootScope.rootScope_userTypes = [
+    $rootScope.rootScope_countries = [
+            "Germany",
+            "France",
+            "Nederland",
+            "United Kingdom"
+    ];
+
+    $rootScope.rootScope_titles = [
+        "Mr",
+        "Mrs",
+        "Miss"
+    ];
+
+    $rootScope.rootScope_userTypes = [            
             "CANDIDATE",
             "CLIENT",
             "CONSULTANT",
