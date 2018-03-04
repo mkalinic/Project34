@@ -9,6 +9,9 @@ using IGG.TenderPortal.Model;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.IO;
+using Microsoft.AspNet.Identity.Owin;
+using IGG.TenderPortal.Data;
+using System.Threading.Tasks;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
@@ -20,11 +23,24 @@ namespace IGG.TenderPortal.WebService.Controllers
         private readonly IUserService _userService;
         private readonly ITenderService _tenderService;
 
-        public UserController(ITenderService tenderService, IUserTenderService userTenderService, IUserService userService)
+        public UserController(ITenderService tenderService, IUserTenderService userTenderService, IUserService userService, ApplicationUserManager userManager)
         {
             _userTenderService = userTenderService;
             _userService = userService;
             _tenderService = tenderService;
+            _userManager = userManager;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         [HttpGet]        
@@ -114,10 +130,10 @@ namespace IGG.TenderPortal.WebService.Controllers
         public ActionResult GetMyAccount()
         {
             //TODO
-            //var userId = User.Identity.GetUserId();
+            var userId = User.Identity.GetUserId();
             //var applicationUser = _userManager.FindByIdAsync(userId).GetAwaiter().GetResult();
 
-            var user = _userService.GetUserById(1);
+            var user = _userService.GetUserByGuid("5b0dc357-253b-4a92-97e8-d8d49a3e7b60");
             var modelUser =  Mapper.Map<Model.User, Models.User>(user);
 
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, modelUser);
@@ -138,23 +154,42 @@ namespace IGG.TenderPortal.WebService.Controllers
         [HttpPost]        
         public ActionResult Save(Models.User value)
         {
-            if(value.ID <= 0)
-                CreateUser(value);
+            Models.User model;
+
+            if (value.ID <= 0)
+                model = CreateUser(value);
             else
-                UpdateUser(value);
+                model = UpdateUser(value);
+
+            if (model == null)
+                return JsonResponse.GetJsonResult(JsonResponse.ERROR_RESPONSE, model);
 
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, value);
         }
 
-        private void CreateUser(Models.User value)
+        private Models.User CreateUser(Models.User value)
         {
+            var applicationUser = new ApplicationUser() { UserName = value.username, Email = value.email };
+
+            IdentityResult result = UserManager.CreateAsync(applicationUser, value.pass).Result;
+
+            if (!result.Succeeded)
+            {
+                return null;
+            }
+
             var user = Mapper.Map<Models.User, Model.User>(value);
 
+            user.Guid = applicationUser.Id;
             _userService.CreateUser(user);
             _userService.SaveUser();
+
+            var model = Mapper.Map<Model.User, Models.User>(user);
+
+            return model;
         }
 
-        private void UpdateUser(Models.User value)
+        private Models.User UpdateUser(Models.User value)
         {
             var user = _userService.GetUserById(value.ID);
 
@@ -162,6 +197,10 @@ namespace IGG.TenderPortal.WebService.Controllers
 
             _userService.UpdateUser(user);
             _userService.SaveUser();
+
+            var model = Mapper.Map<Model.User, Models.User>(user);
+
+            return model;
         }
 
         [HttpGet]        

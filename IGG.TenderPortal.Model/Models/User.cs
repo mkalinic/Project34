@@ -6,7 +6,8 @@ namespace IGG.TenderPortal.Model
 {
     public class User
     {
-        public int UserId { get; set; }        
+        public int UserId { get; set; }
+        public string Guid { get; set; }
         public ClientType Type { get; set; }
         public bool Sex { get; set; }
         public string Surname { get; set; }

@@ -10,6 +10,11 @@ using Microsoft.AspNet.Identity.Owin;
 using IGG.TenderPortal.Data;
 using Autofac.Integration.Mvc;
 using System.Web.Mvc;
+using Microsoft.Owin.Security;
+using System.Web;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security.DataProtection;
+using Owin;
 
 namespace IGG.TenderPortal.WebService
 {
@@ -18,9 +23,9 @@ namespace IGG.TenderPortal.WebService
 
         public static IContainer Container;
 
-        public static void Initialize(HttpConfiguration config)
+        public static void Initialize(HttpConfiguration config, IAppBuilder app)
         {
-            Initialize(config, RegisterServices(new ContainerBuilder()));
+            Initialize(config, RegisterServices(new ContainerBuilder(), app));
         }
 
 
@@ -29,7 +34,7 @@ namespace IGG.TenderPortal.WebService
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
 
-        private static IContainer RegisterServices(ContainerBuilder builder)
+        private static IContainer RegisterServices(ContainerBuilder builder, IAppBuilder app)
         {
             //Register your Web API controllers.  
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
@@ -48,12 +53,25 @@ namespace IGG.TenderPortal.WebService
 
             var x = new ApplicationDbContext();
             builder.Register(c => x);
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<IAuthenticationManager>();
             builder.Register<UserStore<ApplicationUser>>(c => new UserStore<ApplicationUser>(x)).AsImplementedInterfaces();
+            builder.Register<RoleStore<IdentityRole>>(c => new RoleStore<IdentityRole>(x)).AsImplementedInterfaces();
+
             builder.Register<IdentityFactoryOptions<ApplicationUserManager>>(c => new IdentityFactoryOptions<ApplicationUserManager>()
             {
                 DataProtectionProvider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("ApplicationName")
             });
             builder.RegisterType<ApplicationUserManager>();
+
+
+            //builder.RegisterType<ApplicationSignInManager>();
+
+            //builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            //builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register<IAuthenticationManager>(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register<IDataProtectionProvider>(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             //// Repositories
             //builder.RegisterAssemblyTypes(typeof(EmployeeRepository).Assembly)

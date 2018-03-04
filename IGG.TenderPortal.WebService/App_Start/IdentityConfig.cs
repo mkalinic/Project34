@@ -1,15 +1,25 @@
 ﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using IGG.TenderPortal.Data;
+using Microsoft.Owin.Security;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace IGG.TenderPortal.WebService
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+    public class ApplicationUserStore : UserStore<ApplicationUser>
+    {
+        public ApplicationUserStore(ApplicationDbContext context)
+            : base(context)
+        {
+        }
+    }
 
     public class ApplicationUserManager : UserManager<ApplicationUser>
-    {        
+    {
+
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {            
@@ -40,4 +50,30 @@ namespace IGG.TenderPortal.WebService
             }            
         }
     }
+    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    {
+        public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
+            : base(userManager, authenticationManager)
+        {
+        }
+
+        public override Task<System.Security.Claims.ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        {
+            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+        }
+    }
+
+    //public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    //{
+    //    public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager) :
+    //        base(userManager, authenticationManager)
+    //    { }
+    //    //public ApplicationSignInManager(IUserStore<ApplicationUser> store, IdentityFactoryOptions<ApplicationUserManager> options)
+    //    //    : base(store)
+    //    //{ }
+    //    //public  ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
+    //    //{
+    //    //    return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+    //    //}
+    //}
 }

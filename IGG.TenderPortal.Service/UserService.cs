@@ -9,6 +9,7 @@ namespace IGG.TenderPortal.Service
     {
         IEnumerable<User> GetUsers();
         User GetUserById(int userId);
+        User GetUserByGuid(string guid);
         void CreateUser(User user);
         void UpdateUser(User user);
         void RemoveUser(User user);
@@ -35,6 +36,12 @@ namespace IGG.TenderPortal.Service
         public User GetUserById(int userId) 
         {
             var user = _userRepository.GetUserByIds(userId);
+            return user;
+        }
+
+        public User GetUserByGuid(string guid)
+        {
+            var user = _userRepository.GetUserByGuid(guid);
             return user;
         }
 

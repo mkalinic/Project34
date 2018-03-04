@@ -23,11 +23,19 @@ namespace IGG.TenderPortal.Data.Repositories
                 .User
                 .SingleOrDefault(e => e.UserId == userId);
         }
+
+        public User GetUserByGuid(string guid)
+        {
+            return DbContext
+                .User
+                .SingleOrDefault(e => e.Guid == guid);
+        }
     }
 
     public interface IUserRepository : IRepository<User>
     {
         IEnumerable<User> GetUsers();
         User GetUserByIds(int userId);
+        User GetUserByGuid(string guid);
     }
 }

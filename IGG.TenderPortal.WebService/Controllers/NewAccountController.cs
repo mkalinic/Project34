@@ -13,11 +13,13 @@ namespace IGG.TenderPortal.WebService.Controllers
     [RoutePrefix("api/Account")]
     public class NewAccountController : ApiController
     {
-        private ApplicationUserManager _userManager;        
+        private ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
 
         public NewAccountController(ApplicationUserManager userManager)
         {
-            _userManager = userManager;            
+            _userManager = userManager;
+            _signInManager = null;
         }
 
         //public AccountController()
@@ -34,6 +36,18 @@ namespace IGG.TenderPortal.WebService.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? Request.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -71,6 +85,8 @@ namespace IGG.TenderPortal.WebService.Controllers
 
             ApplicationUser user = UserManager.Find(username, password);
             if (user == null) return "invalid attempt";
+
+
 
             //--- then token creation
             var userAgent = Request.Headers.GetValues("User-Agent");
