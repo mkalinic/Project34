@@ -10,7 +10,6 @@ using Microsoft.AspNet.Identity.Owin;
 using IGG.TenderPortal.Data;
 using Autofac.Integration.Mvc;
 using System.Web.Mvc;
-using Microsoft.Owin.Security;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.DataProtection;
@@ -53,7 +52,7 @@ namespace IGG.TenderPortal.WebService
 
             var x = new ApplicationDbContext();
             builder.Register(c => x);
-            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<IAuthenticationManager>();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<Microsoft.Owin.Security.IAuthenticationManager>();            
             builder.Register<UserStore<ApplicationUser>>(c => new UserStore<ApplicationUser>(x)).AsImplementedInterfaces();
             builder.Register<RoleStore<IdentityRole>>(c => new RoleStore<IdentityRole>(x)).AsImplementedInterfaces();
 
@@ -69,8 +68,9 @@ namespace IGG.TenderPortal.WebService
             //builder.RegisterType<ApplicationDbContext>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
             //builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
-            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
-            builder.Register<IAuthenticationManager>(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>();
+            //builder.Register<IAuthenticationManager>(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            //builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<IAuthenticationManager>();
             builder.Register<IDataProtectionProvider>(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             //// Repositories
@@ -92,6 +92,9 @@ namespace IGG.TenderPortal.WebService
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(Container)); //Set the MVC DependencyResolver
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)Container); //Set the WebApi DependencyResolver
+
+            //app.UseAutofacMiddleware(Container);
+            //app.UseAutofacMvc();
 
             return Container;
         }

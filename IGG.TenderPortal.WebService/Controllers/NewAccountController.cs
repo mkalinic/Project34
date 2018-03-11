@@ -10,7 +10,7 @@ using Tenderingportal.Authorization;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
-    [RoutePrefix("api/Account")]
+    [RoutePrefix("api/NewAccount")]
     public class NewAccountController : ApiController
     {
         private ApplicationUserManager _userManager;

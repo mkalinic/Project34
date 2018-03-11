@@ -420,11 +420,13 @@
     <Compile Include="Authorization\AuthorizationAFA.cs" />
     <Compile Include="AutofacBootstrap.cs" />
     <Compile Include="Compression\Zip.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChecklistController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogbookController.cs" />
     <Compile Include="Controllers\MilestoneController.cs" />
+    <Compile Include="Controllers\MyAccountController.cs" />
     <Compile Include="Controllers\NewAccountController.cs" />
     <Compile Include="Controllers\NewMilestoneController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
@@ -444,6 +446,9 @@
     <Compile Include="Mapping\DomainToOldModelMappingProfile.cs" />
     <Compile Include="Mapping\OldModelToDomainMappingProfile.cs" />
     <Compile Include="Mapping\ModelToDomainMappingProfile.cs" />
+    <Compile Include="Models\Account\AccountViewModels.cs" />
+    <Compile Include="Models\Account\ManageViewModels.cs" />
+    <Compile Include="Models\Account\MeViewModels.cs" />
     <Compile Include="Models\Checklist.cs" />
     <Compile Include="Models\ChecklistChecked.cs" />
     <Compile Include="Models\CredentialsModel.cs" />
