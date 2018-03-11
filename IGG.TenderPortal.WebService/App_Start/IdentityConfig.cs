@@ -8,8 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace IGG.TenderPortal.WebService
 {
-    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    public class ApplicationUserStore : UserStore<ApplicationUser>
+     public class ApplicationUserStore : UserStore<ApplicationUser>
     {
         public ApplicationUserStore(ApplicationDbContext context)
             : base(context)
@@ -62,18 +61,4 @@ namespace IGG.TenderPortal.WebService
             return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }
     }
-
-    //public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
-    //{
-    //    public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager) :
-    //        base(userManager, authenticationManager)
-    //    { }
-    //    //public ApplicationSignInManager(IUserStore<ApplicationUser> store, IdentityFactoryOptions<ApplicationUserManager> options)
-    //    //    : base(store)
-    //    //{ }
-    //    //public  ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
-    //    //{
-    //    //    return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
-    //    //}
-    //}
 }

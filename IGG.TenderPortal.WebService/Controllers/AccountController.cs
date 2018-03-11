@@ -11,6 +11,10 @@ using Microsoft.Owin.Security;
 using IGG.TenderPortal.WebService;
 using WebApplicationTemplateForMvc.Models;
 using IGG.TenderPortal.Data;
+using IGG.TenderPortal.Service;
+using AutoMapper;
+using IGG.TenderPortal.WebService.Models;
+using IGG.TenderPortal.Model;
 
 namespace WebApplicationTemplateForMvc.Controllers
 {
@@ -19,23 +23,13 @@ namespace WebApplicationTemplateForMvc.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IUserService _userService;
 
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager)
-        {
-            UserManager = userManager;
-            var authManager = System.Web.HttpContext.Current.GetOwinContext().Authentication;
-            var test1 = HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            SignInManager = new ApplicationSignInManager(userManager, authManager);
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUserService userService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _userService = userService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -184,6 +178,12 @@ namespace WebApplicationTemplateForMvc.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var userModel = new IGG.TenderPortal.WebService.Models.User {
+                        email = model.Email,
+                        city = model.Hometown,
+                    };
+
+                    CreateUser(userModel, user.Id);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -199,6 +199,15 @@ namespace WebApplicationTemplateForMvc.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private void CreateUser(IGG.TenderPortal.WebService.Models.User model, string userId)
+        {
+            var user = Mapper.Map<IGG.TenderPortal.WebService.Models.User, IGG.TenderPortal.Model.User>(model);
+
+            user.Guid = userId;
+            _userService.CreateUser(user);
+            _userService.SaveUser();
         }
 
         //

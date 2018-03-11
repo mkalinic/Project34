@@ -9,8 +9,7 @@ namespace IGG.TenderPortal.WebService
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-        //    filters.Add(new AuthenticationAFA());
- 
-    }
+            filters.Add(new AuthorizeAttribute());
+        }
     }
 }

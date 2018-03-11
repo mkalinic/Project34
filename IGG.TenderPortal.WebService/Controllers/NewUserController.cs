@@ -4,9 +4,12 @@ using AutoMapper;
 using IGG.TenderPortal.DtoModel;
 using IGG.TenderPortal.Model;
 using IGG.TenderPortal.Service;
+using Microsoft.AspNet.Identity;
+using System.Web;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
+    //[Authorize]
     public class NewUserController : ApiController
     {        
         private readonly IUserService _userService;
@@ -43,6 +46,8 @@ namespace IGG.TenderPortal.WebService.Controllers
         // GET: api/User/5
         public UserModel Get(int id)
         {
+            var test1 = HttpContext.Current.User.Identity.IsAuthenticated;
+            var test2 = User.Identity.GetUserId();
             var user = _userService.GetUserById(id);
             return Mapper.Map<User, UserModel>(user);
         }
