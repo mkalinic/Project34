@@ -17,19 +17,19 @@ namespace IGG.TenderPortal.WebService
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            RegisterIOC();
+            //RegisterIOC();
             Bootstrapper.Run();
         }
 
-        private void RegisterIOC()
-        {
-            var builder = new ContainerBuilder();
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
-            AutofacBootstrap.Init(builder);
-            var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            GlobalConfiguration.Configuration.DependencyResolver = new Autofac.Integration.WebApi.AutofacWebApiDependencyResolver(container);
-        }
+        //private void RegisterIOC()
+        //{
+        //    var builder = new ContainerBuilder();
+        //    builder.RegisterControllers(typeof(MvcApplication).Assembly);
+        //    builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
+        //    AutofacWebapiConfig.Initialize(builder);
+        //    var container = builder.Build();
+        //    DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+        //    GlobalConfiguration.Configuration.DependencyResolver = new Autofac.Integration.WebApi.AutofacWebApiDependencyResolver(container);
+        //}
     }
 }

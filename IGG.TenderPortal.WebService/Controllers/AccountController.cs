@@ -73,8 +73,7 @@ namespace WebApplicationTemplateForMvc.Controllers
             AuthenticationManager.SignIn(identity);
             return new EmptyResult();
         }
-
-        [AllowAnonymous]
+        
         // GET: /Account/GetHometown
         public GetViewModel GetHometown()
         {

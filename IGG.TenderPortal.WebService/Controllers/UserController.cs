@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -133,7 +134,7 @@ namespace IGG.TenderPortal.WebService.Controllers
             var userId = User.Identity.GetUserId();
             //var applicationUser = _userManager.FindByIdAsync(userId).GetAwaiter().GetResult();
 
-            var user = _userService.GetUserByGuid("5b0dc357-253b-4a92-97e8-d8d49a3e7b60");
+            var user = _userService.GetUserByGuid(userId);
             var modelUser =  Mapper.Map<Model.User, Models.User>(user);
 
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, modelUser);
