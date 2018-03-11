@@ -130,10 +130,7 @@ namespace IGG.TenderPortal.WebService.Controllers
         [HttpGet]
         public ActionResult GetMyAccount()
         {
-            //TODO
             var userId = User.Identity.GetUserId();
-            //var applicationUser = _userManager.FindByIdAsync(userId).GetAwaiter().GetResult();
-
             var user = _userService.GetUserByGuid(userId);
             var modelUser =  Mapper.Map<Model.User, DtoModel.User>(user);
 
