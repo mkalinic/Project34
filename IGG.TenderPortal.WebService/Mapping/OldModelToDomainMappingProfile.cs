@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using IGG.TenderPortal.Model;
 using System.Linq;
-using OldModels = IGG.TenderPortal.WebService.Models;
+using OldModels = IGG.TenderPortal.DtoModel;
 
 namespace IGG.TenderPortal.WebService.Mapping
 {

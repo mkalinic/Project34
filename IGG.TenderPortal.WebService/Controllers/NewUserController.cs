@@ -21,9 +21,9 @@ namespace IGG.TenderPortal.WebService.Controllers
 
         [HttpGet]
         [Route("api/User/GetMyAccount")]
-        public IGG.TenderPortal.WebService.Models.User GetMyAccount()
+        public IGG.TenderPortal.DtoModel.User GetMyAccount()
         {
-            return new IGG.TenderPortal.WebService.Models.User
+            return new IGG.TenderPortal.DtoModel.User
             {
                 address = "address1",
                 city = "city1",
@@ -40,7 +40,7 @@ namespace IGG.TenderPortal.WebService.Controllers
         public IEnumerable<UserModel> Get()
         {
             var users = _userService.GetUsers();
-            return Mapper.Map<IEnumerable<User>, IEnumerable<UserModel>>(users);
+            return Mapper.Map<IEnumerable<Model.User>, IEnumerable<UserModel>>(users);
         }
 
         // GET: api/User/5
@@ -49,13 +49,13 @@ namespace IGG.TenderPortal.WebService.Controllers
             var test1 = HttpContext.Current.User.Identity.IsAuthenticated;
             var test2 = User.Identity.GetUserId();
             var user = _userService.GetUserById(id);
-            return Mapper.Map<User, UserModel>(user);
+            return Mapper.Map<Model.User, UserModel>(user);
         }
 
         // POST: api/User
         public void Post([FromBody]UserModel value)
         {
-            var user = Mapper.Map<UserModel, User>(value);
+            var user = Mapper.Map<UserModel, Model.User>(value);
 
             _userService.CreateUser(user);
             _userService.SaveUser();

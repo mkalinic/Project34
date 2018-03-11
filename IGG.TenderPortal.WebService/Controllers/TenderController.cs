@@ -4,7 +4,6 @@ using AutoMapper;
 using IGG.TenderPortal.DtoModel;
 using IGG.TenderPortal.Model;
 using IGG.TenderPortal.Service;
-using IGG.TenderPortal.WebService.Models;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {

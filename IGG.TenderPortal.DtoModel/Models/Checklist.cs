@@ -1,5 +1,5 @@
 ﻿
-namespace IGG.TenderPortal.WebService.Models
+namespace IGG.TenderPortal.DtoModel
 {
     public class Checklist
     {

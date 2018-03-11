@@ -41,11 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Checklist.cs" />
+    <Compile Include="Models\ChecklistChecked.cs" />
+    <Compile Include="Models\CredentialsModel.cs" />
+    <Compile Include="Models\Logbook.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Milestone.cs" />
     <Compile Include="Models\MilestoneModel.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Phase.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectFile.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\TenderModel.cs" />
+    <Compile Include="Models\TextBlock.cs" />
+    <Compile Include="Models\TextBlockFile.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UsersProject.cs" />
     <Compile Include="Models\UserTenderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

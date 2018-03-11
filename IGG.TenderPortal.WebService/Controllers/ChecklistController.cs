@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using IGG.TenderPortal.Model;
 using IGG.TenderPortal.Service;
-using IGG.TenderPortal.WebService.Models;
+using IGG.TenderPortal.DtoModel;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Tenderingportal.Authorization;
+using IGG.TenderPortal.WebService.Models;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
@@ -27,7 +27,7 @@ namespace IGG.TenderPortal.WebService.Controllers
         public ActionResult GetForProject(int id)
         {
             var checkListItems = _itemService.GetCheckListItems(id);
-            var checklists = Mapper.Map<IEnumerable<CheckListItem>, IEnumerable<Models.Checklist>>(checkListItems);
+            var checklists = Mapper.Map<IEnumerable<CheckListItem>, IEnumerable<DtoModel.Checklist>>(checkListItems);
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, checklists);
         }
 

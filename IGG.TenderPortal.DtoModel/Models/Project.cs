@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IGG.TenderPortal.WebService.Models
+namespace IGG.TenderPortal.DtoModel
 {
     public class Project
     {

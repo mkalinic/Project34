@@ -1,8 +1,9 @@
-﻿using IGG.TenderPortal.WebService.Models;
+﻿using IGG.TenderPortal.DtoModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System;
+using IGG.TenderPortal.WebService.Models;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {

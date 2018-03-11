@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace IGG.TenderPortal.WebService.Models
+namespace IGG.TenderPortal.DtoModel
 {
     public class RegisterViewModel
     {

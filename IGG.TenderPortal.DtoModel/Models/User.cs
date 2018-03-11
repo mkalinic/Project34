@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IGG.TenderPortal.WebService.Models
+namespace IGG.TenderPortal.DtoModel
 {
     public class User
     {

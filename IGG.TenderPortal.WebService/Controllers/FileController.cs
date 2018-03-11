@@ -1,4 +1,5 @@
-﻿using IGG.TenderPortal.WebService.Models;
+﻿using IGG.TenderPortal.DtoModel;
+using IGG.TenderPortal.WebService.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;

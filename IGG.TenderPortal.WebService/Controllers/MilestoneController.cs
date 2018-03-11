@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using IGG.TenderPortal.Service;
-using IGG.TenderPortal.WebService.Models;
+using IGG.TenderPortal.DtoModel;
 using System.Web.Mvc;
 using Tenderingportal.Authorization;
+using IGG.TenderPortal.WebService.Models;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {
@@ -18,7 +19,7 @@ namespace IGG.TenderPortal.WebService.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(Models.Milestone value)
+        public ActionResult Delete(DtoModel.Milestone value)
         {
             var milestone = _milestoneService.GetById(value.ID, value.IDproject);
             if (milestone == null)
@@ -31,7 +32,7 @@ namespace IGG.TenderPortal.WebService.Controllers
 
         [HttpPost]
         [AuthorizationAFA(AllowedUserTypes = "IGG")]
-        public ActionResult Save(Models.Milestone value)
+        public ActionResult Save(DtoModel.Milestone value)
         {
             Model.Milestone milestone;
 
@@ -40,15 +41,15 @@ namespace IGG.TenderPortal.WebService.Controllers
             else
                 milestone = UpdateMilestone(value);
 
-            var model = Mapper.Map<Model.Milestone, Models.Milestone>(milestone);
+            var model = Mapper.Map<Model.Milestone, DtoModel.Milestone>(milestone);
 
             return JsonResponse.GetJsonResult(JsonResponse.OK_DATA_RESPONSE, model);
 
         }
 
-        private Model.Milestone CreateMilestone(Models.Milestone value)
+        private Model.Milestone CreateMilestone(DtoModel.Milestone value)
         {
-            var milestone = Mapper.Map<Models.Milestone, Model.Milestone>(value);
+            var milestone = Mapper.Map<DtoModel.Milestone, Model.Milestone>(value);
             var tender = _tenderService.GetTenderById(value.IDproject);
             milestone.Tender = tender;
             _milestoneService.Create(milestone);
@@ -57,7 +58,7 @@ namespace IGG.TenderPortal.WebService.Controllers
             return milestone;
         }
 
-        private Model.Milestone UpdateMilestone(Models.Milestone value)
+        private Model.Milestone UpdateMilestone(DtoModel.Milestone value)
         {
             var milestone = _milestoneService.GetById(value.ID, value.IDproject);
             var tender = _tenderService.GetTenderById(value.IDproject);

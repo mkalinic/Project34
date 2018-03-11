@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using IGG.TenderPortal.Model.Identity;
 using Microsoft.AspNet.Identity;
 using IGG.TenderPortal.Data;
-using IGG.TenderPortal.WebService.Models;
+using IGG.TenderPortal.DtoModel;
 using Tenderingportal.Authorization;
+using IGG.TenderPortal.WebService.Models;
 
 namespace IGG.TenderPortal.WebService.Controllers
 {

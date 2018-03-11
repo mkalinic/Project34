@@ -12,10 +12,11 @@ using IGG.TenderPortal.WebService;
 using IGG.TenderPortal.Data;
 using IGG.TenderPortal.Service;
 using AutoMapper;
-using IGG.TenderPortal.WebService.Models;
+using IGG.TenderPortal.DtoModel;
 using IGG.TenderPortal.Model;
 using IGG.TenderPortal.WebService.Controllers;
 using IGG.TenderPortal.Model.Identity;
+using IGG.TenderPortal.WebService.Models;
 
 namespace WebApplicationTemplateForMvc.Controllers
 {
@@ -116,7 +117,7 @@ namespace WebApplicationTemplateForMvc.Controllers
                 result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var userModel = new IGG.TenderPortal.WebService.Models.User {
+                    var userModel = new IGG.TenderPortal.DtoModel.User {
                         email = model.Email,
                         city = model.Hometown,
                     };
@@ -163,9 +164,9 @@ namespace WebApplicationTemplateForMvc.Controllers
 
         #region Helpers
 
-        private void CreateUser(IGG.TenderPortal.WebService.Models.User model, string userId)
+        private void CreateUser(IGG.TenderPortal.DtoModel.User model, string userId)
         {
-            var user = Mapper.Map<IGG.TenderPortal.WebService.Models.User, IGG.TenderPortal.Model.User>(model);
+            var user = Mapper.Map<IGG.TenderPortal.DtoModel.User, IGG.TenderPortal.Model.User>(model);
 
             user.Guid = userId;
             _userService.CreateUser(user);

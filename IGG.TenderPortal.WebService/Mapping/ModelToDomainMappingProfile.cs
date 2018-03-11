@@ -20,7 +20,7 @@ namespace IGG.TenderPortal.WebService.Mapping
                 .ForMember(m => m.TenderFileBlocks, opt => opt.Ignore())
                 .ForMember(m => m.Status, map => map.MapFrom(vm => vm.Status));
 
-            CreateMap<UserModel, User>()
+            CreateMap<UserModel, Model.User>()
                 .ForMember(m => m.UserId, opt => opt.Ignore())
                 .ForMember(m => m.Loggings, opt => opt.Ignore())
                 .ForMember(m => m.Type, map => map.MapFrom(vm => vm.Type));
@@ -33,7 +33,7 @@ namespace IGG.TenderPortal.WebService.Mapping
                 .ForMember(m => m.Tender, opt => opt.Ignore())
                 .ForMember(m => m.UserNotifications, opt => opt.Ignore());
 
-            CreateMap<MilestoneModel, Milestone>()
+            CreateMap<MilestoneModel, Model.Milestone>()
                 .ForMember(m => m.Tender, opt => opt.Ignore())                
                 .ForMember(m => m.TenderNotifications, opt => opt.Ignore());
         }

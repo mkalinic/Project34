@@ -21,20 +21,20 @@ namespace IGG.TenderPortal.WebService.Controllers
         public IEnumerable<MilestoneModel> Get(int tenderId)
         {
             var milestones = _milestoneService.GetByTenderId(tenderId);
-            return Mapper.Map<IEnumerable<Milestone>, IEnumerable<MilestoneModel>>(milestones);
+            return Mapper.Map<IEnumerable<Model.Milestone>, IEnumerable<MilestoneModel>>(milestones);
         }
 
         // GET: api/Milestone/5
         public MilestoneModel Get(int id, int tenderId)
         {
             var milestone = _milestoneService.GetById(id, tenderId);
-            return Mapper.Map<Milestone, MilestoneModel>(milestone);
+            return Mapper.Map<Model.Milestone, MilestoneModel>(milestone);
         }
 
         // POST: api/Milestone
         public void Post([FromBody]MilestoneModel value, int tenderId)
         {
-            var milestone = Mapper.Map<MilestoneModel, Milestone>(value);
+            var milestone = Mapper.Map<MilestoneModel, Model.Milestone>(value);
             var tender = _tenderService.GetTenderById(tenderId);
             milestone.Tender = tender;
             _milestoneService.Create(milestone);

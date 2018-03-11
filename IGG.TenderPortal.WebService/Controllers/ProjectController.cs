@@ -2,7 +2,7 @@
 using IGG.TenderPortal.Common;
 using IGG.TenderPortal.Model;
 using IGG.TenderPortal.Service;
-using IGG.TenderPortal.WebService.Models;
+using IGG.TenderPortal.DtoModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Tenderingportal.Authorization;
+using IGG.TenderPortal.WebService.Models;
 
 namespace Tenderingportal.Controllers
 {
