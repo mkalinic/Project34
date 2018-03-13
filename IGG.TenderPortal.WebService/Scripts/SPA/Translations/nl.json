@@ -139,6 +139,7 @@
   "IGG-ers": "IGG-ers",
   "GerealiseerdeAanbestedingen": "Gerealiseerde Aanbestedingen",
   "Save": "Opslaan",
+  "Edit": "Bewerk",
   "CHANGE PHOTO": "VERANDER FOTO",
   "Send credentials": "Stuur gebruikersgegevens",
   "Nieuw bericht": "Nieuw bericht",
@@ -234,5 +235,9 @@
   "Notification date": "Bekendmaking",
   "Notification to": "kennisgeving aan",
   "Visible for": "zichtbaar voor",
-  "Procurement": "Inkoop"
+  "Procurement": "Inkoop",
+  "Required Field": "Het veld is verplicht",
+  "Min Length": "De invoer is te kort",
+  "Max Length": "De invoer is te lang",
+  "Valid Email": "Dit moet een geldige e-mail zijn"
 }

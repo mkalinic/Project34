@@ -139,6 +139,7 @@
   "IGG-ers": "IGG-ers",
   "GerealiseerdeAanbestedingen": "Realized Procurement",
   "Save": "Save",
+  "Edit": "Edit",
   "CHANGE PHOTO": "CHANGE PHOTO",
   "Send credentials": "Send credentials",
   "Nieuw bericht": "New message",
@@ -233,5 +234,9 @@
   "Notification date": "Notification date",
   "Notification to": "Notification to",
   "Visible for": "Visible for",
-  "Procurement": "Procurement"
+  "Procurement": "Procurement",
+  "Required Field": "The field is required",
+  "Min Length": "The input is to short",
+  "Max Length": "The input is to long",
+  "Valid Email": "This needs to be a valid email"
 }

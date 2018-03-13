@@ -31,8 +31,15 @@
     <script src="Scripts/SPA/ext_libs/Angular/angular-route.min.js"></script>
     <script src="Scripts/SPA/ext_libs/Angular/angular-route.min.js"></script> 
     <script src="Scripts/SPA/ext_libs/Angular/ui-bootstrap-tpls-2.1.3.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
     <script>
-        var app = angular.module('mainPage', ['ngRoute', 'pascalprecht.translate', 'ngFileUpload', 'ui.bootstrap', 'tmh.dynamicLocale', 'angularjs-datetime-picker']);
+        var app = angular.module('mainPage', ['ngRoute', 'pascalprecht.translate', 'ngFileUpload', 'ui.bootstrap', 'tmh.dynamicLocale', 'angularjs-datetime-picker', 'ngMessages']);
+        app.run(function ($templateCache, $http) {
+            $http.get('messages.html')
+            .then(function (response) {
+                $templateCache.put('error-messages', response.data);
+            })
+        });
         var controllers = {};
     </script>
 

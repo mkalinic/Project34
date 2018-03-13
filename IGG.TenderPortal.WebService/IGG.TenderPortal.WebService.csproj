@@ -347,6 +347,7 @@
     <Content Include="Scripts\SPA\templates_and_controlers\Logbook_template.html" />
     <Content Include="Scripts\SPA\templates_and_controlers\Login_controller.js" />
     <Content Include="Scripts\SPA\templates_and_controlers\Login_template.html" />
+    <Content Include="messages.html" />
     <Content Include="Scripts\SPA\templates_and_controlers\MyAccount_controller.js" />
     <Content Include="Scripts\SPA\templates_and_controlers\MyAccount_template.html" />
     <Content Include="Scripts\SPA\templates_and_controlers\NewProject_controller.js" />

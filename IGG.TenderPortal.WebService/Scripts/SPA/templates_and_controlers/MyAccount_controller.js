@@ -5,7 +5,8 @@
         $scope.GetMyAccount();
 
     };
-
+    
+    $scope.canSave = false;
 
     $scope.user = null;
     $scope.projects = [];
@@ -42,19 +43,21 @@
             });
     }
 
-    $scope.SaveMyAccount = function () {
+    $scope.SaveMyAccount = function () {        
         User.SaveMyAccount($scope.user,
             function (savedUser) {
                 $scope.user = savedUser;
                 alert($filter('translate')('succesfully saved'));
+                $scope.canSave = false;
             }
         , function (response) {
 
         })
-
-
     }
 
+    $scope.modelChanged = function (value) {
+        $scope.canSave = true;
+    }
 
     $scope.GetProjectImageAddress = function (image) {
        // console.log('GetProjectImageAddress image= ', image);

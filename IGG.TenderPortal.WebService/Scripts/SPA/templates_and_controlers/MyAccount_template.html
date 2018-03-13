@@ -1,4 +1,5 @@
-﻿<!-- ------------------------------------ header ---------------------------------- -->
+﻿
+<!-- ------------------------------------ header ---------------------------------- -->
 <div id="header" ng-controller="Header_controller" data-ng-init="init()">
 
     <nav class="navbar navbar-default loggedin navbar-fixed-top" id="main-menu">
@@ -424,86 +425,104 @@
                 <h3>{{'My Data' | translate}}</h3>
             </div>
             <div class="row tender-forms">
-                <form class="form-horizontal">
+                <form class="form-horizontal" name="myAccounForm">
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ 'has-error': myAccounForm.companyName.$touched && myAccounForm.companyName.$invalid }">
                             <div class="col-sm-12">
                                 <label for="Bedrijfsnaam">{{'companyName' | translate}}</label>
-                                <input type="text" class="form-control" id="Bedrijfsnaam" ng-required=true ng-model="user.companyName">
+                                <input type="text" class="form-control" id="Bedrijfsnaam" name="companyName" ng-change="modelChanged()" ng-model="user.companyName" required>
+                                <div ng-messages="myAccounForm.companyName.$error" ng-if="myAccounForm.companyName.$touched">
+                                    <div ng-messages-include="messages.html"></div>
+                                </div>                                
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3">
                                 <label for="Sexe" >{{'sex' | translate}}</label>
                        
-                                <select class="form-control" id="Sexe" ng-model="user.sex" ng-options="x.value as x.name for x in rootScope_sexes">
+                                <select class="form-control" id="Sexe" ng-change="modelChanged()" ng-model="user.sex" ng-options="x.value as x.name for x in rootScope_sexes">
                                 </select>
                             </div>
                             <div class="col-sm-3">
                                 <label for="Titel">{{'title' | translate}}</label>
-                                <select class="form-control" id="Titel" ng-model="user.title" ng-options="x for x in rootScope_titles"></select>
+                                <select class="form-control" id="Titel" ng-change="modelChanged()" ng-model="user.title" ng-options="x for x in rootScope_titles"></select>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6" ng-class="{ 'has-error': myAccounForm.firstName.$touched && myAccounForm.firstName.$invalid }">
                                 <label for="Voornaam">{{'name' | translate}}</label>
-                                <input type="text" class="form-control" id="Voornaam"  ng-model="user.name">
+                                <input type="text" class="form-control" id="Voornaam" name="firstName" ng-change="modelChanged()" ng-model="user.name" required>
+                                <div class="help-block" ng-messages="myAccounForm.firstName.$error" ng-if="myAccounForm.firstName.$touched">
+                                    <div ng-messages-include="messages.html"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-3">
                                 <label for="Voorletters">{{'initials' | translate}}</label>
-                                <input type="text" class="form-control" id="Voorletters" ng-model="user.initials">
+                                <input type="text" class="form-control" id="Voorletters" ng-change="modelChanged()" ng-model="user.initials">
                             </div>
                             <div class="col-sm-3">
                                 <label for="Tussen">{{'middleName' | translate}}</label>
-                                <input type="text" class="form-control" id="Tussen"  ng-model="user.middleName">
+                                <input type="text" class="form-control" id="Tussen"  ng-change="modelChanged()" ng-model="user.middleName">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6" ng-class="{ 'has-error': myAccounForm.lastName.$touched && myAccounForm.lastName.$invalid }">
                                 <label for="Achternaam">{{'surname' | translate}}</label>
-                                <input type="text" class="form-control" id="Achternaam" ng-model="user.surname">
+                                <input type="text" class="form-control" id="Achternaam" name="lastName" ng-change="modelChanged()" ng-model="user.surname" required>
+                                <div ng-messages="myAccounForm.lastName.$error" ng-if="myAccounForm.lastName.$touched">
+                                    <div ng-messages-include="messages.html"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ 'has-error': myAccounForm.address.$touched && myAccounForm.address.$invalid }">
                             <div class="col-sm-12">
                                 <label for="Adres">{{'address' | translate}}</label>
-                                <input type="text" class="form-control" id="Adres" ng-model="user.address">
+                                <input type="text" class="form-control" id="Adres" name="address" ng-change="modelChanged()" ng-model="user.address" required>
+                                <div ng-messages="myAccounForm.address.$error" ng-if="myAccounForm.address.$touched">
+                                    <div ng-messages-include="messages.html"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-4">
                                 <label for="Postcode">{{'postCode' | translate}}</label>
-                                <input type="text" class="form-control" id="Postcode" ng-model="user.postCode">
+                                <input type="text" class="form-control" id="Postcode" ng-change="modelChanged()" ng-model="user.postCode">
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-8" ng-class="{ 'has-error': myAccounForm.city.$touched && myAccounForm.city.$invalid }">
                                 <label for="Plaats">{{'city' | translate}}</label>
-                                <input type="text" class="form-control" id="Plaats" ng-model="user.city">
+                                <input type="text" class="form-control" id="Plaats" name="city" ng-change="modelChanged()" ng-model="user.city" required>
+                                <div ng-messages="myAccounForm.city.$error" ng-if="myAccounForm.city.$touched">
+                                    <div ng-messages-include="messages.html"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label for="Land">{{'country' | translate}}</label>
-                                <select class="form-control" id="Land" ng-model="user.country" ng-options="x for x in rootScope_countries"></select>
+                                <select class="form-control" id="Land" ng-change="modelChanged()" ng-model="user.country" ng-options="x for x in rootScope_countries"></select>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ 'has-error': myAccounForm.email.$touched && myAccounForm.email.$invalid }">
                             <div class="col-sm-12">
                                 <label for="E-mailadres">{{'email' | translate}}</label>
-                                <input type="text" class="form-control" id="E-mailadres"  ng-model="user.email">
+                                <input type="email" class="form-control" id="E-mailadres" name="email" ng-change="modelChanged()" ng-model="user.email" required>
+                                <div ng-messages="myAccounForm.email.$error" ng-if="myAccounForm.email.$touched">
+                                    <div ng-messages-include="messages.html"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label for="Telefoonnummer">{{'phone' | translate}}</label>
-                                <input type="text" class="form-control" id="Telefoonnummer" ng-model="user.phone"  >
+                                <input type="text" class="form-control" id="Telefoonnummer" ng-change="modelChanged()" ng-model="user.phone"  >
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label for="Mobiel">{{'mobile' | translate}}</label>
-                                <input type="text" class="form-control" id="Mobiel" ng-model="user.mobile">
+                                <input type="text" class="form-control" id="Mobiel" ng-change="modelChanged()" ng-model="user.mobile">
                             </div>
                         </div>
                         <!------- datepicker 
@@ -518,8 +537,8 @@
                         </div>
                          / datepicker --->
                     </div>
-                    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-12">
-                        <button class="btn btn-block" id="Wijzigen" ng-click="SaveMyAccount()">{{'Save' | translate}}</button>
+                    <div class="col-md-4 col-md-offset-8 col-sm-4 col-sm-offset-4 col-xs-12">                        
+                        <button type="button" class="btn btn-block" id="Wijzigen" ng-disabled=!canSave||myAccounForm.$invalid ng-click="SaveMyAccount(myAccounForm.$valid)">{{'Save' | translate}}</button>                        
                     </div>
                 </form>
             </div>
