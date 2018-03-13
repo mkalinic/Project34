@@ -239,5 +239,6 @@
   "Required Field": "Het veld is verplicht",
   "Min Length": "De invoer is te kort",
   "Max Length": "De invoer is te lang",
-  "Valid Email": "Dit moet een geldige e-mail zijn"
+  "Valid Email": "Dit moet een geldige e-mail zijn",
+  "Cancel":  "Annuleer"
 }

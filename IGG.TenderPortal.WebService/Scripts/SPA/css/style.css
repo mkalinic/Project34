@@ -921,3 +921,18 @@ display:none!important;
   height: 230px;
   width: 362px;
 }
+
+.btn-group {
+    text-align:center;
+    width: 100%;
+}
+@media only screen and (min-device-width: 414px) {
+    .btn-group .btn-block {
+        display: inline-block;
+        margin: auto;
+        float: left;   
+        margin-top: 20px;     
+        margin-right: 5%;
+        width: 45%;
+    }
+}

@@ -238,5 +238,6 @@
   "Required Field": "The field is required",
   "Min Length": "The input is to short",
   "Max Length": "The input is to long",
-  "Valid Email": "This needs to be a valid email"
+  "Valid Email": "This needs to be a valid email",
+  "Cancel":  "Cancel"
 }

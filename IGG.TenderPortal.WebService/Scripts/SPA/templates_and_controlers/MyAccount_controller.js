@@ -23,8 +23,6 @@
             function (error) {
                 console.error('GetMyAccount, ERROR = ', error);
             });
-
-
     }
 
     $scope.GetTopNForUser = function (n, userID) {
@@ -53,6 +51,17 @@
         , function (response) {
 
         })
+    }
+    $scope.cancelChanges = function () {
+        User.GetMyAccount(
+            function (user) {
+                console.log('GetMyAccount, user = ', user);
+                $scope.user = user;
+                $scope.canSave = false;
+            },
+            function (error) {
+                console.error('GetMyAccount, ERROR = ', error);
+        });
     }
 
     $scope.modelChanged = function (value) {

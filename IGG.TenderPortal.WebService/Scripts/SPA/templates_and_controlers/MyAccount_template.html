@@ -537,8 +537,11 @@
                         </div>
                          / datepicker --->
                     </div>
-                    <div class="col-md-4 col-md-offset-8 col-sm-4 col-sm-offset-4 col-xs-12">                        
-                        <button type="button" class="btn btn-block" id="Wijzigen" ng-disabled=!canSave||myAccounForm.$invalid ng-click="SaveMyAccount(myAccounForm.$valid)">{{'Save' | translate}}</button>                        
+                    <div class="col-md-4 col-md-offset-8 col-sm-4 col-sm-offset-8 col-xs-12">                        
+                        <div class="btn-group">                            
+                            <button type="button" class="btn btn-block" id="Wijzigen" ng-disabled=!canSave||myAccounForm.$invalid ng-click="SaveMyAccount()">{{'Save' | translate}}</button>
+                            <button type="button" class="btn btn-block" id="Annuleer" ng-disabled=!canSave ng-click="cancelChanges()">{{'Cancel' | translate}}</button>
+                        </div>                        
                     </div>
                 </form>
             </div>
